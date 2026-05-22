@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from 'vite-plugin-sitemap'
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 // Blog slugs — kept in sync with blogData.js so sitemap stays accurate
 const blogSlugs = [
   'taste-the-tropics-mango-juice',
@@ -46,32 +48,28 @@ const localSEORoutes = [
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    sitemap({
-      hostname: 'https://richifoodproducts.com',
-      changefreq: 'weekly',
-      priority: 0.7,
-      robots: [],
-      lastmod: new Date().toISOString(),
-      dynamicRoutes: [
-        '/',
-        '/about',
-        '/products',
-        '/contact',
-        '/blog',
-        '/csr',
-        '/investors',
-        '/insights',
-        '/dealership',
-        ...blogSlugs.map(slug => `/blog/${slug}`),
-        ...productSlugs.map(slug => `/product/${slug}`),
-        ...locationSlugs.map(city => `/location/${city}`),
-        ...localSEORoutes,
-      ],
-    }),
-  ],
+  plugins: [react(), tailwindcss(), sitemap({
+    hostname: 'https://richifoodproducts.com',
+    changefreq: 'weekly',
+    priority: 0.7,
+    robots: [],
+    lastmod: new Date().toISOString(),
+    dynamicRoutes: [
+      '/',
+      '/about',
+      '/products',
+      '/contact',
+      '/blog',
+      '/csr',
+      '/investors',
+      '/insights',
+      '/dealership',
+      ...blogSlugs.map(slug => `/blog/${slug}`),
+      ...productSlugs.map(slug => `/product/${slug}`),
+      ...locationSlugs.map(city => `/location/${city}`),
+      ...localSEORoutes,
+    ],
+  }), cloudflare()],
 
   build: {
     rollupOptions: {
