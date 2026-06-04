@@ -6,6 +6,14 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '320px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       colors: {
         'cilo-orange': {
           light: '#FFF3E0',
@@ -20,6 +28,12 @@ export default {
       animation: {
         'spin': 'spin 1s linear infinite',
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      spacing: {
+        'safe-top': 'max(1rem, env(safe-area-inset-top))',
+        'safe-bottom': 'max(1rem, env(safe-area-inset-bottom))',
+        'safe-left': 'max(1rem, env(safe-area-inset-left))',
+        'safe-right': 'max(1rem, env(safe-area-inset-right))',
       },
     },
   },

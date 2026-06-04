@@ -91,31 +91,31 @@ function Navbar() {
       {/* ══ NAVBAR BAR ══════════════════════════════════════════════════════ */}
       <motion.nav
         {...navEntrance}
-        className={`fixed z-50 transition-all duration-300 ${
+        className={`fixed z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'top-2 inset-x-4 md:inset-x-12 bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] py-3 rounded-full border border-[#FFD9A8]/50'
+            ? 'top-2 inset-x-4 md:inset-x-12 left-0 right-0 bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] py-3 rounded-full border border-[#FFD9A8]/50 md:inset-x-auto'
             : isMobile
-              ? 'top-0 left-0 right-0 bg-white py-4 shadow-sm'
-              : 'top-6 inset-x-6 md:inset-x-12 bg-white/80 backdrop-blur-md py-4 rounded-full border border-white shadow-lg shadow-black/5'
+              ? 'top-0 left-0 right-0 bg-white py-3 shadow-sm'
+              : 'top-6 left-0 right-0 inset-x-6 md:inset-x-12 bg-white/80 backdrop-blur-md py-4 rounded-full border border-white shadow-lg shadow-black/5 md:inset-x-auto'
         }`}
         style={{ willChange: 'transform' }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-12 flex items-center justify-between max-w-7xl mx-auto">
 
           {/* ── LOGO ── */}
-          <Link to="/" className="flex items-center shrink-0">
-            <div className="relative h-12 w-[205px] overflow-hidden">
+          <Link to="/" className="flex items-center shrink-0 min-w-0">
+            <div className="relative h-10 sm:h-12 w-[140px] sm:w-[205px] overflow-hidden">
               <img
                 src="/images/logo.png"
                 alt="Richi Food Products"
-                className="h-12 w-auto object-contain"
-                style={{ height: 48, width: 'auto', transform: 'translateX(42px) scale(2.9)', transformOrigin: 'center' }}
+                className="h-10 sm:h-12 w-auto object-contain"
+                style={{ height: 'auto', width: 'auto', transform: 'translateX(32px) scale(2.5)', transformOrigin: 'center' }}
                 /*
                   width + height prevent layout shift (CLS) while the image loads.
                   decoding="async" moves image decode off the main thread.
                 */
-                width={80}
-                height={40}
+                width={60}
+                height={30}
                 decoding="async"
                 onError={(e) => { e.target.style.display = 'none' }}
               />
@@ -123,12 +123,12 @@ function Navbar() {
           </Link>
 
           {/* ── DESKTOP LINKS ── */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5 lg:gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-4 py-2 rounded-full text-xs uppercase font-medium tracking-[0.15em] transition-colors duration-200 ${
+                className={`relative px-3 lg:px-4 py-2 rounded-full text-[11px] lg:text-xs uppercase font-medium tracking-[0.15em] transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'text-[#F97316] bg-[#FFF8EE]'
                     : 'text-gray-700 hover:text-[#F97316] hover:bg-[#FFF8EE]'
@@ -148,10 +148,10 @@ function Navbar() {
           </div>
 
           {/* ── DESKTOP CTA ── */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3">
             <Link
               to="/contact"
-              className="relative px-7 py-3 rounded-full text-xs uppercase font-bold tracking-[0.1em] overflow-hidden group transition-all duration-300 bg-[#F97316] text-white shadow-lg shadow-[#F97316]/20 hover:bg-[#EA6C0A] hover:shadow-[#F97316]/30 hover:-translate-y-0.5"
+              className="relative px-5 lg:px-7 py-2.5 lg:py-3 rounded-full text-[11px] lg:text-xs uppercase font-bold tracking-[0.1em] overflow-hidden group transition-all duration-300 bg-[#F97316] text-white shadow-lg shadow-[#F97316]/20 hover:bg-[#EA6C0A] hover:shadow-[#F97316]/30 hover:-translate-y-0.5"
               style={{ fontFamily: "'Satoshi', sans-serif" }}
             >
               {/* Shine sweep — transform-only, compositor-safe */}
@@ -165,7 +165,7 @@ function Navbar() {
             onClick={toggleMenu}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className={`md:hidden p-2 rounded-xl transition-colors duration-200 ${
+            className={`md:hidden p-2.5 sm:p-3 rounded-lg transition-colors duration-200 flex-shrink-0 ${
               scrolled
                 ? 'text-[#F97316] hover:bg-[#FFF8EE]'
                 : 'text-[#F97316] hover:bg-[#FFF8EE]'
@@ -231,7 +231,7 @@ function Navbar() {
               animate="show"
               exit="hidden"
               transition={panelTransition}
-              className="fixed top-0 right-0 bottom-0 z-50 w-[80vw] max-w-sm flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] sm:w-[70vw] md:w-[60vw] max-w-sm flex flex-col"
               style={{
                 background: 'linear-gradient(160deg, #FFFFFF 0%, #FFF8F3 60%, #FFF1E6 100%)',
                 willChange: 'transform',
@@ -239,16 +239,16 @@ function Navbar() {
               }}
             >
               {/* Panel header */}
-              <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-white/10">
+              <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-5 md:pb-6 border-b border-white/10">
                 <Link to="/" onClick={closeMenu} className="flex items-center">
-                  <span className="relative h-10 w-[178px] overflow-hidden">
+                  <span className="relative h-8 sm:h-10 w-[140px] sm:w-[178px] overflow-hidden">
                     <img
                       src="/images/logo.png"
                       alt="Richi Food Products"
-                      className="h-10 w-auto object-contain"
-                      style={{ height: 40, width: 'auto', transform: 'translateX(38px) scale(2.9)', transformOrigin: 'center' }}
-                      width={64}
-                      height={32}
+                      className="h-8 sm:h-10 w-auto object-contain"
+                      style={{ height: 'auto', width: 'auto', transform: 'translateX(30px) scale(2.3)', transformOrigin: 'center' }}
+                      width={56}
+                      height={28}
                       decoding="async"
                       onError={(e) => { e.target.style.display = 'none' }}
                     />
@@ -257,9 +257,9 @@ function Navbar() {
                 <button
                   onClick={closeMenu}
                   aria-label="Close menu"
-                  className="p-2 rounded-xl text-[#7A4A2A]/70 hover:text-[#F97316] hover:bg-[#F97316]/10 transition-colors duration-150"
+                  className="p-2.5 rounded-lg text-[#7A4A2A]/70 hover:text-[#F97316] hover:bg-[#F97316]/10 transition-colors duration-150 flex-shrink-0"
                 >
-                  <X size={22} />
+                  <X size={20} className="sm:w-[22px] sm:h-[22px]" />
                 </button>
               </div>
 
@@ -267,7 +267,7 @@ function Navbar() {
                   Stagger kept (only 5 items) but duration tightened.
                   x-slide removed on mobile → opacity-only per linkVariants.
               */}
-              <nav className="flex-1 flex flex-col justify-center px-8 gap-2" aria-label="Mobile navigation">
+              <nav className="flex-1 flex flex-col justify-center px-4 sm:px-6 md:px-8 gap-1 sm:gap-2" aria-label="Mobile navigation">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.path}
@@ -282,7 +282,7 @@ function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className={`flex items-center justify-between px-5 py-4 rounded-2xl text-sm uppercase font-medium tracking-[0.15em] transition-colors duration-150 ${
+                      className={`flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-xs sm:text-sm uppercase font-medium tracking-[0.15em] transition-colors duration-150 ${
                         isActive(link.path)
                           ? 'bg-[#F97316]/10 text-[#F97316]'
                           : 'text-[#7A4A2A]/70 hover:text-[#F97316] hover:bg-[#F97316]/5'
@@ -293,7 +293,7 @@ function Navbar() {
                       {isActive(link.path) && (
                         <motion.div
                           layoutId="mobile-active"
-                          className="w-1.5 h-1.5 rounded-full bg-[#F97316]"
+                          className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#F97316]"
                         />
                       )}
                     </Link>
@@ -302,16 +302,16 @@ function Navbar() {
               </nav>
 
               {/* Footer CTA */}
-              <div className="px-8 pb-10 pt-6 border-t border-white/10 space-y-4">
+              <div className="px-4 sm:px-6 md:px-8 pb-6 sm:pb-8 md:pb-10 pt-4 sm:pt-5 md:pt-6 border-t border-white/10 space-y-3 sm:space-y-4">
                 <Link
                   to="/contact"
                   onClick={closeMenu}
-                  className="flex items-center justify-center w-full py-4 bg-[#F97316] text-white font-bold text-sm uppercase tracking-[0.1em] rounded-2xl hover:bg-[#EA6C0A] transition-colors duration-150 shadow-lg shadow-[#F97316]/20"
+                  className="flex items-center justify-center w-full py-3 sm:py-4 bg-[#F97316] text-white font-bold text-xs sm:text-sm uppercase tracking-[0.1em] rounded-xl sm:rounded-2xl hover:bg-[#EA6C0A] transition-colors duration-150 shadow-lg shadow-[#F97316]/20"
                   style={{ fontFamily: "'Satoshi', sans-serif" }}
                 >
                   Contact Us
                 </Link>
-                <div className="text-center text-white/40 text-xs font-semibold tracking-widest uppercase">
+                <div className="text-center text-white/40 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
                   Daily Fresh Fruits India
                 </div>
               </div>

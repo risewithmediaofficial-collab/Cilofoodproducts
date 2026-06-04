@@ -659,5 +659,111 @@ a,
   touch-action: manipulation;
 }
 
+/* ================= MOBILE-FIRST RESPONSIVE IMPROVEMENTS ================= */
+
+/* Extra small devices (320px) */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+  
+  /* Reduce animations on low-end devices */
+  @media (hover: none) {
+    * {
+      --transition-duration: 0.15s;
+    }
+  }
+}
+
+/* Small devices (481px - 640px) */
+@media (min-width: 481px) and (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Mobile devices (641px - 767px) */
+@media (min-width: 641px) and (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Touch-friendly sizing */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  [role="button"],
+  input,
+  textarea,
+  select {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent text selection on fast taps */
+button,
+[role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Safe area support for notched devices */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Improve scrolling performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix input zoom on mobile */
+input,
+textarea,
+select,
+button {
+  font-size: 16px;
+}
+
+/* Responsive containers */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 
 
