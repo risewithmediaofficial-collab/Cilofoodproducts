@@ -572,7 +572,7 @@ export default function Home() {
       {/* ══════════ HERO ══════════ */}
       <section
         ref={heroRef}
-        className="relative overflow-x-clip pt-20 sm:pt-24 md:pt-32"
+        className="relative overflow-x-clip pt-28 sm:pt-32 md:pt-36"
         style={{ minHeight: '100vh', background: '#ffffff' }}
       >
         <div className="absolute inset-0 pointer-events-none bg-pattern-leaf bg-pattern-opacity-55" />
@@ -586,7 +586,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative z-10 flex items-center justify-center gap-2 text-xs text-[#F97316]/60 font-semibold uppercase tracking-widest mb-8 px-6"
+          className="relative z-10 flex items-center justify-center gap-2 text-[10px] sm:text-xs text-[#F97316]/60 font-semibold uppercase tracking-[0.22em] mb-6 sm:mb-8 px-4 sm:px-6"
         >
           <span className="text-[#7A4A2A]">Home</span>
         </motion.div>
@@ -594,13 +594,13 @@ export default function Home() {
         {/* Text content — no parallax on mobile */}
         <motion.div
           style={parallaxTextStyle}
-          className="relative z-10 flex flex-col items-center text-center px-6 pb-0"
+          className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 pb-0"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#FFD9A8] shadow-sm text-[#7A4A2A] text-xs font-bold mb-7"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#FFD9A8] shadow-sm text-[#7A4A2A] text-[11px] sm:text-xs font-bold mb-6 sm:mb-7 text-center"
           >
             <span className="w-2 h-2 rounded-full bg-[#D4622A] animate-pulse" />
             Premium beverages from Krishnagiri, Tamil Nadu
@@ -625,7 +625,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.22 }}
-            className="text-[#7A4A2A]/55 max-w-lg leading-relaxed mb-9"
+            className="text-[#7A4A2A]/55 max-w-lg leading-relaxed mb-8 sm:mb-9 px-1"
             style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)' }}
           >
             From vibrant fruit juices to refreshing fizzy favorites, we craft every bottle
@@ -636,20 +636,20 @@ export default function Home() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="flex gap-4 flex-wrap justify-center"
+            className="flex gap-3 sm:gap-4 flex-wrap justify-center w-full"
           >
             <Link
               to="/products"
-              className="px-9 py-3.5 bg-[#F97316] text-white font-bold rounded-full shadow-xl shadow-[#F97316]/20
+              className="w-full sm:w-auto justify-center px-7 sm:px-9 py-3.5 bg-[#F97316] text-white font-bold rounded-full shadow-xl shadow-[#F97316]/20
                 hover:bg-[#F97316] hover:shadow-[#F97316]/25 transition-all duration-300 flex items-center gap-2"
             >
               Explore CILO Juice <ChevronRight size={16} />
             </Link>
             <Link
               to="/about"
-              className="px-9 py-3.5 bg-white/75 backdrop-blur text-[#7A4A2A] font-bold rounded-full
+              className="w-full sm:w-auto justify-center px-7 sm:px-9 py-3.5 bg-white/75 backdrop-blur text-[#7A4A2A] font-bold rounded-full
                 border border-[#FFD9A8] hover:bg-white hover:border-[#F97316] hover:text-[#F97316]
-                transition-all duration-300 shadow-sm"
+                transition-all duration-300 shadow-sm inline-flex"
             >
               Our Story
             </Link>
@@ -686,7 +686,7 @@ export default function Home() {
       <Ticker />
 
       {/* ══════════ PRODUCTS GRID ══════════ */}
-      <section className="py-28 px-6 md:px-12 lg:px-20 bg-white relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-white relative overflow-hidden">
         {/* Decorative blur — skip paint on mobile */}
         {!isMobile && (
           <div className="absolute top-0 right-0 w-96 h-96 bg-gray-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -733,7 +733,7 @@ export default function Home() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")`,
           }}
         />
-        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {stats.map((s, i) => (
             <motion.div
               key={i}
@@ -754,7 +754,7 @@ export default function Home() {
                   <s.icon size={24} className="text-white/90" />
                 </motion.div>
                 <div className="text-white">
-                  <motion.div className="text-6xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                  <motion.div className="text-3xl sm:text-5xl lg:text-6xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
                     {s.value}
                   </motion.div>
                   <div className="text-white/70 text-xs font-bold tracking-widest uppercase mt-2">{s.label}</div>
@@ -766,11 +766,11 @@ export default function Home() {
       </section>
 
       {/* ══════════ OUR STORY ══════════ */}
-      <section className="py-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-white via-white to-gray-50 relative overflow-hidden">
+      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-gradient-to-b from-white via-white to-gray-50 relative overflow-hidden">
         <Orb className="w-[500px] h-[500px] bg-[#F97316]/8 -top-40 -left-48"   delay={0} />
         <Orb className="w-[400px] h-[400px] bg-[#F97316]/5 bottom-20 -right-32" delay={1} />
 
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, x: isMobile ? 0 : -50, y: isMobile ? 20 : 0 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -781,21 +781,21 @@ export default function Home() {
               Our Story
             </span>
             <h2
-              className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5 sm:mb-6"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Refreshing taste buds
               <br />
               <span className="text-[#F97316]">since 2008</span>
             </h2>
-            <p className="text-gray-500 leading-relaxed text-lg mb-8">
+            <p className="text-gray-500 leading-relaxed text-base sm:text-lg mb-7 sm:mb-8">
               Based in Tamil Nadu, Richi Food Products crafts premium, refreshing beverages with
               absolute care and passion. Our signature CILO Juice and Richi Juice ranges are made using
               high-quality ingredients, bringing authentic taste and delight to families, retailers, and distributors across South India.
             </p>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300 w-full sm:w-auto"
             >
               Read our Story <ArrowRight size={16} />
             </Link>
@@ -806,7 +806,7 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             {storyGrid.map((item, i) => (
               <StoryGridCard key={item.label} item={item} index={i} isMobile={isMobile} />
@@ -816,33 +816,33 @@ export default function Home() {
       </section>
 
       {/* ══════════ PILLARS ══════════ */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#FFF9F3] relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#FFF9F3] relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            className="text-center mb-14"
+            className="text-center mb-10 sm:mb-14"
           >
             <span className="inline-block px-4 py-1.5 bg-white text-[#7A4A2A] rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-[#FFD9A8] shadow-sm">
               Brand Search
             </span>
             <h2
-              className="text-4xl md:text-5xl font-black text-gray-900 mb-5"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 sm:mb-5"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Looking for Richi Food Products,
               <br />
               <span className="text-[#F97316]">Richi Juice, or CILO Juice?</span>
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
               They all lead back to the same Tamil Nadu manufacturer. CILO Juice is the flagship
               beverage line from Richi Food Products, and many customers refer to the range as
               Richi Juice when searching online.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
             {brandSearchFaqs.map((item, index) => (
               <motion.div
                 key={item.question}
@@ -851,24 +851,24 @@ export default function Home() {
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={isMobile ? {} : { y: -8 }}
-                className="rounded-3xl border border-[#FFD9A8] bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="rounded-3xl border border-[#FFD9A8] bg-white p-5 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <h3 className="text-xl font-black text-gray-900 mb-3">{item.question}</h3>
+                <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3">{item.question}</h3>
                 <p className="text-gray-600 leading-relaxed">{item.answer}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-8 sm:mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 px-7 py-3 bg-[#F97316] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/25 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-[#F97316] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/25 transition-all duration-300 w-full sm:w-auto"
             >
               About Richi Food Products <ArrowRight size={16} />
             </Link>
             <Link
               to="/products"
-              className="inline-flex items-center gap-2 px-7 py-3 bg-white text-[#7A4A2A] font-bold rounded-full border border-[#FFD9A8] hover:border-[#F97316] hover:text-[#F97316] transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 bg-white text-[#7A4A2A] font-bold rounded-full border border-[#FFD9A8] hover:border-[#F97316] hover:text-[#F97316] transition-all duration-300 w-full sm:w-auto"
             >
               Browse CILO Juice Range
             </Link>
@@ -876,7 +876,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-32 px-6 md:px-12 lg:px-20 bg-white relative overflow-hidden">
+      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-white relative overflow-hidden">
         <Orb className="w-[600px] h-[600px] bg-[#F97316]/6 top-1/2 left-1/4 -translate-y-1/2" delay={0} />
         <Orb className="w-[500px] h-[500px] bg-[#F97316]/5 -bottom-32 right-1/4"               delay={2} />
 
@@ -885,20 +885,20 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            className="text-center mb-20"
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
           >
             <span className="inline-block px-4 py-1.5 bg-[#FFF8EE] text-[#F97316] rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-[#FFD9A8] shadow-sm">
               Why Richi Food Products
             </span>
             <h2
-              className="text-4xl md:text-5xl font-black text-gray-900 mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Our Commitment to You
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
             {pillars.map((p, i) => (
               <motion.div
                 key={i}
@@ -907,7 +907,7 @@ export default function Home() {
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={isMobile ? {} : { y: -12, scale: 1.02 }}
-                className={`group border-2 ${p.border} rounded-3xl p-10 hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-gradient-to-br ${
+                className={`group border-2 ${p.border} rounded-3xl p-6 sm:p-8 lg:p-10 hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-gradient-to-br ${
                   p.color === 'bg-white text-[#F97316]' ? 'from-white to-[#FFFBF7]'
                   : p.color === 'bg-sky-50 text-sky-600' ? 'from-sky-50 to-blue-50'
                   : 'from-white to-orange-50'
@@ -915,13 +915,13 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#F97316]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <motion.div
-                  className={`w-16 h-16 rounded-2xl ${p.color} flex items-center justify-center mb-6 relative z-10 group-hover:shadow-lg transition-all duration-300`}
+                  className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${p.color} flex items-center justify-center mb-5 sm:mb-6 relative z-10 group-hover:shadow-lg transition-all duration-300`}
                   whileHover={isMobile ? {} : { scale: 1.1, rotate: 6 }}
                 >
                   <p.icon size={28} />
                 </motion.div>
                 <div className="relative z-10">
-                  <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-[#F97316] transition-colors duration-300">{p.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-black text-gray-900 mb-3 group-hover:text-[#F97316] transition-colors duration-300">{p.title}</h3>
                   <p className="text-gray-500 leading-relaxed group-hover:text-gray-600 transition-colors duration-300">{p.desc}</p>
                 </div>
               </motion.div>
@@ -997,7 +997,7 @@ export default function Home() {
       </section>
 
       {/* ══════════ DEALERSHIP CTA ══════════ */}
-      <section className="py-32 px-6 md:px-12 lg:px-20 bg-gradient-to-br from-gray-900 via-gray-900 to-[#1A0C04] relative overflow-hidden">
+      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-gradient-to-br from-gray-900 via-gray-900 to-[#1A0C04] relative overflow-hidden">
         <Orb className="w-[700px] h-[700px] bg-[#F97316]/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
         <Orb className="w-[500px] h-[500px] bg-[#A8430F]/10 -bottom-40 -left-32"                                  delay={2} />
         <Orb className="w-[400px] h-[400px] bg-[#F97316]/8 -top-32 -right-32"                                     delay={1} />
@@ -1016,7 +1016,7 @@ export default function Home() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.div
-              className="text-6xl mb-8 inline-block"
+              className="text-4xl sm:text-5xl md:text-6xl mb-6 sm:mb-8 inline-block"
               // Skip wiggle on mobile — rotate causes layout jank
               whileInView={isMobile ? {} : { rotate: [0, 10, -10, 0] }}
               transition={{ delay: 0.3, duration: 1.2 }}
@@ -1025,22 +1025,22 @@ export default function Home() {
             </motion.div>
 
             <h2
-              className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight"
+              className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-5 sm:mb-6 leading-tight"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Join the Richi Family Today
             </h2>
 
-            <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-300 text-base sm:text-lg mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
               Experience the extraordinary delight. Become a dealer and bring Richi
               beverages to your community.
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center mb-12">
+            <div className="flex flex-wrap gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/dealership"
-                  className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-2xl hover:shadow-[#F97316]/40 transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-10 py-3.5 sm:py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-2xl hover:shadow-[#F97316]/40 transition-all duration-300 w-full sm:w-auto"
                 >
                   Become a Dealer <ChevronRight size={18} />
                 </Link>
@@ -1049,28 +1049,28 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-10 py-4 bg-white/15 backdrop-blur text-white font-bold rounded-full border-2 border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-10 py-3.5 sm:py-4 bg-white/15 backdrop-blur text-white font-bold rounded-full border-2 border-white/30 hover:bg-white/25 hover:border-white/50 transition-all duration-300 w-full sm:w-auto"
                 >
                   <Phone size={16} /> Contact Us
                 </Link>
               </motion.div>
             </div>
 
-            <div className="pt-12 border-t border-white/10">
-              <div className="flex flex-wrap gap-8 justify-center text-sm text-gray-300">
-                <a href="tel:9443518521" className="flex items-center gap-3 hover:text-[#F97316] transition-colors group">
+            <div className="pt-8 sm:pt-12 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-8 justify-center text-sm text-gray-300">
+                <a href="tel:9443518521" className="flex items-center justify-center sm:justify-start gap-3 hover:text-[#F97316] transition-colors group text-center sm:text-left">
                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#F97316] transition-colors">
                     <Phone size={16} />
                   </div>
                   94435 18521 / 99443 66592
                 </a>
-                <a href="mailto:richifoodproduct@gmail.com" className="flex items-center gap-3 hover:text-[#F97316] transition-colors group">
+                <a href="mailto:richifoodproduct@gmail.com" className="flex items-center justify-center sm:justify-start gap-3 hover:text-[#F97316] transition-colors group text-center sm:text-left">
                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#F97316] transition-colors">
                     <Mail size={16} />
                   </div>
                   richifoodproduct@gmail.com
                 </a>
-                <span className="flex items-center gap-3">
+                <span className="flex items-center justify-center sm:justify-start gap-3 text-center sm:text-left">
                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                     <MapPin size={16} />
                   </div>

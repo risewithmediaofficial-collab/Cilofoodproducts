@@ -93,48 +93,39 @@ function Navbar() {
         {...navEntrance}
         className={`fixed z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'top-2 inset-x-4 md:inset-x-12 md:left-auto md:right-auto bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] py-3 rounded-full border border-[#FFD9A8]/50'
+            ? 'bg-transparent'
             : isMobile
-              ? 'top-0 left-0 right-0 bg-white py-4 sm:py-3 shadow-md border-b border-gray-100'
-              : 'top-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md py-4 rounded-full border border-white shadow-lg shadow-black/5 px-6 md:px-12 w-[calc(100%-3rem)] md:w-auto'
+              ? 'bg-transparent'
+              : 'bg-transparent'
         }`}
         style={{ willChange: 'transform' }}
       >
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between max-w-7xl mx-auto h-16 sm:h-14 md:h-auto md:py-4">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 min-h-[72px] rounded-2xl border border-[#FFD9A8]/50 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md">
 
           {/* ── LOGO & BRAND ── */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0 md:gap-2 lg:gap-3">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Logo Image */}
-            <div className="relative h-10 sm:h-11 md:h-12 aspect-square flex items-center justify-center flex-shrink-0">
+            <div className="relative h-12 sm:h-14 md:h-16 aspect-square flex items-center justify-center flex-shrink-0">
               <img
                 src="/images/logo.png"
                 alt="CILO"
                 className="h-full w-auto object-contain"
-                width={40}
-                height={40}
+                width={56}
+                height={56}
                 decoding="async"
                 onError={(e) => { e.target.style.display = 'none' }}
               />
             </div>
             
-            {/* Brand Name */}
-            <div className="flex flex-col leading-none">
-              <span className="text-sm sm:text-base font-bold text-[#F97316]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-                CILO
-              </span>
-              <span className="text-[10px] sm:text-xs text-gray-600 font-medium" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-                by Richi
-              </span>
-            </div>
           </Link>
 
           {/* ── DESKTOP LINKS ── */}
-          <div className="hidden md:flex items-center gap-0.5 lg:gap-1">
+          <div className="hidden md:flex items-center justify-center gap-1 lg:gap-2 flex-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-3 lg:px-4 py-2 rounded-full text-[11px] lg:text-xs uppercase font-medium tracking-[0.15em] transition-colors duration-200 ${
+                className={`relative px-3 lg:px-4 py-2 rounded-md text-[11px] lg:text-xs uppercase font-medium tracking-[0.12em] transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'text-[#F97316] bg-[#FFF8EE]'
                     : 'text-gray-700 hover:text-[#F97316] hover:bg-[#FFF8EE]'
@@ -154,10 +145,10 @@ function Navbar() {
           </div>
 
           {/* ── DESKTOP CTA ── */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-3">
+          <div className="hidden md:flex items-center justify-end shrink-0">
             <Link
               to="/contact"
-              className="relative px-5 lg:px-7 py-2.5 lg:py-3 rounded-full text-[11px] lg:text-xs uppercase font-bold tracking-[0.1em] overflow-hidden group transition-all duration-300 bg-[#F97316] text-white shadow-lg shadow-[#F97316]/20 hover:bg-[#EA6C0A] hover:shadow-[#F97316]/30 hover:-translate-y-0.5"
+              className="relative px-4 lg:px-5 py-2.5 rounded-lg text-[11px] lg:text-xs uppercase font-semibold tracking-[0.08em] overflow-hidden group transition-all duration-300 bg-[#F97316] text-white hover:bg-[#EA6C0A]"
               style={{ fontFamily: "'Satoshi', sans-serif" }}
             >
               {/* Shine sweep — transform-only, compositor-safe */}
@@ -246,24 +237,16 @@ function Navbar() {
               {/* Panel header */}
               <div className="flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
                 <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
-                  <div className="relative h-9 sm:h-10 aspect-square flex items-center justify-center flex-shrink-0">
+                  <div className="relative h-11 sm:h-12 aspect-square flex items-center justify-center flex-shrink-0">
                     <img
                       src="/images/logo.png"
                       alt="CILO"
                       className="h-full w-auto object-contain"
-                      width={36}
-                      height={36}
+                      width={48}
+                      height={48}
                       decoding="async"
                       onError={(e) => { e.target.style.display = 'none' }}
                     />
-                  </div>
-                  <div className="flex flex-col leading-none">
-                    <span className="text-sm font-bold text-[#F97316]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-                      CILO
-                    </span>
-                    <span className="text-[9px] text-gray-600 font-medium" style={{ fontFamily: "'Satoshi', sans-serif" }}>
-                      by Richi
-                    </span>
                   </div>
                 </Link>
                 <button
