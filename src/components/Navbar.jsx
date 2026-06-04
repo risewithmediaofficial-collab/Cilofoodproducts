@@ -1,4 +1,4 @@
-import { useState, useEffect, memo, useCallback, useRef } from 'react'
+import { useState, useEffect, memo, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -73,9 +73,6 @@ function Navbar() {
     }
   }, [])
 
-  // Close on route change
-  useEffect(() => setMobileOpen(false), [location])
-
   // Body scroll lock
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -91,7 +88,7 @@ function Navbar() {
       {/* ══ NAVBAR BAR ══════════════════════════════════════════════════════ */}
       <motion.nav
         {...navEntrance}
-        className={`fixed z-50 w-full transition-all duration-300 ${
+        className={`fixed top-3 inset-x-0 z-50 px-3 sm:top-4 sm:px-4 transition-all duration-300 ${
           scrolled
             ? 'bg-transparent'
             : isMobile
@@ -100,12 +97,12 @@ function Navbar() {
         }`}
         style={{ willChange: 'transform' }}
       >
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 min-h-[72px] rounded-2xl border border-[#FFD9A8]/50 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 min-h-18 rounded-2xl border border-[#FFD9A8]/50 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md">
 
           {/* ── LOGO & BRAND ── */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Logo Image */}
-            <div className="relative h-12 sm:h-14 md:h-16 aspect-square flex items-center justify-center flex-shrink-0">
+            <div className="relative h-12 sm:h-14 md:h-16 aspect-square flex items-center justify-center shrink-0">
               <img
                 src="/images/logo.png"
                 alt="CILO"
@@ -152,7 +149,7 @@ function Navbar() {
               style={{ fontFamily: "'Satoshi', sans-serif" }}
             >
               {/* Shine sweep — transform-only, compositor-safe */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative">Contact Us</span>
             </Link>
           </div>
@@ -162,7 +159,7 @@ function Navbar() {
             onClick={toggleMenu}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            className={`md:hidden p-2.5 sm:p-3 rounded-lg transition-colors duration-200 flex-shrink-0 ${
+            className={`md:hidden p-2.5 sm:p-3 rounded-lg transition-colors duration-200 shrink-0 ${
               scrolled
                 ? 'text-[#F97316] hover:bg-[#FFF8EE]'
                 : 'text-[#F97316] hover:bg-[#FFF8EE]'
@@ -237,7 +234,7 @@ function Navbar() {
               {/* Panel header */}
               <div className="flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
                 <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
-                  <div className="relative h-11 sm:h-12 aspect-square flex items-center justify-center flex-shrink-0">
+                  <div className="relative h-11 sm:h-12 aspect-square flex items-center justify-center shrink-0">
                     <img
                       src="/images/logo.png"
                       alt="CILO"
@@ -252,7 +249,7 @@ function Navbar() {
                 <button
                   onClick={closeMenu}
                   aria-label="Close menu"
-                  className="p-2 rounded-lg text-gray-600 hover:text-[#F97316] hover:bg-orange-50 transition-colors duration-150 flex-shrink-0 flex items-center justify-center"
+                  className="p-2 rounded-lg text-gray-600 hover:text-[#F97316] hover:bg-orange-50 transition-colors duration-150 shrink-0 flex items-center justify-center"
                 >
                   <X size={20} strokeWidth={2.5} />
                 </button>
@@ -298,7 +295,7 @@ function Navbar() {
                 <Link
                   to="/contact"
                   onClick={closeMenu}
-                  className="flex items-center justify-center w-full py-3 sm:py-3.5 bg-gradient-to-r from-[#F97316] to-[#EA6C0A] text-white font-bold text-sm uppercase tracking-[0.1em] rounded-lg hover:shadow-lg hover:shadow-[#F97316]/30 transition-all duration-200"
+                  className="flex items-center justify-center w-full py-3 sm:py-3.5 bg-linear-to-r from-[#F97316] to-[#EA6C0A] text-white font-bold text-sm uppercase tracking-widest rounded-lg hover:shadow-lg hover:shadow-[#F97316]/30 transition-all duration-200"
                   style={{ fontFamily: "'Satoshi', sans-serif" }}
                 >
                   Contact Us

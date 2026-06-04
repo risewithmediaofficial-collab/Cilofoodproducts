@@ -51,7 +51,7 @@ const ProductCard = memo(
         >
           {/* Unified “studio” surface — same for every SKU so pack shots feel like one catalogue */}
           <div
-            className="relative flex min-h-0 w-full flex-1 flex-col overflow-hidden bg-gradient-to-b from-[#FAFAF9] via-[#FFF8F3] to-white"
+            className="relative flex min-h-0 w-full flex-1 flex-col overflow-hidden bg-linear-to-b from-[#FAFAF9] via-[#FFF8F3] to-white"
             style={{ aspectRatio: '5 / 6' }}
           >
             <div
@@ -63,7 +63,7 @@ const ProductCard = memo(
               aria-hidden
             />
             <div
-              className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-2xl"
+              className="absolute left-0 top-0 bottom-0 w-0.75 rounded-l-2xl"
               style={{ backgroundColor: color }}
               aria-hidden
             />
@@ -77,7 +77,7 @@ const ProductCard = memo(
               <img
                 src={img}
                 alt={name}
-                className="absolute inset-0 z-10 mx-auto h-full w-full object-contain p-6 sm:p-8 transition-transform duration-500 ease-out group-hover:scale-[1.02] [filter:drop-shadow(0_10px_28px_rgba(45,22,8,0.1))]"
+                className="absolute inset-0 z-10 mx-auto h-full w-full object-contain p-6 sm:p-8 transition-transform duration-500 ease-out group-hover:scale-[1.02] filter-[drop-shadow(0_10px_28px_rgba(45,22,8,0.1))]"
                 loading="lazy"
                 decoding="async"
                 width={300}

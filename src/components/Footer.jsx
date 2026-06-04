@@ -11,11 +11,6 @@ import { Mail, Phone, MapPin } from 'lucide-react'
 /* ══════════════════════════════════════════════════════════
    DEVICE CAPABILITY  (computed once at module load)
 ══════════════════════════════════════════════════════════ */
-const deviceCapability = (() => {
-  if (typeof window === 'undefined') return { isMobile: false }
-  return { isMobile: window.innerWidth < 768 }
-})()
-
 /* ══════════════════════════════════════════════════════════
    STATIC DATA  (hoisted out of render — no re-creation cost)
 ══════════════════════════════════════════════════════════ */

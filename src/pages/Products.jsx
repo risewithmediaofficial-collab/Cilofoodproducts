@@ -1,4 +1,4 @@
-import { useState, memo, useEffect, useRef } from 'react'
+import { useState, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
@@ -83,7 +83,7 @@ const fadeUpView = isMobile
 // ─── Lazy Image ────────────────────────────────────────────────────────────────
 // Native lazy loading + explicit width/height prevents layout shift (CLS).
 // Serves WebP with PNG fallback; sizes attr guides browser srcset decisions.
-const LazyImage = memo(({ src, alt, gradient }) => {
+const LazyImage = memo(({ src, alt }) => {
   // Derive WebP path from PNG path (assumes /images/products/name.png → .webp)
   const webpSrc = src.replace(/\.png$/, '.webp')
 
@@ -165,7 +165,7 @@ export default function Products() {
               >
                 Our products
               </h1>
-              <div className="mx-auto mb-2 h-px w-16 bg-gradient-to-r from-transparent via-[#F97316]/50 to-transparent" aria-hidden />
+              <div className="mx-auto mb-2 h-px w-16 bg-linear-to-r from-transparent via-[#F97316]/50 to-transparent" aria-hidden />
               <p className="text-stone-500 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
                 {products.length}+ premium beverages — fruit juices and carbonated drinks crafted for retail and food service.
               </p>
@@ -374,7 +374,7 @@ export default function Products() {
                     </div>
 
                     <div className={`${isLeft ? 'md:pl-12' : 'md:pr-12'}`}>
-                      <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-white border border-gray-100 shadow-xl flex items-center justify-center p-8 hover:shadow-2xl transition-shadow duration-300">
+                      <div className="relative overflow-hidden rounded-2xl aspect-4/3 bg-white border border-gray-100 shadow-xl flex items-center justify-center p-8 hover:shadow-2xl transition-shadow duration-300">
                          <img src={s.img} alt={s.label} className="w-full h-full object-contain drop-shadow-md" loading="lazy" />
                       </div>
                     </div>

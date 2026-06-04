@@ -21,11 +21,6 @@ const isLowEndMobile = () => {
   return narrow && (lowMem || slowCPU)
 }
 
-const isMobileViewport = () => {
-  if (typeof window === 'undefined') return false
-  return window.innerWidth < 768
-}
-
 const shouldDisableOrbs = () => {
   if (typeof window === 'undefined') return false
   if (typeof navigator !== 'undefined' && navigator.deviceMemory) {
@@ -147,9 +142,9 @@ const StoryGridCard = memo(function StoryGridCard({ item, index, isMobile }) {
       viewport={{ once: true }}
       transition={{ delay: isMobile ? index * 0.08 : index * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       whileHover={isMobile ? {} : { scale: 1.05, rotate: 2 }}
-      className={`w-full bg-gradient-to-br ${item.bg} border-2 ${item.border} rounded-3xl overflow-hidden aspect-[1/1] relative group shadow-lg hover:shadow-2xl transition-all duration-500`}
+      className={`w-full bg-linear-to-br ${item.bg} border-2 ${item.border} rounded-3xl overflow-hidden aspect-square relative group shadow-lg hover:shadow-2xl transition-all duration-500`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-[#F97316]/0 to-[#F97316]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+      <div className="absolute inset-0 bg-linear-to-br from-white/0 via-[#F97316]/0 to-[#F97316]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
       {!imageFailed && (
         <img
           src={item.src}
@@ -161,7 +156,7 @@ const StoryGridCard = memo(function StoryGridCard({ item, index, isMobile }) {
         />
       )}
       {imageFailed && <ImgPlaceholder label={item.label} />}
-      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex items-end pb-3 px-4 z-30">
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/60 via-black/30 to-transparent flex items-end pb-3 px-4 z-30">
         <span className="text-white text-sm font-bold tracking-wide">{item.label}</span>
       </div>
     </motion.div>
@@ -372,7 +367,7 @@ const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
         {/* Same studio-style backdrop for every card — reads more premium than mixed pack shots */}
         <div
           className="relative flex flex-1 min-h-0 flex-col items-center justify-center overflow-hidden
-            bg-gradient-to-b from-[#FAFAF9] via-[#FFF8F3] to-white"
+            bg-linear-to-b from-[#FAFAF9] via-[#FFF8F3] to-white"
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -455,7 +450,7 @@ function ProductCarousel({ products, isMobile }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: isMobile ? 0.3 : 0.5, delay: idx * (isMobile ? 0.04 : 0.08) }}
-              className="flex-shrink-0"
+              className="shrink-0"
               style={{ width: isMobile ? 'calc(50% - 6px)' : '220px', maxWidth: isMobile ? '160px' : '220px' }}
             >
               <ProductCard product={product} idx={idx} isMobile={isMobile} />
@@ -504,7 +499,7 @@ function ProductCarousel({ products, isMobile }) {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleNext}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white flex items-center justify-center hover:shadow-lg transition-all duration-300 shadow-lg"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-linear-to-r from-[#F97316] to-[#A8430F] text-white flex items-center justify-center hover:shadow-lg transition-all duration-300 shadow-lg"
           aria-label="Next products"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -531,7 +526,6 @@ export default function Home() {
   const cardsY         = useTransform(scrollYProgress, [0, 1],    ['0%', '12%'])
 
   const [isMobile, setIsMobile]   = useState(false)
-  const [isTablet, setIsTablet]   = useState(false)
   const shouldReduceMotion        = prefersReducedMotion()
 
   // Initialise from window on mount so there's no flash of wrong layout
@@ -539,7 +533,6 @@ export default function Home() {
     const handleResize = () => {
       const w = window.innerWidth
       setIsMobile(w < 768)
-      setIsTablet(w >= 768 && w < 1024)
     }
     handleResize()
     // Passive listener — never blocks scroll events
@@ -578,9 +571,9 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none bg-pattern-leaf bg-pattern-opacity-55" />
 
         {/* Orbs hidden on mobile (<480px) via shouldDisableOrbs */}
-        <Orb className="w-[600px] h-[600px] bg-[#F9D4C0]/30 -top-32 -right-48" delay={0} />
-        <Orb className="w-[400px] h-[400px] bg-yellow-200/15 top-1/2 -left-32"  delay={2} />
-        <Orb className="w-[300px] h-[300px] bg-cyan-200/15   bottom-32 right-1/4" delay={1} />
+        <Orb className="w-150 h-150 bg-[#F9D4C0]/30 -top-32 -right-48" delay={0} />
+        <Orb className="w-100 h-100 bg-yellow-200/15 top-1/2 -left-32"  delay={2} />
+        <Orb className="w-75 h-75 bg-cyan-200/15   bottom-32 right-1/4" delay={1} />
 
         {/* Breadcrumb */}
         <motion.div
@@ -724,9 +717,9 @@ export default function Home() {
 
       {/* ══════════ STATS STRIP ══════════ */}
       <section className="relative py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#F97316] via-[#A8430F] to-[#2D1608]" />
-        <Orb className="w-[500px] h-[500px] bg-white/10 -top-48 -left-32"      delay={0} />
-        <Orb className="w-[400px] h-[400px] bg-[#FF6B35]/10 bottom-0 -right-40" delay={2} />
+        <div className="absolute inset-0 bg-linear-to-br from-[#F97316] via-[#A8430F] to-[#2D1608]" />
+        <Orb className="w-125 h-125 bg-white/10 -top-48 -left-32"      delay={0} />
+        <Orb className="w-100 h-100 bg-[#FF6B35]/10 bottom-0 -right-40" delay={2} />
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -766,9 +759,9 @@ export default function Home() {
       </section>
 
       {/* ══════════ OUR STORY ══════════ */}
-      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-gradient-to-b from-white via-white to-gray-50 relative overflow-hidden">
-        <Orb className="w-[500px] h-[500px] bg-[#F97316]/8 -top-40 -left-48"   delay={0} />
-        <Orb className="w-[400px] h-[400px] bg-[#F97316]/5 bottom-20 -right-32" delay={1} />
+      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-linear-to-b from-white via-white to-gray-50 relative overflow-hidden">
+        <Orb className="w-125 h-125 bg-[#F97316]/8 -top-40 -left-48"   delay={0} />
+        <Orb className="w-100 h-100 bg-[#F97316]/5 bottom-20 -right-32" delay={1} />
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center relative z-10">
           <motion.div
@@ -795,7 +788,7 @@ export default function Home() {
             </p>
             <Link
               to="/about"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-linear-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300 w-full sm:w-auto"
             >
               Read our Story <ArrowRight size={16} />
             </Link>
@@ -877,8 +870,8 @@ export default function Home() {
       </section>
 
       <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-white relative overflow-hidden">
-        <Orb className="w-[600px] h-[600px] bg-[#F97316]/6 top-1/2 left-1/4 -translate-y-1/2" delay={0} />
-        <Orb className="w-[500px] h-[500px] bg-[#F97316]/5 -bottom-32 right-1/4"               delay={2} />
+        <Orb className="w-150 h-150 bg-[#F97316]/6 top-1/2 left-1/4 -translate-y-1/2" delay={0} />
+        <Orb className="w-125 h-125 bg-[#F97316]/5 -bottom-32 right-1/4"               delay={2} />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
@@ -907,13 +900,13 @@ export default function Home() {
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={isMobile ? {} : { y: -12, scale: 1.02 }}
-                className={`group border-2 ${p.border} rounded-3xl p-6 sm:p-8 lg:p-10 hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-gradient-to-br ${
+                className={`group border-2 ${p.border} rounded-3xl p-6 sm:p-8 lg:p-10 hover:shadow-2xl transition-all duration-500 relative overflow-hidden bg-linear-to-br ${
                   p.color === 'bg-white text-[#F97316]' ? 'from-white to-[#FFFBF7]'
                   : p.color === 'bg-sky-50 text-sky-600' ? 'from-sky-50 to-blue-50'
                   : 'from-white to-orange-50'
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#F97316]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-br from-[#F97316]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <motion.div
                   className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${p.color} flex items-center justify-center mb-5 sm:mb-6 relative z-10 group-hover:shadow-lg transition-all duration-300`}
                   whileHover={isMobile ? {} : { scale: 1.1, rotate: 6 }}
@@ -931,9 +924,9 @@ export default function Home() {
       </section>
 
       {/* ══════════ CSR ══════════ */}
-      <section className="hidden py-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-gray-50 via-white to-white relative overflow-hidden">
-        <Orb className="w-[600px] h-[600px] bg-[#F97316]/7 -top-40 -right-48" delay={0} />
-        <Orb className="w-[400px] h-[400px] bg-[#F97316]/5 bottom-10 -left-32" delay={1} />
+      <section className="hidden py-32 px-6 md:px-12 lg:px-20 bg-linear-to-b from-gray-50 via-white to-white relative overflow-hidden">
+        <Orb className="w-150 h-150 bg-[#F97316]/7 -top-40 -right-48" delay={0} />
+        <Orb className="w-100 h-100 bg-[#F97316]/5 bottom-10 -left-32" delay={1} />
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
           <motion.div
@@ -942,9 +935,9 @@ export default function Home() {
             viewport={{ once: true, margin: '-100px' }}
             // Skip the rotation on mobile — rotate triggers layout recalc
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 border-2 border-gray-200 group shadow-2xl"
+            className="relative rounded-3xl overflow-hidden aspect-4/3 bg-linear-to-br from-gray-100 to-gray-200 border-2 border-gray-200 group shadow-2xl"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#F97316]/10 via-transparent to-[#F97316]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+            <div className="absolute inset-0 bg-linear-to-br from-[#F97316]/10 via-transparent to-[#F97316]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
             <img
               src="/images/csr/csr-banner.jpg"
               alt="CSR Initiative"
@@ -988,7 +981,7 @@ export default function Home() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300"
             >
               Contact Us <ArrowRight size={16} />
             </Link>
@@ -997,10 +990,10 @@ export default function Home() {
       </section>
 
       {/* ══════════ DEALERSHIP CTA ══════════ */}
-      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-gradient-to-br from-gray-900 via-gray-900 to-[#1A0C04] relative overflow-hidden">
-        <Orb className="w-[700px] h-[700px] bg-[#F97316]/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
-        <Orb className="w-[500px] h-[500px] bg-[#A8430F]/10 -bottom-40 -left-32"                                  delay={2} />
-        <Orb className="w-[400px] h-[400px] bg-[#F97316]/8 -top-32 -right-32"                                     delay={1} />
+      <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-linear-to-br from-gray-900 via-gray-900 to-[#1A0C04] relative overflow-hidden">
+        <Orb className="w-175 h-175 bg-[#F97316]/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
+        <Orb className="w-125 h-125 bg-[#A8430F]/10 -bottom-40 -left-32"                                  delay={2} />
+        <Orb className="w-100 h-100 bg-[#F97316]/8 -top-32 -right-32"                                     delay={1} />
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -1040,7 +1033,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/dealership"
-                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-10 py-3.5 sm:py-4 bg-gradient-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-2xl hover:shadow-[#F97316]/40 transition-all duration-300 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-10 py-3.5 sm:py-4 bg-linear-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-2xl hover:shadow-[#F97316]/40 transition-all duration-300 w-full sm:w-auto"
                 >
                   Become a Dealer <ChevronRight size={18} />
                 </Link>

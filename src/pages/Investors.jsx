@@ -10,11 +10,6 @@ import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
    PERFORMANCE HELPERS
 ══════════════════════════════════════════════════════════ */
 
-const prefersReducedMotion = () => {
-  if (typeof window === 'undefined') return false
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
-}
-
 // One-time read — Investors is a static page, no resize tracking needed
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
@@ -137,7 +132,7 @@ export default function Investors() {
               // causing a brief upward jump before navigation. Use shadow-only hover instead.
               className="inline-flex items-center gap-2 px-10 py-4 bg-emerald-600 text-white font-body font-bold
                 rounded-full hover:bg-emerald-700 hover:shadow-2xl hover:shadow-emerald-600/40
-                transition-all duration-300 min-h-[48px]"
+                transition-all duration-300 min-h-12"
             >
               Schedule a Meeting <ArrowRight size={18} />
             </Link>
@@ -341,7 +336,7 @@ export default function Investors() {
                 // FIX: remove hover:-translate-y-0.5 — triggers on tap on touch devices
                 className="inline-flex items-center gap-2 px-10 py-4 bg-white text-emerald-700
                   font-body font-bold rounded-full hover:shadow-2xl transition-all duration-300
-                  min-h-[48px]"
+                  min-h-12"
               >
                 Contact Us <ArrowRight size={18} />
               </Link>

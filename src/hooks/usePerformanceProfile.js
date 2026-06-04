@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 
 /**
  * Hook to detect low-end devices and manage performance settings
  * Returns performance profile to conditionally render/disable features
  */
 export function usePerformanceProfile() {
-  const [profile, setProfile] = useState({
-    isLowEnd: false,
-    isLowRAM: false,
-    isSlow4G: false,
-    supportsWebGL: true,
-    shouldReduceAnimations: false,
-  })
-
-  useEffect(() => {
+  return useMemo(() => {
     // Check device memory (if available)
     const deviceMemory = navigator.deviceMemory
     const isLowRAM = deviceMemory && deviceMemory <= 4
@@ -32,16 +24,14 @@ export function usePerformanceProfile() {
     // Determine overall profile
     const isLowEnd = (isLowRAM || isLowCPU || isSlow) && import.meta.env.PROD
 
-    setProfile({
+    return {
       isLowEnd,
       isLowRAM: Boolean(isLowRAM),
       isSlow4G: Boolean(isSlow),
       supportsWebGL: checkWebGLSupport(),
       shouldReduceAnimations: isLowEnd || prefersReduced,
-    })
+    }
   }, [])
-
-  return profile
 }
 
 /**
