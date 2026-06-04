@@ -93,32 +93,38 @@ function Navbar() {
         {...navEntrance}
         className={`fixed z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'top-2 inset-x-4 md:inset-x-12 left-0 right-0 bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] py-3 rounded-full border border-[#FFD9A8]/50 md:inset-x-auto'
+            ? 'top-2 inset-x-4 md:inset-x-12 md:left-auto md:right-auto bg-white/95 backdrop-blur-xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] py-3 rounded-full border border-[#FFD9A8]/50'
             : isMobile
-              ? 'top-0 left-0 right-0 bg-white py-3 shadow-sm'
-              : 'top-6 left-0 right-0 inset-x-6 md:inset-x-12 bg-white/80 backdrop-blur-md py-4 rounded-full border border-white shadow-lg shadow-black/5 md:inset-x-auto'
+              ? 'top-0 left-0 right-0 bg-white py-4 sm:py-3 shadow-md border-b border-gray-100'
+              : 'top-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md py-4 rounded-full border border-white shadow-lg shadow-black/5 px-6 md:px-12 w-[calc(100%-3rem)] md:w-auto'
         }`}
         style={{ willChange: 'transform' }}
       >
-        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-12 flex items-center justify-between max-w-7xl mx-auto">
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between max-w-7xl mx-auto h-16 sm:h-14 md:h-auto md:py-4">
 
-          {/* ── LOGO ── */}
-          <Link to="/" className="flex items-center shrink-0 min-w-0">
-            <div className="relative h-10 sm:h-12 w-[140px] sm:w-[205px] overflow-hidden">
+          {/* ── LOGO & BRAND ── */}
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0 md:gap-2 lg:gap-3">
+            {/* Logo Image */}
+            <div className="relative h-10 sm:h-11 md:h-12 aspect-square flex items-center justify-center flex-shrink-0">
               <img
                 src="/images/logo.png"
-                alt="Richi Food Products"
-                className="h-10 sm:h-12 w-auto object-contain"
-                style={{ height: 'auto', width: 'auto', transform: 'translateX(32px) scale(2.5)', transformOrigin: 'center' }}
-                /*
-                  width + height prevent layout shift (CLS) while the image loads.
-                  decoding="async" moves image decode off the main thread.
-                */
-                width={60}
-                height={30}
+                alt="CILO"
+                className="h-full w-auto object-contain"
+                width={40}
+                height={40}
                 decoding="async"
                 onError={(e) => { e.target.style.display = 'none' }}
               />
+            </div>
+            
+            {/* Brand Name */}
+            <div className="flex flex-col leading-none">
+              <span className="text-sm sm:text-base font-bold text-[#F97316]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+                CILO
+              </span>
+              <span className="text-[10px] sm:text-xs text-gray-600 font-medium" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+                by Richi
+              </span>
             </div>
           </Link>
 
@@ -231,43 +237,46 @@ function Navbar() {
               animate="show"
               exit="hidden"
               transition={panelTransition}
-              className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] sm:w-[70vw] md:w-[60vw] max-w-sm flex flex-col"
+              className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] sm:w-[75vw] max-w-sm flex flex-col bg-white"
               style={{
-                background: 'linear-gradient(160deg, #FFFFFF 0%, #FFF8F3 60%, #FFF1E6 100%)',
                 willChange: 'transform',
                 contain: 'layout style',
               }}
             >
               {/* Panel header */}
-              <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 pt-4 sm:pt-6 md:pt-8 pb-4 sm:pb-5 md:pb-6 border-b border-white/10">
-                <Link to="/" onClick={closeMenu} className="flex items-center">
-                  <span className="relative h-8 sm:h-10 w-[140px] sm:w-[178px] overflow-hidden">
+              <div className="flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
+                <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
+                  <div className="relative h-9 sm:h-10 aspect-square flex items-center justify-center flex-shrink-0">
                     <img
                       src="/images/logo.png"
-                      alt="Richi Food Products"
-                      className="h-8 sm:h-10 w-auto object-contain"
-                      style={{ height: 'auto', width: 'auto', transform: 'translateX(30px) scale(2.3)', transformOrigin: 'center' }}
-                      width={56}
-                      height={28}
+                      alt="CILO"
+                      className="h-full w-auto object-contain"
+                      width={36}
+                      height={36}
                       decoding="async"
                       onError={(e) => { e.target.style.display = 'none' }}
                     />
-                  </span>
+                  </div>
+                  <div className="flex flex-col leading-none">
+                    <span className="text-sm font-bold text-[#F97316]" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+                      CILO
+                    </span>
+                    <span className="text-[9px] text-gray-600 font-medium" style={{ fontFamily: "'Satoshi', sans-serif" }}>
+                      by Richi
+                    </span>
+                  </div>
                 </Link>
                 <button
                   onClick={closeMenu}
                   aria-label="Close menu"
-                  className="p-2.5 rounded-lg text-[#7A4A2A]/70 hover:text-[#F97316] hover:bg-[#F97316]/10 transition-colors duration-150 flex-shrink-0"
+                  className="p-2 rounded-lg text-gray-600 hover:text-[#F97316] hover:bg-orange-50 transition-colors duration-150 flex-shrink-0 flex items-center justify-center"
                 >
-                  <X size={20} className="sm:w-[22px] sm:h-[22px]" />
+                  <X size={20} strokeWidth={2.5} />
                 </button>
               </div>
 
-              {/* Nav links
-                  Stagger kept (only 5 items) but duration tightened.
-                  x-slide removed on mobile → opacity-only per linkVariants.
-              */}
-              <nav className="flex-1 flex flex-col justify-center px-4 sm:px-6 md:px-8 gap-1 sm:gap-2" aria-label="Mobile navigation">
+              {/* Nav links */}
+              <nav className="flex-1 flex flex-col justify-start pt-3 sm:pt-4 px-2 sm:px-3 gap-1" aria-label="Mobile navigation">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.path}
@@ -282,10 +291,10 @@ function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className={`flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl text-xs sm:text-sm uppercase font-medium tracking-[0.15em] transition-colors duration-150 ${
+                      className={`flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                         isActive(link.path)
-                          ? 'bg-[#F97316]/10 text-[#F97316]'
-                          : 'text-[#7A4A2A]/70 hover:text-[#F97316] hover:bg-[#F97316]/5'
+                          ? 'bg-orange-50 text-[#F97316] border-l-4 border-[#F97316] pl-3'
+                          : 'text-gray-700 hover:bg-gray-50 hover:text-[#F97316]'
                       }`}
                       style={{ fontFamily: "'Satoshi', sans-serif" }}
                     >
@@ -293,7 +302,7 @@ function Navbar() {
                       {isActive(link.path) && (
                         <motion.div
                           layoutId="mobile-active"
-                          className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#F97316]"
+                          className="w-1.5 h-1.5 rounded-full bg-[#F97316]"
                         />
                       )}
                     </Link>
@@ -302,18 +311,15 @@ function Navbar() {
               </nav>
 
               {/* Footer CTA */}
-              <div className="px-4 sm:px-6 md:px-8 pb-6 sm:pb-8 md:pb-10 pt-4 sm:pt-5 md:pt-6 border-t border-white/10 space-y-3 sm:space-y-4">
+              <div className="px-5 sm:px-6 pb-6 sm:pb-8 pt-4 sm:pt-5 border-t border-gray-100 space-y-3 sm:space-y-4">
                 <Link
                   to="/contact"
                   onClick={closeMenu}
-                  className="flex items-center justify-center w-full py-3 sm:py-4 bg-[#F97316] text-white font-bold text-xs sm:text-sm uppercase tracking-[0.1em] rounded-xl sm:rounded-2xl hover:bg-[#EA6C0A] transition-colors duration-150 shadow-lg shadow-[#F97316]/20"
+                  className="flex items-center justify-center w-full py-3 sm:py-3.5 bg-gradient-to-r from-[#F97316] to-[#EA6C0A] text-white font-bold text-sm uppercase tracking-[0.1em] rounded-lg hover:shadow-lg hover:shadow-[#F97316]/30 transition-all duration-200"
                   style={{ fontFamily: "'Satoshi', sans-serif" }}
                 >
                   Contact Us
                 </Link>
-                <div className="text-center text-white/40 text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
-                  Daily Fresh Fruits India
-                </div>
               </div>
             </motion.div>
           </>

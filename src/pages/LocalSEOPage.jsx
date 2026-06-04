@@ -198,7 +198,7 @@ export default function LocalSEOPage({ pageSlug }) {
       schema={schema}
     >
       {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
+      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid md:grid-cols-2 gap-14 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>

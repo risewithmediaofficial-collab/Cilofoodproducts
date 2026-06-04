@@ -222,7 +222,7 @@ export default function Location() {
       schema={schema}
     >
       {/* ── Hero ── */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
+      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='%23F97316'/%3E%3C/svg%3E")`, backgroundSize: '80px' }} />
 

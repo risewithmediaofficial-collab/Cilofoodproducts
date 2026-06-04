@@ -572,7 +572,7 @@ export default function Home() {
       {/* ══════════ HERO ══════════ */}
       <section
         ref={heroRef}
-        className="relative overflow-x-clip pt-28 md:pt-32"
+        className="relative overflow-x-clip pt-20 sm:pt-24 md:pt-32"
         style={{ minHeight: '100vh', background: '#ffffff' }}
       >
         <div className="absolute inset-0 pointer-events-none bg-pattern-leaf bg-pattern-opacity-55" />

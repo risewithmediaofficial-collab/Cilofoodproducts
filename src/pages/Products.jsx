@@ -126,7 +126,7 @@ export default function Products() {
       schema={schema}
     >
       {/* ── Hero ── */}
-      <section className="relative pt-32 pb-20 bg-white overflow-hidden">
+      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 bg-white overflow-hidden">
         {/* Static background element – no animation, avoids repaint on mobile */}
         <div className="absolute inset-0 pointer-events-none bg-pattern-leaf bg-pattern-opacity-55" />
         {/*

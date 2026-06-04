@@ -109,7 +109,7 @@ export default function Investors() {
     >
 
       {/* ══════════ HERO ══════════ */}
-      <section className="relative pt-32 pb-20 bg-emerald-900 overflow-hidden">
+      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 bg-emerald-900 overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-br from-emerald-900 via-emerald-800 to-[#1f1008]" />
         {/* FIX: add willChange + translateZ(0) so the blur is on its own GPU layer */}
         <div

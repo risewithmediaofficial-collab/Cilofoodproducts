@@ -151,7 +151,7 @@ export default function Dealership() {
 
       {/* ══════════ 1. HERO ══════════ */}
       <section
-        className="relative pt-28 sm:pt-32 pb-16 sm:pb-20 overflow-hidden"
+        className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 overflow-hidden"
         style={{
           background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)',
           // Isolate section repaints; prevents ancestor reflows on child updates

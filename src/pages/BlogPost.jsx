@@ -45,7 +45,7 @@ export default function BlogPost() {
       publishedAt={post.date}
     >
 
-      <article className="pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto min-h-screen">
+      <article className="pt-20 sm:pt-24 md:pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto min-h-screen">
         <Link to="/blog" className="inline-flex items-center gap-2 text-[#7A4A2A]/70 hover:text-[#F97316] transition-colors mb-10 font-semibold text-sm">
           <ArrowLeft size={16} /> Back to Journal
         </Link>

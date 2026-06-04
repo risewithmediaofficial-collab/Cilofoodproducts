@@ -33,7 +33,7 @@ export default function Blog() {
       schema={schema}
     >
 
-      <div className="pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto min-h-screen">
+      <div className="pt-20 sm:pt-24 md:pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

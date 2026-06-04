@@ -202,7 +202,7 @@ export default function About() {
 
       {/* ══════════ 1. HERO ══════════ */}
       <section
-        className="relative pt-32 pb-0 overflow-hidden"
+        className="relative pt-20 sm:pt-24 md:pt-32 pb-0 overflow-hidden"
         style={{ background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)' }}
       >
         <div
