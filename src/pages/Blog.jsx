@@ -70,46 +70,70 @@ export default function Blog() {
           ))}
         </div>
 
-        {/* Blog Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Blog List */}
+        <div className="space-y-8 md:space-y-10">
           {filteredPosts.map((post, idx) => (
             <motion.div
               key={post.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col"
+              transition={{ delay: Math.min(idx * 0.06, 0.2), ease: [0.22, 1, 0.36, 1] }}
+              className="group overflow-hidden rounded-[2rem] border border-stone-100 bg-white shadow-sm transition-all duration-500 hover:shadow-xl"
             >
-              <Link to={`/blog/${post.slug}`} className="block relative overflow-visible min-h-[260px] bg-gradient-to-b from-[#FFF8F3] to-white flex items-center justify-center p-8 border-b border-[#FFD9A8]/30">
-                <ZigZagImage
-                  src={post.image} 
-                  alt={post.title} 
-                  index={idx}
-                  className="relative z-10 w-auto max-h-[200px] object-contain drop-shadow-[0_12px_28px_rgba(45,22,8,0.15)]" 
-                  style={{ objectFit: 'contain' }}
-                />
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-white/95 backdrop-blur text-[#F97316] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm border border-[#FFD9A8]">
-                    {post.category}
-                  </span>
-                </div>
-              </Link>
-              <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center gap-4 text-xs font-semibold text-stone-400 mb-4">
-                  <span className="flex items-center gap-1"><Calendar size={14} /> {new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                </div>
-                <Link to={`/blog/${post.slug}`}>
-                  <h3 className="text-xl font-bold text-[#2D1608] mb-3 leading-tight group-hover:text-[#F97316] transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
+              <div className="grid items-stretch md:grid-cols-2">
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className={`relative flex min-h-[280px] items-center justify-center overflow-hidden border-b border-[#FFD9A8]/30 bg-gradient-to-br from-[#FFF8F3] via-white to-[#FFF8F3] p-8 md:min-h-[340px] md:border-b-0 ${
+                    idx % 2 === 1 ? 'md:order-2' : ''
+                  }`}
+                >
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.08),transparent_60%)]" />
+                  <ZigZagImage
+                    src={post.image}
+                    alt={post.title}
+                    index={idx}
+                    className="relative z-10 w-auto max-h-[230px] object-contain drop-shadow-[0_16px_34px_rgba(45,22,8,0.14)] md:max-h-[260px]"
+                    style={{ objectFit: 'contain' }}
+                  />
+                  <div className="absolute left-4 top-4 z-10">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-[#FFD9A8] bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#F97316] shadow-sm backdrop-blur">
+                      <Tag size={13} /> {post.category}
+                    </span>
+                  </div>
                 </Link>
-                <p className="text-stone-500 text-sm mb-6 line-clamp-3">
-                  {post.excerpt}
-                </p>
-                <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[#F97316] font-bold text-sm hover:gap-3 transition-all">
-                  Read Article <ArrowRight size={16} />
-                </Link>
+
+                <div
+                  className={`flex flex-col justify-center p-6 sm:p-8 md:p-10 ${
+                    idx % 2 === 1 ? 'md:order-1' : ''
+                  }`}
+                >
+                  <div className="mb-4 flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.12em] text-stone-400">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar size={14} />
+                      {new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                    </span>
+                  </div>
+
+                  <Link to={`/blog/${post.slug}`}>
+                    <h3 className="mb-4 text-2xl font-black leading-tight text-[#2D1608] transition-colors group-hover:text-[#F97316] md:text-3xl">
+                      {post.title}
+                    </h3>
+                  </Link>
+
+                  <p className="mb-8 max-w-xl text-sm leading-relaxed text-stone-500 md:text-base">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3">
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#F97316] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#F97316]/20 transition-all duration-300 hover:bg-[#EA6C0A] hover:gap-3"
+                    >
+                      Read Article <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

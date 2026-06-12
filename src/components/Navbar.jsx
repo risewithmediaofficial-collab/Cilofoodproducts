@@ -70,18 +70,18 @@ function Navbar() {
         style={{ willChange: 'transform' }}
       >
         <div className="w-full max-w-6xl mx-auto overflow-hidden rounded-2xl border border-[#FFD9A8]/50 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md">
-          <div className="flex min-h-18 items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+          <div className="flex min-h-20 items-center justify-between gap-3 px-4 sm:min-h-22 sm:px-6 lg:px-8">
 
           {/* ── LOGO & BRAND ── */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <Link to="/" className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Logo Image */}
-            <div className="relative h-12 sm:h-14 md:h-16 aspect-square flex items-center justify-center shrink-0">
+            <div className="relative flex aspect-square h-17 items-center justify-center shrink-0 sm:h-19 md:h-20">
               <img
                 src="/images/logo.png"
                 alt="CILO"
                 className="h-full w-auto object-contain"
-                width={56}
-                height={56}
+                width={84}
+                height={84}
                 decoding="async"
                 onError={(e) => { e.target.style.display = 'none' }}
               />
