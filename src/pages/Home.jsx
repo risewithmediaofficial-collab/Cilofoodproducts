@@ -345,18 +345,15 @@ function ProductPopup({ image, onClose }) {
             className="relative z-10 bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col sm:flex-row max-w-2xl w-full max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Image area */}
-            <div className="flex-1 min-h-[280px] sm:min-h-0 bg-gradient-to-br from-[#FFF8F0] via-[#FFF3E8] to-[#FFE8D0] flex items-center justify-center p-8 sm:p-12 relative">
-              {/* Subtle radial glow */}
-              <div className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(249,115,22,0.08) 0%, transparent 70%)' }} />
+            {/* Image area — pure white, no colour tint */}
+            <div className="flex-1 min-h-[280px] sm:min-h-0 bg-white flex items-center justify-center p-8 sm:p-12">
               <motion.img
                 src={image.src}
                 alt={image.name}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 max-h-64 sm:max-h-80 w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
+                className="relative z-10 max-h-64 sm:max-h-80 w-auto object-contain"
               />
             </div>
 
@@ -403,9 +400,16 @@ function ProductPopup({ image, onClose }) {
   )
 }
 
-function HoverExpand_001({ images, className }) {
-  const [activeImage, setActiveImage] = useState(1)
-  const [popupImage, setPopupImage]   = useState(null)
+function HoverExpand_001({ images, className, isMobile = false }) {
+  // null = nothing selected on load (clean, empty-looking accordion)
+  const [activeIdx, setActiveIdx]   = useState(null)
+  const [popupImage, setPopupImage] = useState(null)
+
+  // Responsive dimensions
+  const ACTIVE_W   = isMobile ? '13rem'  : '21rem'
+  const INACTIVE_W = isMobile ? '2.4rem' : '4rem'
+  const ROW_H      = isMobile ? '18.5rem' : '23rem'
+  const LABEL_MIN_H= isMobile ? '4.5rem' : '5rem'
 
   return (
     <>
@@ -414,103 +418,117 @@ function HoverExpand_001({ images, className }) {
       )}
 
       <motion.div
-        initial={{ opacity: 0, translateY: 20 }}
-        animate={{ opacity: 1, translateY: 0 }}
-        transition={{ duration: 0.3, delay: 0.5 }}
-        className={`relative w-full max-w-6xl px-2 sm:px-5 ${className ?? ''}`}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className={`relative ${className ?? ''}`}
       >
-        <p className="text-center text-xs text-stone-400 mb-3 tracking-wide select-none">
-          Hover to expand · Click to preview
+        {/* Hint text */}
+        <p className="text-center text-[11px] text-stone-400 mb-4 tracking-wide select-none">
+          {isMobile ? 'Tap to reveal · Tap again to preview' : 'Hover to reveal · Click to preview'}
         </p>
 
-        <div className="flex w-full items-stretch justify-center gap-1">
+        {/* Panel row */}
+        <div className="flex items-stretch gap-1.5">
           {images.map((image, index) => {
-            const isActive = activeImage === index
+            const isActive = activeIdx === index
             return (
               <motion.div
                 key={index}
-                className="relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl flex flex-col"
+                className="relative flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl flex flex-col border border-gray-100"
                 animate={{
-                  width:  isActive ? '22rem' : '4.5rem',
-                  height: '22rem',
+                  width:  isActive ? ACTIVE_W : INACTIVE_W,
+                  height: ROW_H,
                 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                onHoverStart={() => setActiveImage(index)}
-                onClick={() => setPopupImage(image)}
+                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                style={{ background: '#fff' }}
+                onHoverStart={() => setActiveIdx(index)}
+                onClick={() => {
+                  if (isActive) {
+                    setPopupImage(image)   // 2nd interaction → popup
+                  } else {
+                    setActiveIdx(index)    // 1st interaction → expand
+                  }
+                }}
               >
-                {/* ── Background ── */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: '#ffffff',
-                  }}
-                />
-
-
-
-
-
-                {/*
-                  ── BOTTLE IMAGE ──
-                  flex-1 + min-h-0 lets this div shrink below its natural size.
-                  The img uses max-h-full + object-contain → full bottle always fits,
-                  never cropped, never overflows into the label area below.
-                */}
-                <div
-                  className="relative z-10 flex-1 flex items-center justify-center overflow-hidden"
-                  style={{ minHeight: 0, padding: isActive ? '0.75rem 0.75rem 0' : '0.4rem 0.3rem' }}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="max-h-full max-w-full object-contain"
-                    style={{ display: 'block' }}
-                  />
-                </div>
-
-                {/*
-                  ── ACTIVE LABEL ──
-                  shrink-0 means it never shrinks → image section absorbs all remaining height.
-                  Fixed height so bottle always gets the rest of the 22rem.
-                */}
+                {/* ── ACTIVE: image slides up + label ── */}
                 <AnimatePresence>
                   {isActive && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.2 }}
-                      className="relative z-20 shrink-0 flex flex-col items-start justify-center px-4 py-3 bg-white border-t border-gray-100"
-                      style={{ height: '4.5rem' }}
-                    >
-                      <span className="inline-block rounded-md bg-[#F97316] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white mb-1">
-                        {image.tag}
-                      </span>
-                      <p
-                        className="text-sm font-black text-gray-900 leading-tight"
-                        style={{ fontFamily: "'Fredoka','Outfit',sans-serif" }}
+                    <>
+                      {/* Bottle image — slides up from bottom, spring scale */}
+                      <motion.div
+                        key={`img-${index}`}
+                        className="relative z-10 flex-1 flex items-end justify-center overflow-hidden"
+                        style={{ minHeight: 0, padding: '0.6rem 0.8rem 0' }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
                       >
-                        {image.name}
-                      </p>
-                      <p className="text-[9px] text-gray-400 mt-0.5">{image.code} · click to preview</p>
-                    </motion.div>
+                        <motion.img
+                          key={image.src}
+                          src={image.src}
+                          alt={image.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="max-h-full max-w-full object-contain block"
+                          initial={{ opacity: 0, y: 40, scale: 0.72 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 20, scale: 0.85 }}
+                          transition={{
+                            duration: 0.55,
+                            ease: [0.22, 1, 0.36, 1],
+                            opacity: { duration: 0.3 },
+                          }}
+                        />
+                      </motion.div>
+
+                      {/* Label bar */}
+                      <motion.div
+                        key={`label-${index}`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ delay: 0.15, duration: 0.3, ease: 'easeOut' }}
+                        className="relative z-20 shrink-0 bg-white flex flex-col justify-center px-3 py-3 border-t border-gray-100"
+                        style={{ minHeight: LABEL_MIN_H }}
+                      >
+                        <span className="inline-block rounded-md bg-[#F97316] px-1.5 py-0.5 text-[9px] font-black uppercase tracking-widest text-white mb-1 w-fit">
+                          {image.tag}
+                        </span>
+                        <p
+                          className="text-xs sm:text-sm font-black text-gray-900 leading-tight truncate"
+                          style={{ fontFamily: "'Fredoka','Outfit',sans-serif" }}
+                        >
+                          {image.name}
+                        </p>
+                        <p className="text-[9px] text-gray-400 mt-0.5">
+                          {image.code} · tap to preview
+                        </p>
+                      </motion.div>
+                    </>
                   )}
                 </AnimatePresence>
 
-                {/* ── INACTIVE: vertical name label ── */}
+                {/* ── INACTIVE: vertical name only, no image ── */}
                 <AnimatePresence>
                   {!isActive && (
                     <motion.div
+                      key={`name-${index}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+                      transition={{ duration: 0.2 }}
+                      className="absolute inset-0 flex items-center justify-center pointer-events-none"
                     >
                       <p
                         className="text-[9px] font-bold text-stone-400 uppercase tracking-widest select-none"
-                        style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+                        style={{
+                          writingMode: 'vertical-rl',
+                          textOrientation: 'mixed',
+                          transform: 'rotate(180deg)',
+                          lineHeight: 1,
+                        }}
                       >
                         {image.name}
                       </p>
@@ -525,6 +543,7 @@ function HoverExpand_001({ images, className }) {
     </>
   )
 }
+
 
 
 
@@ -755,11 +774,11 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Desktop: hover-expand accordion */}
-          {!isMobile && (
-            <div className="flex justify-center">
+          {/* Accordion — desktop + mobile with horizontal scroll */}
+          <div className="-mx-4 sm:-mx-6 md:mx-0 overflow-x-auto scrollbar-none pb-3">
+            <div className="flex justify-start md:justify-center px-4 sm:px-6 md:px-0">
               <HoverExpand_001
-                className=""
+                isMobile={isMobile}
                 images={products.map((p, i) => ({
                   src:  p.img,
                   alt:  p.name,
@@ -769,16 +788,7 @@ export default function Home() {
                 }))}
               />
             </div>
-          )}
-
-          {/* Mobile: 2-col grid fallback */}
-          {isMobile && (
-            <div className="grid grid-cols-2 gap-3">
-              {products.map((product, idx) => (
-                <ProductCard key={product.name} product={product} idx={idx} isMobile={true} />
-              ))}
-            </div>
-          )}
+          </div>
         </div>
       </section>
 
