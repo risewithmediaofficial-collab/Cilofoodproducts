@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
+import ZigZagImage from '../components/ZigZagImage'
 import { ArrowRight, Calendar, Tag } from 'lucide-react'
 import { blogPosts } from '../data/blogData'
 import { PAGE_SEO, buildBreadcrumbSchema, buildOrganizationSchema } from '../seo/seoConfig'
@@ -81,10 +82,11 @@ export default function Blog() {
               className="bg-white rounded-3xl overflow-hidden border border-stone-100 shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col"
             >
               <Link to={`/blog/${post.slug}`} className="block relative overflow-visible min-h-[260px] bg-gradient-to-b from-[#FFF8F3] to-white flex items-center justify-center p-8 border-b border-[#FFD9A8]/30">
-                <img 
+                <ZigZagImage
                   src={post.image} 
                   alt={post.title} 
-                  className="w-auto max-h-[200px] object-contain group-hover:scale-105 transition-transform duration-700 drop-shadow-[0_12px_28px_rgba(45,22,8,0.15)] relative z-10" 
+                  index={idx}
+                  className="relative z-10 w-auto max-h-[200px] object-contain drop-shadow-[0_12px_28px_rgba(45,22,8,0.15)]" 
                   style={{ objectFit: 'contain' }}
                 />
                 <div className="absolute top-4 left-4 z-10">

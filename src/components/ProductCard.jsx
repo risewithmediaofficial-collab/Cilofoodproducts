@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import ZigZagImage from './ZigZagImage'
 
 /* ══════════════════════════════════════════════════════════
    DEVICE CAPABILITY  (computed once at module load)
@@ -74,10 +75,11 @@ const ProductCard = memo(
             )}
             {/* Full panel height (top–bottom) — object-contain scales width; badge stays above (z-20) */}
             {img ? (
-              <img
+              <ZigZagImage
                 src={img}
                 alt={name}
-                className="absolute inset-0 z-10 mx-auto h-full w-full object-contain p-6 sm:p-8 transition-transform duration-500 ease-out group-hover:scale-[1.02] filter-[drop-shadow(0_10px_28px_rgba(45,22,8,0.1))]"
+                index={index}
+                className="absolute inset-0 z-10 mx-auto h-full w-full object-contain p-6 sm:p-8 filter-[drop-shadow(0_10px_28px_rgba(45,22,8,0.1))]"
                 loading="lazy"
                 decoding="async"
                 width={300}

@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
+import ZigZagImage from '../components/ZigZagImage'
 import { ShoppingCart, Heart, Share2, Star, Check } from 'lucide-react'
 import { buildProductSchema, buildFAQSchema, buildBreadcrumbSchema, SITE } from '../seo/seoConfig'
 
@@ -82,10 +83,11 @@ const LazyImg = ({ src, alt, className, width, height }) => {
   }, [src])
 
   return (
-    <img
+    <ZigZagImage
       ref={imgRef}
       src={src}
       alt={alt}
+      index={0}
       className={`${className} transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
       width={width}
       height={height}

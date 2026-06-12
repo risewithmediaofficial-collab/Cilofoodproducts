@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { X } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
+import ZigZagImage from '../components/ZigZagImage'
 import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
 
 /* ══════════════════════════════════════════════════════════
@@ -209,12 +210,12 @@ export default function Insights() {
               >
                 {/* Image */}
                 <div className="relative h-56 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                  <img
+                  <ZigZagImage
                     src={event.image}
                     alt={event.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    index={idx}
+                    className="w-full h-full object-cover"
                     onError={e => { e.target.style.display = 'none' }}
-                    // FIX: lazy-load images — all 3 are below the fold on mobile
                     loading={idx === 0 ? 'eager' : 'lazy'}
                     decoding="async"
                   />
@@ -313,9 +314,10 @@ export default function Insights() {
 
               {/* Image — eager since it's the hero of the modal */}
               <div className="relative h-56 md:h-80 bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                <img
+                <ZigZagImage
                   src={selectedEvent.image}
                   alt={selectedEvent.title}
+                  index={0}
                   className="w-full h-full object-cover"
                   onError={e => { e.target.style.display = 'none' }}
                   loading="eager"

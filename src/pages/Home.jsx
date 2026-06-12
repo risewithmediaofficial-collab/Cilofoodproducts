@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { ChevronRight, ArrowRight, MapPin, Phone, Mail, Star, Droplets, Leaf, Zap, Award } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
+import ZigZagImage from '../components/ZigZagImage'
 import { PAGE_SEO, buildOrganizationSchema, buildLocalBusinessSchema, buildFAQSchema } from '../seo/seoConfig'
 
 // ─── PERFORMANCE DETECTION HELPERS ───────────────────────────────────────────
@@ -147,10 +148,11 @@ const StoryGridCard = memo(function StoryGridCard({ item, index, isMobile }) {
     >
       <div className="absolute inset-0 bg-linear-to-br from-white/0 via-[#F97316]/0 to-[#F97316]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
       {!imageFailed && (
-        <img
+        <ZigZagImage
           src={item.src}
           alt={item.label}
-          className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${item.imageClassName ?? 'object-cover object-center'}`}
+          index={index}
+          className={`w-full h-full ${item.imageClassName ?? 'object-cover object-center'}`}
           onError={() => setImageFailed(true)}
           loading="lazy"
           decoding="async"
@@ -292,9 +294,10 @@ function RotatingHeroCards({ isMobile }) {
             pointerEvents: 'none',
           }}
         >
-          <img
+          <ZigZagImage
             src={card.img}
             alt={card.name}
+            index={i}
             style={{
               width: '100%',
               height: '100%',
@@ -373,10 +376,11 @@ const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
           >
             {product.tag}
           </span>
-          <img
+          <ZigZagImage
             src={product.img}
             alt={product.name}
-            className="absolute inset-0 z-10 mx-auto h-full w-full object-contain p-6 sm:p-8 transition-transform duration-500 ease-out group-hover:scale-[1.03] drop-shadow-[0_12px_28px_rgba(45,22,8,0.12)]"
+            index={idx}
+            className="absolute inset-0 z-10 mx-auto h-full w-full object-contain p-6 sm:p-8 drop-shadow-[0_12px_28px_rgba(45,22,8,0.12)]"
             onError={e => { e.target.style.display = 'none' }}
             loading="lazy"
             decoding="async"
@@ -909,10 +913,11 @@ export default function Home() {
             className="relative rounded-3xl overflow-hidden aspect-4/3 bg-linear-to-br from-gray-100 to-gray-200 border-2 border-gray-200 group shadow-2xl"
           >
             <div className="absolute inset-0 bg-linear-to-br from-[#F97316]/10 via-transparent to-[#F97316]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
-            <img
+            <ZigZagImage
               src="/images/csr/csr-banner.jpg"
               alt="CSR Initiative"
-              className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
+              index={0}
+              className="w-full h-full object-contain"
               onError={e => { e.target.style.display = 'none' }}
               loading="lazy"
               decoding="async"

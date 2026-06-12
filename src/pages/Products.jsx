@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import ProductCard from '../components/ProductCard'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
+import ZigZagImage from '../components/ZigZagImage'
 import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
 
 // ─── Mobile / low-end detection ────────────────────────────────────────────────
@@ -91,9 +92,10 @@ const LazyImage = memo(({ src, alt }) => {
   return (
     <picture>
       <source srcSet={webpSrc} type="image/webp" />
-      <img
+      <ZigZagImage
         src={src}
         alt={alt}
+        index={0}
         loading="lazy"
         decoding="async"
         width={300}
@@ -375,7 +377,7 @@ export default function Products() {
 
                     <div className={`${isLeft ? 'md:pl-12' : 'md:pr-12'}`}>
                       <div className="relative overflow-hidden rounded-2xl aspect-4/3 bg-white border border-gray-100 shadow-xl flex items-center justify-center p-8 hover:shadow-2xl transition-shadow duration-300">
-                         <img src={s.img} alt={s.label} className="w-full h-full object-contain drop-shadow-md" loading="lazy" />
+                         <ZigZagImage src={s.img} alt={s.label} index={i} className="w-full h-full object-contain drop-shadow-md" loading="lazy" />
                       </div>
                     </div>
                   </motion.div>

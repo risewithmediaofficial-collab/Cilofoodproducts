@@ -4,6 +4,7 @@ import { MapPin, ArrowRight, Star, CheckCircle, Phone, Leaf, Droplets, Award } f
 import { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
+import ZigZagImage from '../components/ZigZagImage'
 import { buildBreadcrumbSchema, buildFAQSchema, buildLocalBusinessSchema, SITE } from '../seo/seoConfig'
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -225,7 +226,7 @@ export default function LocalSEOPage({ pageSlug }) {
 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#F97316]/20 to-[#FFD9A8]/30 rounded-full blur-3xl -z-10" />
-              <img src={data.image} alt={data.h1} className="w-full h-auto max-h-[480px] object-contain drop-shadow-[0_20px_50px_rgba(249,115,22,0.25)] hover:scale-105 transition-transform duration-700 p-6" loading="eager" />
+              <ZigZagImage src={data.image} alt={data.h1} index={0} className="w-full h-auto max-h-[480px] object-contain p-6 drop-shadow-[0_20px_50px_rgba(249,115,22,0.25)]" loading="eager" />
             </motion.div>
           </div>
         </div>

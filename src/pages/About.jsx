@@ -7,6 +7,7 @@ import {
   HeartHandshake, BadgeCheck
 } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
+import ZigZagImage from '../components/ZigZagImage'
 import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
 import heroPicFlavours1 from '../../pic assets/FLAVOURS 1.png'
 import heroPicFlavours2 from '../../pic assets/flavours 2.png'
@@ -128,9 +129,10 @@ const Orb = memo(({ className, delay = 0 }) => {
 function ImgBox({ src, alt = '', className = '', objectFit = 'object-cover', label = 'Add Image', rounded = 'rounded-2xl', aspect }) {
   return (
     <div className={`relative overflow-hidden ${rounded} ${aspect} ${className} bg-gradient-to-br from-white to-gray-50 border-2 border-dashed border-gray-200`}>
-      <img
+      <ZigZagImage
         src={src}
         alt={alt}
+        index={0}
         className={`absolute inset-0 w-full h-full ${objectFit} ${rounded}`}
         onError={e => { e.target.style.display = 'none' }}
         loading="lazy"
@@ -239,12 +241,12 @@ export default function About() {
               transition={{ opacity: { duration: 0.9, delay: 0.4 }, x: { duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }, rotate: { duration: 1, delay: 0.4 } }}
               className="self-end mb-8"
               // Pure CSS float — compositor thread, no JS per frame
-              style={reduced ? {} : { animation: 'float-card 4s ease-in-out infinite', animationDelay: '1.4s', willChange: 'transform' }}
             >
               <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl bg-stone-200">
-                <img
+                <ZigZagImage
                   src={heroFlavour1.img}
                   alt={heroFlavour1.alt}
+                  index={0}
                   className="absolute inset-0 h-full w-full object-cover"
                   onError={e => { e.target.style.display = 'none' }}
                   loading="eager"
@@ -286,12 +288,12 @@ export default function About() {
               animate={{ opacity: 1, x: 0, rotate: 8 }}
               transition={{ opacity: { duration: 0.9, delay: 0.4 }, x: { duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }, rotate: { duration: 1, delay: 0.4 } }}
               className="self-end mb-8"
-              style={reduced ? {} : { animation: 'float-card 4.2s ease-in-out infinite', animationDelay: '1.6s', willChange: 'transform' }}
             >
               <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl bg-stone-200">
-                <img
+                <ZigZagImage
                   src={heroFlavour2.img}
                   alt={heroFlavour2.alt}
+                  index={1}
                   className="absolute inset-0 h-full w-full object-cover"
                   onError={e => { e.target.style.display = 'none' }}
                   loading="eager"
@@ -333,9 +335,10 @@ export default function About() {
                   key={f.alt}
                   className="relative flex-1 max-w-[140px] aspect-square rounded-2xl overflow-hidden shadow-lg bg-stone-200"
                 >
-                  <img
+                  <ZigZagImage
                     src={f.img}
                     alt={f.alt}
+                    index={heroFlavours.findIndex((item) => item.alt === f.alt)}
                     className="absolute inset-0 h-full w-full object-cover"
                     onError={e => { e.target.style.display = 'none' }}
                     loading="lazy"
@@ -616,9 +619,10 @@ export default function About() {
         {/* Mission */}
         <div className="grid md:grid-cols-2 min-h-[300px] sm:min-h-[400px]">
           <div className="relative overflow-hidden">
-            <img
+            <ZigZagImage
               src="/images/about/mission.jpg"
               alt="Our Mission"
+              index={0}
               className="w-full h-full object-cover"
               onError={e => { e.target.style.display = 'none' }}
               loading="lazy"
@@ -691,9 +695,10 @@ export default function About() {
             </div>
           </motion.div>
           <div className="relative overflow-hidden">
-            <img
+            <ZigZagImage
               src="/images/about/vision.jpg"
               alt="Our Vision"
+              index={1}
               className="w-full h-full object-cover"
               onError={e => { e.target.style.display = 'none' }}
               loading="lazy"
@@ -898,9 +903,10 @@ export default function About() {
                 className="bg-white rounded-3xl border-2 border-[#FFD9A8] p-8 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center"
               >
                 <div className="relative w-24 h-24 rounded-full overflow-hidden bg-[#FFF8EE] border-4 border-[#FFD9A8] group-hover:border-[#FBBB74] transition-colors duration-300 mb-4 shadow-lg">
-                  <img
+                  <ZigZagImage
                     src={p.img}
                     alt={p.name}
+                    index={i}
                     className="w-full h-full object-cover"
                     onError={e => { e.target.style.display = 'none' }}
                     loading="lazy"
