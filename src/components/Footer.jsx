@@ -150,6 +150,12 @@ const Footer = memo(function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
+                <Phone size={16} className="text-[#F97316] mt-0.5 shrink-0" aria-hidden="true" />
+                <span className="text-sm text-white/70">
+                  Customer Care: Bharath - +91 XXXXX XXXXX
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-[#F97316] mt-0.5 shrink-0" aria-hidden="true" />
                 <p className="text-white/70 text-sm">Karagur Village, Paiyur - 2, Krishnagiri District - 635112</p>
               </li>
@@ -162,7 +168,16 @@ const Footer = memo(function Footer() {
           <p className="text-white/40 text-xs text-center sm:text-left">
             © 2026 Richi Food Products. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
+            <a
+              href="https://www.risewithmedia.com"
+              target="_blank"
+              rel="noreferrer"
+              style={{ touchAction: 'manipulation' }}
+              className="text-white/40 hover:text-[#F97316] text-xs transition-colors"
+            >
+              Developed with www.risewithmedia.com
+            </a>
             <a
               href="#"
               style={{ touchAction: 'manipulation' }}

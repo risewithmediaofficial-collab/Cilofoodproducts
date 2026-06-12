@@ -61,9 +61,28 @@ const Orb = ({ className, delay = 0 }) => {
 ══════════════════════════════════════════════════════════ */
 const regions = [
   {
+    name: 'South India',
+    contacts: [
+      { name: 'Mr. Senguvattan', title: 'Regional General Manager South India (TN, KA, KL)', phone: '+91 944579977' },
+      { name: 'Mr. Bharath', title: 'Customer Care', phone: '+91 XXXXX XXXXX' },
+    ],
+  },
+  {
     name: 'Tamil Nadu',
     contacts: [
-      { name: 'Mr. Dhayalan', title: 'Regional Sales Manager (RSM)', phone: '+91-9884412151' },
+      { name: 'Tamil Nadu', title: 'Heads', phone: '+91 94435 18521' },
+    ],
+  },
+  {
+    name: 'Karnataka',
+    contacts: [
+      { name: 'Karnataka', title: 'Heads', phone: '+91 80731 52468' },
+    ],
+  },
+  {
+    name: 'Kerala',
+    contacts: [
+      { name: 'Kerala', title: 'Heads', phone: '+91 XXXXX XXXXX' },
     ],
   },
 ]
@@ -201,7 +220,7 @@ export default function Dealership() {
                   fontSize: 'clamp(2rem, 6vw, 4.5rem)',
                 }}
               >
-                Become a Richi<br />
+                Become a CILO<br />
                 <span className="text-[#F97316]">Dealership Partner</span>
               </h1>
               <p className="text-[#4A2800]/60 max-w-2xl mx-auto leading-relaxed text-base sm:text-lg px-2">
@@ -233,7 +252,7 @@ export default function Dealership() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <SectionHeading eyebrow="Partnership Benefits" title="Why Choose Richi" />
+          <SectionHeading eyebrow="Partnership Benefits" title="Why Choose CILO" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             {benefits.map((benefit, idx) => (

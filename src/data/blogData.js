@@ -1,3 +1,5 @@
+import { siteImages } from '../assets/siteImages.js'
+
 export const blogPosts = [
   {
     slug: 'taste-the-tropics-mango-juice',
@@ -13,7 +15,7 @@ export const blogPosts = [
       <h2>Perfect for Every Occasion</h2>
       <p>Whether it's a family gathering or a midday energy slump, a chilled glass of CILO Mango Juice is the perfect companion. Serve it ice cold for the ultimate refreshing experience.</p>
     `,
-    image: '/images/products/mango.png',
+    image: siteImages.mango,
     date: '2026-05-08',
     author: 'CILO Wellness Team',
     category: 'Product Spotlight',
@@ -33,7 +35,7 @@ export const blogPosts = [
       <h2>Premium Quality You Can Taste</h2>
       <p>We use high-quality apple concentrate to ensure a consistent, premium flavor profile in every bottle. It's the perfect morning starter or afternoon pick-me-up.</p>
     `,
-    image: '/images/products/apple.png',
+    image: siteImages.apple,
     date: '2026-05-07',
     author: 'CILO Wellness Team',
     category: 'Health & Wellness',
@@ -53,7 +55,7 @@ export const blogPosts = [
       <h2>A Sophisticated Choice</h2>
       <p>With its deep flavor profile, our grape juice is perfect for those who want a beverage with character. It's an excellent non-alcoholic alternative for celebrations and dinners.</p>
     `,
-    image: '/images/products/grapes.png',
+    image: siteImages.grape,
     date: '2026-05-06',
     author: 'CILO Tastemakers',
     category: 'Product Spotlight',
@@ -73,7 +75,7 @@ export const blogPosts = [
       <h2>Uncompromising Freshness</h2>
       <p>We've worked hard to ensure our orange juice tastes like it was just squeezed. No bitter aftertaste—just pure, bright citrus perfection.</p>
     `,
-    image: '/images/products/orange.png',
+    image: siteImages.orange,
     date: '2026-05-05',
     author: 'CILO Wellness Team',
     category: 'Health & Wellness',
@@ -93,7 +95,7 @@ export const blogPosts = [
       <h2>The Ideal Mixer</h2>
       <p>Beyond being a great standalone drink, the clean taste of our White Lemon makes it an excellent base for mocktails and creative summer beverages.</p>
     `,
-    image: '/images/products/white_lemon.png',
+    image: siteImages.whiteLemon,
     date: '2026-05-04',
     author: 'CILO Tastemakers',
     category: 'Product Spotlight',
@@ -113,7 +115,7 @@ export const blogPosts = [
       <h2>A Modern Classic</h2>
       <p>We've elevated the standard lemon-lime soda by using premium flavor profiles that taste natural and crisp, avoiding the syrupy heaviness of traditional sodas.</p>
     `,
-    image: '/images/products/green_lemon.png',
+    image: siteImages.greenLemon,
     date: '2026-05-03',
     author: 'CILO Tastemakers',
     category: 'Carbonated Drinks',
@@ -133,7 +135,7 @@ export const blogPosts = [
       <h2>Crafted with Care</h2>
       <p>We've perfected the recipe to ensure the rose flavor is prominent but not overpowering, achieving the exact flavor profile that locals have loved for generations.</p>
     `,
-    image: '/images/products/paneer_soda.png',
+    image: siteImages.paneerSoda,
     date: '2026-05-02',
     author: 'CILO Heritage Team',
     category: 'Local Spotlight',
@@ -153,7 +155,7 @@ export const blogPosts = [
       <h2>Quality Ingredients</h2>
       <p>We focus on a clean finish, ensuring our Cola doesn't leave a heavy, syrupy aftertaste. It's crisp, sharp, and hits the spot every time.</p>
     `,
-    image: '/images/products/cola.png',
+    image: siteImages.cola,
     date: '2026-05-01',
     author: 'CILO Tastemakers',
     category: 'Carbonated Drinks',
@@ -173,7 +175,7 @@ export const blogPosts = [
       <h2>Authentic Spices</h2>
       <p>We use an authentic blend of spices to ensure the flavor hits all the right notes—salty, sour, spicy, and perfectly earthy.</p>
     `,
-    image: '/images/products/jeera_masala.png',
+    image: siteImages.jeera,
     date: '2026-04-30',
     author: 'CILO Heritage Team',
     category: 'Local Spotlight',
@@ -194,7 +196,7 @@ export const blogPosts = [
       <h2>Versatile and Delicious</h2>
       <p>Enjoy it chilled on its own, or use it as a premium mixer for your favorite tropical mocktails. It brings a burst of sunshine to any occasion.</p>
     `,
-    image: '/images/products/pine_apple.png',
+    image: siteImages.pineapple,
     date: '2026-04-27',
     author: 'CILO Wellness Team',
     category: 'Product Spotlight',
@@ -220,7 +222,7 @@ export const blogPosts = [
       <h2>Available Across Krishnagiri</h2>
       <p>Find CILO at grocery stores, supermarkets, and local shops across Krishnagiri District. For bulk orders or to inquire about a dealership, call us at +91 94435 18521 or email richifoodproduct@gmail.com.</p>
     `,
-    image: '/images/products/salt_lemon.png',
+    image: siteImages.saltLemon,
     date: '2026-05-08',
     author: 'CILO Local Team',
     category: 'Local Spotlight',
@@ -243,7 +245,7 @@ export const blogPosts = [
       <h2>Healthy Juice Near Me — Available in Hosur</h2>
       <p>CILO is expanding its distribution across Hosur rapidly. Contact us to find your nearest retailer or to enquire about stocking CILO at your store. Bulk orders and B2B supply available.</p>
     `,
-    image: '/images/products/mango_2.png',
+    image: siteImages.mango2,
     date: '2026-05-07',
     author: 'CILO Local Team',
     category: 'Local Spotlight',
@@ -270,7 +272,7 @@ export const blogPosts = [
       <h2>Order in Bulk for the Season</h2>
       <p>Stocking up for summer? CILO offers bulk ordering for homes, offices, events, and businesses in Krishnagiri. Call +91 94435 18521 for bulk summer pricing.</p>
     `,
-    image: '/images/products/flavours_1.png',
+    image: siteImages.flavours1,
     date: '2026-05-06',
     author: 'CILO Local Team',
     category: 'Local Spotlight',
@@ -293,7 +295,7 @@ export const blogPosts = [
       <h2>B2B & Wholesale for Tamil Nadu Businesses</h2>
       <p>Restaurant owners, event planners, caterers, and retailers across Tamil Nadu can partner with CILO for wholesale pricing and consistent supply. Reach out at richifoodproduct@gmail.com or call +91 99443 66592.</p>
     `,
-    image: '/images/products/pineapple.png',
+    image: siteImages.pineapple,
     date: '2026-05-05',
     author: 'CILO Local Team',
     category: 'Local Spotlight',

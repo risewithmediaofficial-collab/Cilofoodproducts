@@ -2,6 +2,7 @@ import { useState, useEffect, memo, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { siteImages } from '../assets/siteImages.js'
 
 /* ── Nav links ── */
 const navLinks = [
@@ -73,20 +74,27 @@ function Navbar() {
           <div className="flex min-h-20 items-center justify-between gap-3 px-4 sm:min-h-22 sm:px-6 lg:px-8">
 
           {/* ── LOGO & BRAND ── */}
-          <Link to="/" className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <Link to="/" className="flex shrink-0 items-center">
+            <div className="flex flex-col items-center justify-center">
             {/* Logo Image */}
-            <div className="relative flex aspect-square h-17 items-center justify-center shrink-0 sm:h-19 md:h-20">
+            <div className="relative flex h-10 w-[136px] items-center justify-center shrink-0 sm:h-13 sm:w-[168px] md:h-[3.55rem] md:w-[198px]">
               <img
-                src="/images/logo.png"
+                src={siteImages.logo}
                 alt="CILO"
-                className="h-full w-auto object-contain"
-                width={84}
-                height={84}
+                className="h-full w-full object-contain"
+                width={210}
+                height={64}
                 decoding="async"
                 onError={(e) => { e.target.style.display = 'none' }}
               />
             </div>
-            
+            <span
+              className="mt-0.5 text-center text-[8.5px] font-medium uppercase tracking-[0.34em] text-[#7A4A2A]/70 sm:text-[9.5px]"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
+              Sip With Style
+            </span>
+            </div>
           </Link>
 
           {/* ── DESKTOP LINKS ── */}

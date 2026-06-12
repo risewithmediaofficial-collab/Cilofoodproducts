@@ -5,6 +5,7 @@ import { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import ZigZagImage from '../components/ZigZagImage'
+import { siteImages } from '../assets/siteImages.js'
 import { buildBreadcrumbSchema, buildFAQSchema, SITE } from '../seo/seoConfig'
 
 /* ── Data ────────────────────────────────────────────────────────────────── */
@@ -16,7 +17,7 @@ const locationsData = {
     heading: 'The #1 Juice Brand in Krishnagiri',
     description: 'Experience refreshing premium fruit juices in Krishnagiri crafted with fresh ingredients and vibrant flavors. CILO — manufactured right here in Krishnagiri District — is the top choice for healthy refreshment.',
     keywords: 'best juice Krishnagiri, fresh fruit juice Krishnagiri, healthy drinks Krishnagiri, CILO juice near me, premium beverage Krishnagiri, mango juice Krishnagiri',
-    image: '/images/products/mango.png',
+    image: siteImages.mango,
     geo: { '@type': 'GeoCoordinates', latitude: 12.5257, longitude: 78.2143 },
     highlight: 'Manufactured in Krishnagiri',
     mapsQuery: 'Richi+Food+Products+Krishnagiri+Tamil+Nadu',
@@ -35,7 +36,7 @@ const locationsData = {
     heading: "Hosur's Favorite Fresh Juice",
     description: 'Looking for the best fresh juice in Hosur? CILO offers a premium range of natural fruit drinks and healthy beverages, now widely available across Hosur city.',
     keywords: 'fresh juice Hosur, best fruit drink Hosur, healthy beverage Hosur, juice near me Hosur, CILO Hosur, premium juice Hosur Tamil Nadu',
-    image: '/images/products/apple.png',
+    image: siteImages.apple,
     geo: { '@type': 'GeoCoordinates', latitude: 12.7409, longitude: 77.8253 },
     highlight: '30 mins from our factory',
     mapsQuery: 'CILO+Juice+Hosur+Tamil+Nadu',
@@ -53,7 +54,7 @@ const locationsData = {
     heading: 'Pure Refreshment for Dharmapuri',
     description: 'CILO Juice brings premium, farm-fresh beverages to Dharmapuri. Discover our range of natural fruit juices crafted for wellness, refreshment, and great taste.',
     keywords: 'juice Dharmapuri, fresh drinks Dharmapuri, healthy beverage Dharmapuri, fruit juice near me Dharmapuri, premium juice Tamil Nadu',
-    image: '/images/products/orange.png',
+    image: siteImages.orange,
     geo: { '@type': 'GeoCoordinates', latitude: 12.1273, longitude: 78.1582 },
     highlight: 'Distributed across Dharmapuri',
     mapsQuery: 'CILO+Juice+Dharmapuri+Tamil+Nadu',
@@ -70,7 +71,7 @@ const locationsData = {
     heading: "Salem's Choice for Premium Juices",
     description: 'Experience the rich taste of CILO in Salem. Our premium fruit juices and refreshing drinks are now widely available across the city of Salem, Tamil Nadu.',
     keywords: 'best juice Salem, fruit drink Salem, healthy beverage Salem, premium juice Tamil Nadu, CILO Salem, fresh juice near me Salem',
-    image: '/images/products/grape.png',
+    image: siteImages.grape,
     geo: { '@type': 'GeoCoordinates', latitude: 11.6643, longitude: 78.1460 },
     highlight: 'Growing presence in Salem',
     mapsQuery: 'CILO+Juice+Salem+Tamil+Nadu',
@@ -87,7 +88,7 @@ const locationsData = {
     heading: 'Proudly Refreshing Tamil Nadu',
     description: 'CILO is the emerging leader in premium beverages across Tamil Nadu. From Krishnagiri to Chennai, we deliver fresh, high-quality fruit juices to every corner of the state.',
     keywords: 'best juice Tamil Nadu, premium fruit juice TN, healthy beverage Tamil Nadu, fresh juice brand India, CILO juice, mango juice Tamil Nadu',
-    image: '/images/products/pineapple.png',
+    image: siteImages.pineapple,
     geo: { '@type': 'GeoCoordinates', latitude: 11.1271, longitude: 78.6569 },
     highlight: 'Pan Tamil Nadu distribution',
     mapsQuery: 'Richi+Food+Products+Tamil+Nadu',
@@ -104,7 +105,7 @@ const locationsData = {
     heading: 'The Finest Refreshment in Chennai',
     description: 'Discover why CILO is the most loved premium juice brand in Chennai. Crafted with fresh, natural ingredients for the perfect taste.',
     keywords: 'best juice Chennai, premium drink Chennai, fresh juice near me Chennai, healthy beverage Chennai, CILO Chennai',
-    image: '/images/products/mango.png',
+    image: siteImages.mango,
     highlight: 'Available across Chennai',
     mapsQuery: 'CILO+Juice+Chennai',
     products: ['Mango Juice', 'Apple Drink', 'Orange Juice', 'Pineapple Juice', 'Cola', 'Salt Lemon'],
@@ -119,7 +120,7 @@ const locationsData = {
     heading: 'Pure & Fresh Juices in Coimbatore',
     description: 'Experience the ultimate taste of health with CILO in Coimbatore. Best natural and organic drink selections.',
     keywords: 'juice Coimbatore, fresh drinks Coimbatore, healthy beverage Coimbatore, premium juice Tamil Nadu, CILO Coimbatore',
-    image: '/images/products/apple.png',
+    image: siteImages.apple,
     highlight: 'Serving Coimbatore region',
     mapsQuery: 'CILO+Juice+Coimbatore',
     products: ['Apple Drink', 'Mango Juice', 'Orange Juice', 'Grape Drink', 'Jeera Masala', 'Paneer Soda'],

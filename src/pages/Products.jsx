@@ -5,6 +5,7 @@ import PageWrapper from '../components/PageWrapper'
 import ProductCard from '../components/ProductCard'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import ZigZagImage from '../components/ZigZagImage'
+import { siteImages } from '../assets/siteImages.js'
 import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
 
 // ─── Mobile / low-end detection ────────────────────────────────────────────────
@@ -39,18 +40,18 @@ Orb.displayName = 'Orb'
 
 // ─── Products data ──────────────────────────────────────────────────────────────
 const products = [
-  { name: 'Apple',       category: 'Juice',      img: '/images/products/apple.png',       gradient: '#dc2626, #b91c1c, #991b1b', color: '#DC2626' },
-  { name: 'Mango',       category: 'Juice',      img: '/images/products/mango.png',       gradient: '#fbbf24, #f97316, #ea580c', color: '#F97316' },
-  { name: 'Grapes',      category: 'Juice',      img: '/images/products/grapes.png',      gradient: '#a855f7, #9333ea, #7e22ce', color: '#7c3aed' },
-  { name: 'White Lemon', category: 'Juice',      img: '/images/products/white_lemon.png', gradient: '#fcd34d, #fbbf24, #f59e0b', color: '#84cc16' },
-  { name: 'Orange',      category: 'Juice',      img: '/images/products/orange.png',      gradient: '#fb7185, #f97316, #ea580c', color: '#F97316' },
-  { name: 'Green Lemon', category: 'Carbonated', img: '/images/products/green_lemon.png', gradient: '#34d399, #10b981, #059669', color: '#84cc16' },
-  { name: 'Paneer Soda', category: 'Carbonated', img: '/images/products/paneer_soda.png', gradient: '#c084fc, #a855f7, #9333ea', color: '#8b5cf6' },
-  { name: 'Salt Lemon',  category: 'Carbonated', img: '/images/products/salt_lemon.png',  gradient: '#94a3b8, #64748b, #475569', color: '#64748b' },
-  { name: 'Cola',        category: 'Carbonated', img: '/images/products/cola.png',        gradient: '#1e293b, #0f172a, #020617', color: '#475569' },
-  { name: 'Jeera Masala',category: 'Carbonated', img: '/images/products/jeera_masala.png',gradient: '#fed7aa, #fb923c, #f97316', color: '#F97316' },
-  { name: 'Mango 2',    category: 'Juice',      img: '/images/products/mango_2.png',     gradient: '#fbbf24, #fb923c, #f97316', color: '#F97316' },
-  { name: 'Pineapple',  category: 'Juice',      img: '/images/products/pine_apple.png',  gradient: '#fcd34d, #fbbf24, #fb923c', color: '#fbbf24' },
+  { name: 'Apple',       category: 'Juice',      img: siteImages.apple,      gradient: '#dc2626, #b91c1c, #991b1b', color: '#DC2626' },
+  { name: 'Mango',       category: 'Juice',      img: siteImages.mango,      gradient: '#fbbf24, #f97316, #ea580c', color: '#F97316' },
+  { name: 'Grapes',      category: 'Juice',      img: siteImages.grape,      gradient: '#a855f7, #9333ea, #7e22ce', color: '#7c3aed' },
+  { name: 'White Lemon', category: 'Juice',      img: siteImages.whiteLemon, gradient: '#fcd34d, #fbbf24, #f59e0b', color: '#84cc16' },
+  { name: 'Orange',      category: 'Juice',      img: siteImages.orange,     gradient: '#fb7185, #f97316, #ea580c', color: '#F97316' },
+  { name: 'Green Lemon', category: 'Carbonated', img: siteImages.greenLemon, gradient: '#34d399, #10b981, #059669', color: '#84cc16' },
+  { name: 'Paneer Soda', category: 'Carbonated', img: siteImages.paneerSoda, gradient: '#c084fc, #a855f7, #9333ea', color: '#8b5cf6' },
+  { name: 'Salt Lemon',  category: 'Carbonated', img: siteImages.saltLemon,  gradient: '#94a3b8, #64748b, #475569', color: '#64748b' },
+  { name: 'Cola',        category: 'Carbonated', img: siteImages.cola,       gradient: '#1e293b, #0f172a, #020617', color: '#475569' },
+  { name: 'Jeera Masala',category: 'Carbonated', img: siteImages.jeera,      gradient: '#fed7aa, #fb923c, #f97316', color: '#F97316' },
+  { name: 'Mango 2',     category: 'Juice',      img: siteImages.mango2,     gradient: '#fbbf24, #fb923c, #f97316', color: '#F97316' },
+  { name: 'Pineapple',   category: 'Juice',      img: siteImages.pineapple,  gradient: '#fcd34d, #fbbf24, #fb923c', color: '#fbbf24' },
 ]
 
 const filters = ['All', 'Juice', 'Carbonated']
@@ -63,12 +64,12 @@ const packaging = [
 ]
 
 const processSteps = [
-  { step: '01', img: '/images/products/preparation.png', label: 'Preparation', desc: 'Carefully sourced ingredients are prepared in a highly hygienic environment.' },
-  { step: '02', img: '/images/products/filling.png', label: 'Filling',     desc: 'Automated filling machines ensure exact measurements and eliminate contamination.' },
-  { step: '03', img: '/images/products/labelling.png', label: 'Labelling',   desc: 'High-speed labeling equipment applies branding seamlessly.' },
-  { step: '04', img: '/images/products/checking.png', label: 'Checking',    desc: 'Rigorous quality control processes guarantee the integrity of every bottle.' },
-  { step: '05', img: '/images/products/packing.png', label: 'Packing',      desc: 'Finished products are safely packed for secure transit.' },
-  { step: '06', img: '/images/products/dispatch.png', label: 'Dispatch',    desc: 'Logistics coordination ensures timely delivery to all partners.' },
+  { step: '01', img: siteImages.preparation, label: 'Preparation', desc: 'Carefully sourced ingredients are prepared in a highly hygienic environment.' },
+  { step: '02', img: siteImages.filling,     label: 'Filling',     desc: 'Automated PET bottle filling with quality inspection systems ensures precise measurements and hygienic production.' },
+  { step: '03', img: siteImages.labelling,   label: 'Labelling',   desc: 'High-speed labeling equipment applies branding seamlessly.' },
+  { step: '04', img: siteImages.checking,    label: 'Checking',    desc: 'Rigorous quality control processes guarantee the integrity of every bottle.' },
+  { step: '05', img: siteImages.packing,     label: 'Packing',     desc: 'Finished products are safely packed for secure transit.' },
+  { step: '06', img: siteImages.dispatch,    label: 'Dispatch',    desc: 'Logistics coordination ensures timely delivery to all partners.' },
 ]
 
 // ─── Shared motion helpers ──────────────────────────────────────────────────────

@@ -28,6 +28,8 @@ const ZigZagImage = forwardRef(function ZigZagImage({
   viewport = { once: true, amount: 0.28 },
   transition,
   style,
+  loading = 'lazy',
+  decoding = 'async',
   ...props
 }, ref) {
   const reducedMotion = useReducedMotion()
@@ -50,6 +52,8 @@ const ZigZagImage = forwardRef(function ZigZagImage({
       }
       className={className}
       style={style}
+      loading={loading}
+      decoding={decoding}
       {...props}
     />
   )

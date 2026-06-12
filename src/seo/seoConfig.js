@@ -7,7 +7,7 @@ export const SITE = {
   companyName: 'Richi Food Products',
   shortName: 'CILO Juice',
   brandName: 'CILO Juice',
-  alternateBrandNames: ['Richi Juice', 'CILO'],
+  alternateBrandNames: ['CILO', 'CILO Drinks'],
   tagline: 'Premium Natural Beverages & Fresh Juices',
   domain: 'https://richifoodproducts.com',
   defaultImage: 'https://richifoodproducts.com/og-image.jpg',
@@ -38,9 +38,9 @@ export const SITE = {
 /** Page-level SEO metadata map */
 export const PAGE_SEO = {
   home: {
-    title: 'Richi Food Products | CILO Juice & Richi Juice Manufacturer in Tamil Nadu',
+    title: 'Richi Food Products | CILO Juice Manufacturer in Tamil Nadu',
     description:
-      "Richi Food Products is the company behind CILO Juice and the beverage range many customers search for as Richi Juice. Premium fruit juices and carbonated drinks from Tamil Nadu with 12+ flavors and 100 KL/day capacity.",
+      "Richi Food Products is the company behind CILO Juice. Premium fruit juices and carbonated drinks from Tamil Nadu with 12+ flavors and 100 KL/day capacity.",
     keywords:
       'Richi Food Products, Richi juice, CILO Juice, CILO drinks, juice manufacturer Tamil Nadu, premium juice India, fresh fruit juice India, mango juice, orange juice, carbonated beverages, wholesale beverages South India',
     url: '/',
@@ -48,7 +48,7 @@ export const PAGE_SEO = {
   about: {
     title: 'About Richi Food Products | CILO Juice Brand Story',
     description:
-      'Learn how Richi Food Products built CILO Juice in Krishnagiri, Tamil Nadu. Discover the story behind the beverage line many customers also search for as Richi Juice.',
+      'Learn how Richi Food Products built CILO Juice in Krishnagiri, Tamil Nadu and discover the story behind our premium beverage brand.',
     keywords:
       'Richi Food Products, Richi juice, CILO Juice company, Tamil Nadu beverage manufacturer, juice factory India, FSSAI certified, food manufacturer Krishnagiri',
     url: '/about',
@@ -144,7 +144,7 @@ export function buildOrganizationSchema() {
       height: 80,
     },
     description:
-      'Richi Food Products is the Tamil Nadu beverage manufacturer behind CILO Juice and the range many customers search for as Richi Juice. Established 2020 with FSSAI-certified production and 100 KL/day capacity.',
+      'Richi Food Products is the Tamil Nadu beverage manufacturer behind CILO Juice. Established 2020 with FSSAI-certified production and 100 KL/day capacity.',
     foundingDate: '2020',
     foundingLocation: 'Krishnagiri, Tamil Nadu, India',
     address: {
@@ -172,7 +172,7 @@ export function buildOrganizationSchema() {
     ],
     brand: [
       { '@type': 'Brand', name: SITE.brandName },
-      { '@type': 'Brand', name: 'Richi Juice' },
+      { '@type': 'Brand', name: 'CILO Drinks' },
     ],
     numberOfEmployees: { '@type': 'QuantitativeValue', value: 50 },
     knowsAbout: [
@@ -311,7 +311,7 @@ export function buildLocalBusinessSchema() {
     email: SITE.contacts.email,
     brand: [
       { '@type': 'Brand', name: SITE.brandName },
-      { '@type': 'Brand', name: 'Richi Juice' },
+      { '@type': 'Brand', name: 'CILO Drinks' },
     ],
     address: {
       '@type': 'PostalAddress',

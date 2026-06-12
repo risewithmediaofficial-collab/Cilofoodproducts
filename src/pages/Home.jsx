@@ -5,6 +5,7 @@ import { ChevronRight, ArrowRight, MapPin, Phone, Mail, Star, Droplets, Leaf, Za
 import PageWrapper from '../components/PageWrapper'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import ZigZagImage from '../components/ZigZagImage'
+import { siteImages } from '../assets/siteImages.js'
 import { PAGE_SEO, buildOrganizationSchema, buildLocalBusinessSchema, buildFAQSchema } from '../seo/seoConfig'
 
 // ─── PERFORMANCE DETECTION HELPERS ───────────────────────────────────────────
@@ -14,7 +15,6 @@ const prefersReducedMotion = () => {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
-// Detect low-end mobile: <768px wide, or low deviceMemory, or no PointerEvents (touch-only)
 const isLowEndMobile = () => {
   if (typeof window === 'undefined') return false
   const narrow = window.innerWidth < 768
@@ -34,39 +34,38 @@ const shouldDisableOrbs = () => {
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const heroCards = [
-  { name: 'Mango',        img: '/images/products/mango.png',        bg: '#F5C200' },
-  { name: 'Orange',       img: '/images/products/orange.png',       bg: '#FF6B35' },
-  { name: 'Grapes',       img: '/images/products/grapes.png',       bg: '#8B5CF6' },
-  { name: 'Paneer Soda',  img: '/images/products/paneer_soda.png',  bg: '#EC4899' },
-  { name: 'Cola',         img: '/images/products/cola.png',         bg: '#1E293B' },
-  { name: 'Jeera Masala', img: '/images/products/jeera_masala.png', bg: '#16A34A' },
-  { name: 'Mango 2',      img: '/images/products/mango_2.png',      bg: '#F97316' },
-  { name: 'Apple',        img: '/images/products/apple.png',        bg: '#22C55E' },
-  { name: 'White Lemon',  img: '/images/products/white_lemon.png',  bg: '#EAB308' },
-  { name: 'Green Lemon',  img: '/images/products/green_lemon.png',  bg: '#0EA5E9' },
-  { name: 'Salt Lemon',   img: '/images/products/salt_lemon.png',   bg: '#64748B' },
-  { name: 'Pineapple',    img: '/images/products/pine_apple.png',   bg: '#FBBF24' },
+  { name: 'Mango',        img: siteImages.mango,       bg: '#F5C200' },
+  { name: 'Orange',       img: siteImages.orange,      bg: '#FF6B35' },
+  { name: 'Grapes',       img: siteImages.grape,       bg: '#8B5CF6' },
+  { name: 'Paneer Soda',  img: siteImages.paneerSoda,  bg: '#EC4899' },
+  { name: 'Cola',         img: siteImages.cola,        bg: '#1E293B' },
+  { name: 'Jeera Masala', img: siteImages.jeera,       bg: '#16A34A' },
+  { name: 'Mango 2',      img: siteImages.mango2,      bg: '#F97316' },
+  { name: 'Apple',        img: siteImages.apple,       bg: '#22C55E' },
+  { name: 'White Lemon',  img: siteImages.whiteLemon,  bg: '#EAB308' },
+  { name: 'Green Lemon',  img: siteImages.greenLemon,  bg: '#0EA5E9' },
+  { name: 'Salt Lemon',   img: siteImages.saltLemon,   bg: '#64748B' },
+  { name: 'Pineapple',    img: siteImages.pineapple,   bg: '#FBBF24' },
 ]
 
-// Carousel cards: `accent` = subtle brand tint (left bar + hover). Gradients removed from UI for a calmer, editorial look.
 const products = [
-  { name: 'Mango',        tag: 'Juice',      img: '/images/products/mango.png',        accent: 'bg-amber-500' },
-  { name: 'Apple',        tag: 'Juice',      img: '/images/products/apple.png',        accent: 'bg-red-600' },
-  { name: 'Grapes',       tag: 'Juice',      img: '/images/products/grapes.png',       accent: 'bg-violet-600' },
-  { name: 'Orange',       tag: 'Juice',      img: '/images/products/orange.png',       accent: 'bg-[#F97316]' },
-  { name: 'White Lemon',  tag: 'Juice',      img: '/images/products/white_lemon.png',  accent: 'bg-lime-600' },
-  { name: 'Green Lemon',  tag: 'Carbonated', img: '/images/products/green_lemon.png',  accent: 'bg-green-600' },
-  { name: 'Paneer Soda',  tag: 'Carbonated', img: '/images/products/paneer_soda.png',  accent: 'bg-fuchsia-600' },
-  { name: 'Cola',         tag: 'Carbonated', img: '/images/products/cola.png',         accent: 'bg-stone-700' },
-  { name: 'Jeera Masala', tag: 'Carbonated', img: '/images/products/jeera_masala.png', accent: 'bg-amber-700' },
-  { name: 'Salt Lemon',   tag: 'Carbonated', img: '/images/products/salt_lemon.png',   accent: 'bg-slate-500' },
-  { name: 'Mango 2',      tag: 'Juice',      img: '/images/products/mango_2.png',      accent: 'bg-orange-500' },
-  { name: 'Pineapple',    tag: 'Juice',      img: '/images/products/pine_apple.png',   accent: 'bg-yellow-500' },
+  { name: 'Mango',        tag: 'Juice',      img: siteImages.mango,       accent: 'bg-amber-500' },
+  { name: 'Apple',        tag: 'Juice',      img: siteImages.apple,       accent: 'bg-red-600' },
+  { name: 'Grapes',       tag: 'Juice',      img: siteImages.grape,       accent: 'bg-violet-600' },
+  { name: 'Orange',       tag: 'Juice',      img: siteImages.orange,      accent: 'bg-[#F97316]' },
+  { name: 'White Lemon',  tag: 'Juice',      img: siteImages.whiteLemon,  accent: 'bg-lime-600' },
+  { name: 'Green Lemon',  tag: 'Carbonated', img: siteImages.greenLemon,  accent: 'bg-green-600' },
+  { name: 'Paneer Soda',  tag: 'Carbonated', img: siteImages.paneerSoda,  accent: 'bg-fuchsia-600' },
+  { name: 'Cola',         tag: 'Carbonated', img: siteImages.cola,        accent: 'bg-stone-700' },
+  { name: 'Jeera Masala', tag: 'Carbonated', img: siteImages.jeera,       accent: 'bg-amber-700' },
+  { name: 'Salt Lemon',   tag: 'Carbonated', img: siteImages.saltLemon,   accent: 'bg-slate-500' },
+  { name: 'Mango 2',      tag: 'Juice',      img: siteImages.mango2,      accent: 'bg-orange-500' },
+  { name: 'Pineapple',    tag: 'Juice',      img: siteImages.pineapple,   accent: 'bg-yellow-500' },
 ]
 
 const stats = [
   { value: '15+',  label: 'Years of Taste',    icon: Award    },
-  { value: '12+',  label: 'Product Variants',  icon: Droplets },
+  { value: '16+',  label: 'Product Variants',  icon: Droplets },
   { value: '1M+',  label: 'Happy Customers',   icon: Star     },
   { value: '100%', label: 'Quality Assured',   icon: Leaf     },
 ]
@@ -78,10 +77,10 @@ const pillars = [
 ]
 
 const storyGrid = [
-  { src: '/images/products/company-overview.png', label: 'Our Factory',  bg: 'from-white to-white',    border: 'border-gray-200', imageClassName: 'object-cover object-center' },
-  { src: '/images/products/our_products.png',     label: 'Our Products', bg: 'from-white to-white',    border: 'border-gray-200', imageClassName: 'object-cover object-center' },
-  { src: '/images/story/team.jpg',                label: 'Our Team',     bg: 'from-sky-50 to-cyan-50', border: 'border-sky-100',  imageClassName: 'object-cover object-center' },
-  { src: '/images/story/community.jpg',           label: 'Community',    bg: 'from-rose-50 to-pink-50', border: 'border-rose-100', imageClassName: 'object-cover object-center' },
+  { src: siteImages.companyOverview,    label: 'Our Factory',  bg: 'from-white to-white',    border: 'border-gray-200', imageClassName: 'object-cover object-center' },
+  { src: siteImages.ourProducts,        label: 'Our Products', bg: 'from-white to-white',    border: 'border-gray-200', imageClassName: 'object-cover object-center' },
+  { src: '/images/story/team.jpg',      label: 'Our Team',     bg: 'from-sky-50 to-cyan-50', border: 'border-sky-100',  imageClassName: 'object-cover object-center' },
+  { src: '/images/story/community.jpg', label: 'Community',    bg: 'from-rose-50 to-pink-50', border: 'border-rose-100', imageClassName: 'object-cover object-center' },
 ]
 
 const ticker = ['Salt Lemon','Apple','Grapes','White Lemon','Green Lemon','Mango','Orange','Paneer Soda','Cola','Jeera Masala','Mango 2','Pineapple']
@@ -92,8 +91,8 @@ const brandSearchFaqs = [
     answer: 'Yes. Richi Food Products is the Tamil Nadu beverage manufacturer behind CILO Juice and our premium fruit juice and carbonated drink range.',
   },
   {
-    question: 'Is Richi Juice the same as CILO Juice?',
-    answer: 'Many customers search for Richi Juice when looking for the beverages made by Richi Food Products. CILO Juice is the flagship brand on the same company website.',
+    question: 'Is CILO Juice the signature beverage brand from Richi Food Products?',
+    answer: 'CILO Juice is the flagship beverage brand from Richi Food Products, offering premium fruit juices and carbonated drinks across South India.',
   },
   {
     question: 'Where is Richi Food Products located?',
@@ -103,7 +102,6 @@ const brandSearchFaqs = [
 
 // ─── UTILITY COMPONENTS ───────────────────────────────────────────────────────
 
-// Orb: skip on mobile entirely to avoid stacking blur-3xl compositing layers
 const Orb = ({ className, delay = 0 }) => {
   const shouldReduceMotion = prefersReducedMotion()
   const disableOrbs = shouldDisableOrbs()
@@ -111,10 +109,8 @@ const Orb = ({ className, delay = 0 }) => {
   return (
     <motion.div
       className={`absolute rounded-full blur-3xl pointer-events-none ${className}`}
-      // Use CSS animation instead of JS-driven values to stay off the main thread
       animate={shouldReduceMotion ? {} : { scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
       transition={shouldReduceMotion ? {} : { duration: 6 + delay, repeat: Infinity, ease: 'easeInOut', delay }}
-      // Force GPU layer so blur doesn't trigger layout
       style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
     />
   )
@@ -167,8 +163,6 @@ const StoryGridCard = memo(function StoryGridCard({ item, index, isMobile }) {
 })
 
 // ─── TICKER ───────────────────────────────────────────────────────────────────
-// FIX: use CSS animation instead of Framer Motion JS-driven x-translate.
-// CSS animations run on the compositor thread → no JS involvement per frame.
 function Ticker() {
   const shouldReduceMotion = prefersReducedMotion()
   return (
@@ -176,10 +170,8 @@ function Ticker() {
       <div
         className="flex gap-14 w-max"
         style={shouldReduceMotion ? {} : {
-          // Pure CSS keyframe animation — compositor-thread only, zero JS per frame
           animation: 'ticker-scroll 24s linear infinite',
           willChange: 'transform',
-          // Force GPU compositing layer
           transform: 'translateZ(0)',
         }}
       >
@@ -190,7 +182,6 @@ function Ticker() {
           </span>
         ))}
       </div>
-      {/* Inject keyframe once via a style tag — avoids adding a global CSS file */}
       <style>{`
         @keyframes ticker-scroll {
           from { transform: translateX(0); }
@@ -205,11 +196,6 @@ function Ticker() {
 }
 
 // ─── ROTATING HERO CARDS ──────────────────────────────────────────────────────
-// FIXES:
-// 1. Store angle in a ref — no React re-render per frame.
-// 2. Write transforms directly to DOM via ref map.
-// 3. On mobile: reduce N (fewer cards) to cut draw calls.
-// 4. Use transform: translate3d() to keep everything on GPU.
 function RotatingHeroCards({ isMobile }) {
   const N = heroCards.length
   const containerRef = useRef(null)
@@ -327,16 +313,225 @@ function RotatingHeroCards({ isMobile }) {
   )
 }
 
-// ─── PRODUCT CARD ─────────────────────────────────────────────────────────────
-// FIXES:
-// 1. Guard window.innerWidth with a safe default (false) for SSR safety.
-// 2. Disable whileInView on mobile to prevent intersection observer overhead × 12 cards.
-// 3. Simplify hover animations on mobile (no lift effect).
+// ─── PRODUCT POPUP MODAL ──────────────────────────────────────────────────────
+function ProductPopup({ image, onClose }) {
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <AnimatePresence>
+      {image && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-8"
+          onClick={onClose}
+        >
+          {/* Blurred backdrop */}
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+
+          {/* Modal card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 30 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col sm:flex-row max-w-2xl w-full max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Image area */}
+            <div className="flex-1 min-h-[280px] sm:min-h-0 bg-gradient-to-br from-[#FFF8F0] via-[#FFF3E8] to-[#FFE8D0] flex items-center justify-center p-8 sm:p-12 relative">
+              {/* Subtle radial glow */}
+              <div className="absolute inset-0 pointer-events-none"
+                style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(249,115,22,0.08) 0%, transparent 70%)' }} />
+              <motion.img
+                src={image.src}
+                alt={image.name}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 max-h-64 sm:max-h-80 w-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
+              />
+            </div>
+
+            {/* Info area */}
+            <div className="sm:w-64 flex flex-col justify-center p-6 sm:p-8 bg-white">
+              <span className="inline-block rounded-lg bg-[#F97316] px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white mb-3 w-fit">
+                {image.tag}
+              </span>
+              <h3
+                className="text-2xl sm:text-3xl font-black text-gray-900 mb-2 leading-tight"
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
+              >
+                {image.name}
+              </h3>
+              <p className="text-sm text-gray-400 mb-6">{image.code}</p>
+              <div className="h-px bg-gray-100 mb-6" />
+              <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                Crafted with premium quality ingredients for a refreshing taste experience. Available across South India.
+              </p>
+              <Link
+                to="/products"
+                onClick={onClose}
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[#F97316] text-white text-sm font-bold rounded-full hover:bg-[#E8630A] transition-colors duration-200"
+              >
+                View All Products <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            {/* Close button */}
+            <button
+              onClick={onClose}
+              aria-label="Close"
+              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/10 hover:bg-black/20 flex items-center justify-center transition-colors duration-200"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <line x1="1" y1="1" x2="13" y2="13" />
+                <line x1="13" y1="1" x2="1" y2="13" />
+              </svg>
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+function HoverExpand_001({ images, className }) {
+  const [activeImage, setActiveImage] = useState(1)
+  const [popupImage, setPopupImage]   = useState(null)
+
+  return (
+    <>
+      {popupImage && (
+        <ProductPopup image={popupImage} onClose={() => setPopupImage(null)} />
+      )}
+
+      <motion.div
+        initial={{ opacity: 0, translateY: 20 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+        className={`relative w-full max-w-6xl px-2 sm:px-5 ${className ?? ''}`}
+      >
+        <p className="text-center text-xs text-stone-400 mb-3 tracking-wide select-none">
+          Hover to expand · Click to preview
+        </p>
+
+        <div className="flex w-full items-stretch justify-center gap-1">
+          {images.map((image, index) => {
+            const isActive = activeImage === index
+            return (
+              <motion.div
+                key={index}
+                className="relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl flex flex-col"
+                animate={{
+                  width:  isActive ? '22rem' : '4.5rem',
+                  height: '22rem',
+                }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                onHoverStart={() => setActiveImage(index)}
+                onClick={() => setPopupImage(image)}
+              >
+                {/* ── Background ── */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: '#ffffff',
+                  }}
+                />
+
+
+
+
+
+                {/*
+                  ── BOTTLE IMAGE ──
+                  flex-1 + min-h-0 lets this div shrink below its natural size.
+                  The img uses max-h-full + object-contain → full bottle always fits,
+                  never cropped, never overflows into the label area below.
+                */}
+                <div
+                  className="relative z-10 flex-1 flex items-center justify-center overflow-hidden"
+                  style={{ minHeight: 0, padding: isActive ? '0.75rem 0.75rem 0' : '0.4rem 0.3rem' }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="max-h-full max-w-full object-contain"
+                    style={{ display: 'block' }}
+                  />
+                </div>
+
+                {/*
+                  ── ACTIVE LABEL ──
+                  shrink-0 means it never shrinks → image section absorbs all remaining height.
+                  Fixed height so bottle always gets the rest of the 22rem.
+                */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.2 }}
+                      className="relative z-20 shrink-0 flex flex-col items-start justify-center px-4 py-3 bg-white border-t border-gray-100"
+                      style={{ height: '4.5rem' }}
+                    >
+                      <span className="inline-block rounded-md bg-[#F97316] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white mb-1">
+                        {image.tag}
+                      </span>
+                      <p
+                        className="text-sm font-black text-gray-900 leading-tight"
+                        style={{ fontFamily: "'Fredoka','Outfit',sans-serif" }}
+                      >
+                        {image.name}
+                      </p>
+                      <p className="text-[9px] text-gray-400 mt-0.5">{image.code} · click to preview</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* ── INACTIVE: vertical name label ── */}
+                <AnimatePresence>
+                  {!isActive && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+                    >
+                      <p
+                        className="text-[9px] font-bold text-stone-400 uppercase tracking-widest select-none"
+                        style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+                      >
+                        {image.name}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            )
+          })}
+        </div>
+      </motion.div>
+    </>
+  )
+}
+
+
+
+// ─── PRODUCT CARD (mobile fallback) ───────────────────────────────────────────
 const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
   const [hovered, setHovered] = useState(false)
 
-  // On mobile: no entry animation (viewport observer fires for every card → jank)
-  // On desktop: keep the original staggered entrance
   const motionProps = isMobile
     ? {}
     : {
@@ -359,7 +554,6 @@ const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
         className="relative flex flex-col overflow-hidden rounded-2xl border border-stone-200/90 bg-white shadow-md transition-shadow duration-300 group-hover:shadow-lg group-hover:border-stone-300/90"
         style={{ aspectRatio: '5 / 6' }}
       >
-        {/* Same studio-style backdrop for every card — reads more premium than mixed pack shots */}
         <div
           className="relative flex flex-1 min-h-0 flex-col items-center justify-center overflow-hidden
             bg-linear-to-b from-[#FAFAF9] via-[#FFF8F3] to-white"
@@ -371,9 +565,7 @@ const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
             }}
           />
           <div className={`absolute left-0 top-0 bottom-0 w-1 ${product.accent} opacity-90`} aria-hidden />
-          <span
-            className="absolute left-3 top-3 z-20 inline-flex items-center rounded-md border border-stone-200/90 bg-white/95 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#57534E] shadow-sm backdrop-blur-sm"
-          >
+          <span className="absolute left-3 top-3 z-20 inline-flex items-center rounded-md border border-stone-200/90 bg-white/95 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#57534E] shadow-sm backdrop-blur-sm">
             {product.tag}
           </span>
           <ZigZagImage
@@ -400,146 +592,29 @@ const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
   )
 })
 
-// ─── PRODUCT CAROUSEL ─────────────────────────────────────────────────────────
-// FIXES:
-// 1. Accept isMobile as prop instead of re-running window check each render.
-// 2. Pass isMobile down to ProductCard so it can simplify animations.
-// 3. Reduce card re-mount churn: use stable keys based on product name.
-// 4. Throttle autoplay interval to avoid forcing JS work during touch scrolling.
-function ProductCarousel({ products, isMobile }) {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const shouldReduceMotion = prefersReducedMotion()
-  // Show 2 cards on mobile so each is legible; 4 on desktop
-  const CARDS_TO_SHOW = isMobile ? 2 : 4
-
-  const getVisibleProducts = useCallback(() => {
-    const visible = []
-    for (let i = 0; i < CARDS_TO_SHOW; i++) {
-      visible.push(products[(currentIndex + i) % products.length])
-    }
-    return visible
-  }, [currentIndex, products, CARDS_TO_SHOW])
-
-  const handleNext = useCallback(() => setCurrentIndex(prev => (prev + 1) % products.length), [products.length])
-  const handlePrev = useCallback(() => setCurrentIndex(prev => (prev - 1 + products.length) % products.length), [products.length])
-
-  useEffect(() => {
-    if (shouldReduceMotion) return
-    const interval = setInterval(handleNext, isMobile ? 7000 : 5000)
-    return () => clearInterval(interval)
-  }, [shouldReduceMotion, isMobile, handleNext])
-
-  const visibleProducts = getVisibleProducts()
-
-  // On mobile: show compact page-style dots (prev • current • next) instead of 12 individual dots
-  const totalPages = Math.ceil(products.length / CARDS_TO_SHOW)
-  const currentPage = Math.floor(currentIndex / CARDS_TO_SHOW)
-
-  return (
-    <div className="relative w-full">
-      <div className="relative overflow-hidden py-8">
-        <motion.div className="flex gap-3 sm:gap-5 justify-center items-center">
-          {visibleProducts.map((product, idx) => (
-            <motion.div
-              key={product.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: isMobile ? 0.3 : 0.5, delay: idx * (isMobile ? 0.04 : 0.08) }}
-              className="shrink-0"
-              style={{ width: isMobile ? 'calc(50% - 6px)' : '220px', maxWidth: isMobile ? '160px' : '220px' }}
-            >
-              <ProductCard product={product} idx={idx} isMobile={isMobile} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      <div className="mt-6 flex w-full items-center gap-2 px-3 sm:mt-8 sm:justify-center sm:gap-6">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handlePrev}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#F97316] bg-white text-[#F97316] shadow-lg transition-all duration-300 hover:bg-[#FFF8EE] sm:h-12 sm:w-12"
-          aria-label="Previous products"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-        </motion.button>
-
-        {/* Mobile: page-style dots. Desktop: individual dots */}
-        <div className="flex min-w-0 flex-1 items-center justify-center gap-1 overflow-x-auto px-1 sm:flex-none sm:gap-2 sm:overflow-visible">
-          {isMobile
-            ? Array.from({ length: totalPages }).map((_, idx) => (
-                <motion.button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx * CARDS_TO_SHOW)}
-                  className={`h-2 shrink-0 rounded-full transition-all duration-300 ${idx === currentPage ? 'w-6 bg-[#F97316] sm:w-8' : 'w-2 bg-[#F97316]/30'}`}
-                  aria-label={`Go to page ${idx + 1}`}
-                />
-              ))
-            : products.map((_, idx) => (
-                <motion.button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-[#F97316] w-8' : 'bg-[#F97316]/30 w-2'}`}
-                  whileHover={{ scale: 1.2 }}
-                  aria-label={`Go to product ${idx + 1}`}
-                />
-              ))
-          }
-        </div>
-
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleNext}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-[#F97316] to-[#A8430F] text-white shadow-lg transition-all duration-300 hover:shadow-lg sm:h-12 sm:w-12"
-          aria-label="Next products"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </motion.button>
-      </div>
-    </div>
-  )
-}
-
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 export default function Home() {
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
 
-  // FIXES:
-  // 1. On mobile: disable parallax scroll transforms entirely.
-  //    Parallax forces layout recalc on every scroll tick → the #1 cause of janky scrolling.
-  // 2. Use `useTransform` with identity values on mobile so the hook still runs
-  //    but does nothing, avoiding conditional hook errors.
-  const textY          = useTransform(scrollYProgress, [0, 1],    ['0%', '-18%'])
-  const textOpacity    = useTransform(scrollYProgress, [0, 0.55], [1, 0])
-  const cardsY         = useTransform(scrollYProgress, [0, 1],    ['0%', '12%'])
+  const textY        = useTransform(scrollYProgress, [0, 1],    ['0%', '-18%'])
+  const textOpacity  = useTransform(scrollYProgress, [0, 0.55], [1, 0])
+  const cardsY       = useTransform(scrollYProgress, [0, 1],    ['0%', '12%'])
 
-  const [isMobile, setIsMobile]   = useState(false)
-  const shouldReduceMotion        = prefersReducedMotion()
+  const [isMobile, setIsMobile] = useState(false)
+  const shouldReduceMotion      = prefersReducedMotion()
 
-  // Initialise from window on mount so there's no flash of wrong layout
   useEffect(() => {
-    const handleResize = () => {
-      const w = window.innerWidth
-      setIsMobile(w < 768)
-    }
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
     handleResize()
-    // Passive listener — never blocks scroll events
     window.addEventListener('resize', handleResize, { passive: true })
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // On mobile: skip parallax motion styles to avoid per-scroll recalcs
-  const parallaxTextStyle    = isMobile ? {} : { y: textY, opacity: textOpacity }
-  const parallaxCardsStyle   = isMobile ? { position: 'relative', left: '50%', marginLeft: '-50vw', width: '100vw' }
-                                        : { y: cardsY, position: 'relative', left: '50%', marginLeft: '-50vw', width: '100vw' }
+  const parallaxTextStyle  = isMobile ? {} : { y: textY, opacity: textOpacity }
+  const parallaxCardsStyle = isMobile
+    ? { position: 'relative', left: '50%', marginLeft: '-50vw', width: '100vw' }
+    : { y: cardsY, position: 'relative', left: '50%', marginLeft: '-50vw', width: '100vw' }
 
   const seo = PAGE_SEO.home
   const schema = [
@@ -566,13 +641,10 @@ export default function Home() {
       >
         <div className="absolute inset-0 pointer-events-none bg-pattern-leaf bg-pattern-opacity-55" />
 
-        {/* Orbs hidden on mobile (<480px) via shouldDisableOrbs */}
         <Orb className="w-150 h-150 bg-[#F9D4C0]/30 -top-32 -right-48" delay={0} />
         <Orb className="w-100 h-100 bg-yellow-200/15 top-1/2 -left-32"  delay={2} />
         <Orb className="w-75 h-75 bg-cyan-200/15   bottom-32 right-1/4" delay={1} />
 
-        {/* Breadcrumb */}
-        {/* Text content — no parallax on mobile */}
         <motion.div
           style={parallaxTextStyle}
           className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 pb-0"
@@ -587,8 +659,8 @@ export default function Home() {
               as="h1"
               textLeft="CILO Juice"
               textRight="crafted by Richi Food Products"
-              className="text-[2.9rem] sm:text-[4.4rem] md:text-[5.75rem] lg:text-[6.6rem] font-black leading-[0.95] tracking-[-0.04em] text-[#2D1608]"
-              rightClassName="text-[#F97316] text-[1.08em] sm:pl-4 md:pl-8"
+              className="text-[2.9rem] sm:text-[4.25rem] md:text-[5.45rem] lg:text-[6.2rem] font-bold leading-[0.98] tracking-[-0.03em] text-[#2D1608]"
+              rightClassName="text-[#F97316] text-[1.03em] sm:pl-4 md:pl-8"
             />
           </motion.div>
 
@@ -628,10 +700,7 @@ export default function Home() {
         </motion.div>
 
         {/* Scroll-reveal hero cards */}
-        <motion.div
-          style={parallaxCardsStyle}
-          className="z-10 mt-2"
-        >
+        <motion.div style={parallaxCardsStyle} className="z-10 mt-2">
           <RotatingHeroCards isMobile={isMobile} />
         </motion.div>
 
@@ -656,9 +725,8 @@ export default function Home() {
       {/* ══════════ TICKER ══════════ */}
       <Ticker />
 
-      {/* ══════════ PRODUCTS GRID ══════════ */}
+      {/* ══════════ PRODUCTS — HOVER EXPAND ══════════ */}
       <section className="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-white relative overflow-hidden">
-        {/* Decorative blur — skip paint on mobile */}
         {!isMobile && (
           <div className="absolute top-0 right-0 w-96 h-96 bg-gray-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         )}
@@ -667,7 +735,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-10 sm:mb-14"
           >
             <span className="inline-block px-4 py-1.5 bg-white text-[#7A4A2A] rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-gray-200">
               Our Collection
@@ -677,9 +745,9 @@ export default function Home() {
                 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight"
                 style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
-                Discover the extensive assortment
+                Refreshing taste for
                 <br />
-                <span className="text-[#F97316]">of beverages we offer</span>
+                <span className="text-[#F97316]">New generation</span>
               </h2>
               <Link to="/products" className="flex items-center gap-2 text-[#F97316] font-semibold hover:gap-3 transition-all duration-200 shrink-0">
                 View all products <ArrowRight size={18} />
@@ -687,9 +755,30 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="flex justify-center">
-            <ProductCarousel products={products} isMobile={isMobile} />
-          </div>
+          {/* Desktop: hover-expand accordion */}
+          {!isMobile && (
+            <div className="flex justify-center">
+              <HoverExpand_001
+                className=""
+                images={products.map((p, i) => ({
+                  src:  p.img,
+                  alt:  p.name,
+                  name: p.name,
+                  tag:  p.tag,
+                  code: `# ${String(i + 1).padStart(2, '0')}`,
+                }))}
+              />
+            </div>
+          )}
+
+          {/* Mobile: 2-col grid fallback */}
+          {isMobile && (
+            <div className="grid grid-cols-2 gap-3">
+              {products.map((product, idx) => (
+                <ProductCard key={product.name} product={product} idx={idx} isMobile={true} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -712,7 +801,6 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              // Disable hover lift on mobile (no hover on touch)
               whileHover={isMobile ? {} : { y: -8, scale: 1.03 }}
               className="group cursor-pointer text-center relative"
             >
@@ -754,13 +842,13 @@ export default function Home() {
             <MultiDirectionSlideText
               as="h2"
               textLeft="Refreshing taste buds"
-              textRight="since 2008"
+              textRight="2024 marked our beginning excellence drives our journey"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5 sm:mb-6"
               rightClassName="text-[#F97316]"
             />
             <p className="text-gray-500 leading-relaxed text-base sm:text-lg mb-7 sm:mb-8">
               Based in Tamil Nadu, Richi Food Products crafts premium, refreshing beverages with
-              absolute care and passion. Our signature CILO Juice and Richi Juice ranges are made using
+              absolute care and passion. Our signature CILO Juice range is made using
               high-quality ingredients, bringing authentic taste and delight to families, retailers, and distributors across South India.
             </p>
             <Link
@@ -800,14 +888,14 @@ export default function Home() {
             <MultiDirectionSlideText
               as="h2"
               textLeft="Looking for Richi Food Products,"
-              textRight="Richi Juice, or CILO Juice?"
+              textRight="CILO Juice?"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 sm:mb-5"
               rightClassName="text-[#F97316]"
             />
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
               They all lead back to the same Tamil Nadu manufacturer. CILO Juice is the flagship
-              beverage line from Richi Food Products, and many customers refer to the range as
-              Richi Juice when searching online.
+              beverage line from Richi Food Products, trusted for refreshing flavors and reliable
+              quality across South India.
             </p>
           </motion.div>
 
@@ -845,6 +933,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══════════ COMMITMENT (PILLARS) ══════════ */}
       <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-white relative overflow-hidden">
         <Orb className="w-150 h-150 bg-[#F97316]/6 top-1/2 left-1/4 -translate-y-1/2" delay={0} />
         <Orb className="w-125 h-125 bg-[#F97316]/5 -bottom-32 right-1/4"               delay={2} />
@@ -898,72 +987,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════ CSR ══════════ */}
-      <section className="hidden py-32 px-6 md:px-12 lg:px-20 bg-linear-to-b from-gray-50 via-white to-white relative overflow-hidden">
-        <Orb className="w-150 h-150 bg-[#F97316]/7 -top-40 -right-48" delay={0} />
-        <Orb className="w-100 h-100 bg-[#F97316]/5 bottom-10 -left-32" delay={1} />
-
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-100px' }}
-            // Skip the rotation on mobile — rotate triggers layout recalc
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-3xl overflow-hidden aspect-4/3 bg-linear-to-br from-gray-100 to-gray-200 border-2 border-gray-200 group shadow-2xl"
-          >
-            <div className="absolute inset-0 bg-linear-to-br from-[#F97316]/10 via-transparent to-[#F97316]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
-            <ZigZagImage
-              src="/images/csr/csr-banner.jpg"
-              alt="CSR Initiative"
-              index={0}
-              className="w-full h-full object-contain"
-              onError={e => { e.target.style.display = 'none' }}
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 pointer-events-none">
-              <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F97316" strokeWidth="1.5">
-                  <rect x="3" y="3" width="18" height="18" rx="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="M21 15l-5-5L5 21" />
-                </svg>
-              </div>
-              <p className="text-[#F97316] font-bold text-sm tracking-widest uppercase">CSR Image</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: isMobile ? 0 : 50, y: isMobile ? 20 : 0 }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <span className="inline-block px-4 py-1.5 bg-[#FFF8EE] text-[#F97316] rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-[#FFD9A8] shadow-sm">
-              Corporate Social Responsibility
-            </span>
-            <MultiDirectionSlideText
-              as="h2"
-              textLeft="We manufacture delicious drinks"
-              textRight="with conscience"
-              className="text-4xl md:text-5xl font-black text-gray-900 mb-6"
-              rightClassName="text-[#F97316]"
-            />
-            <p className="text-gray-500 text-lg mb-10 leading-relaxed">
-              Our sustainable practices, community investments, and environmental stewardship
-              shape a brighter future for everyone in Tamil Nadu and beyond.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-[#F97316] to-[#A8430F] text-white font-bold rounded-full hover:shadow-xl hover:shadow-[#F97316]/30 transition-all duration-300"
-            >
-              Contact Us <ArrowRight size={16} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ══════════ DEALERSHIP CTA ══════════ */}
       <section className="py-18 sm:py-24 lg:py-32 px-4 sm:px-6 md:px-10 lg:px-16 bg-linear-to-br from-gray-900 via-gray-900 to-[#1A0C04] relative overflow-hidden">
         <Orb className="w-175 h-175 bg-[#F97316]/15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" delay={0} />
@@ -985,7 +1008,6 @@ export default function Home() {
           >
             <motion.div
               className="text-4xl sm:text-5xl md:text-6xl mb-6 sm:mb-8 inline-block"
-              // Skip wiggle on mobile — rotate causes layout jank
               whileInView={isMobile ? {} : { rotate: [0, 10, -10, 0] }}
               transition={{ delay: 0.3, duration: 1.2 }}
             >
@@ -1052,4 +1074,3 @@ export default function Home() {
     </PageWrapper>
   )
 }
-

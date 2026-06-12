@@ -8,9 +8,8 @@ import {
 } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
 import ZigZagImage from '../components/ZigZagImage'
+import { siteImages } from '../assets/siteImages.js'
 import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
-import heroPicFlavours1 from '../../pic assets/FLAVOURS 1.png'
-import heroPicFlavours2 from '../../pic assets/flavours 2.png'
 
 /* ══════════════════════════════════════════════════════════
    DATA
@@ -18,8 +17,8 @@ import heroPicFlavours2 from '../../pic assets/flavours 2.png'
 
 // Hero flavour images — real product lineup shots
 const heroFlavours = [
-  { img: heroPicFlavours1, alt: 'Cilo carbonated and soda lineup' },
-  { img: heroPicFlavours2, alt: 'Cilo juice and beverage lineup'  },
+  { img: siteImages.flavours1, alt: 'Cilo carbonated and soda lineup' },
+  { img: siteImages.flavours2, alt: 'Cilo juice and beverage lineup'  },
 ]
 
 const timeline = [
@@ -58,8 +57,8 @@ const labPoints = [
   'RO Water Treatment for pure, consistent water quality.',
   'Blending & Mixing Units for precise formulation.',
   'Pasteurization System ensuring product safety.',
-  'CO₂ Carbonation for consistent carbonated beverages.',
-  'PET Bottle Filling Line with automated quality checks.',
+  'Inspection systems for precise and consistent production control.',
+  'Automated PET bottle filling with quality inspection systems.',
   'Dedicated QC Laboratory monitoring every batch.',
   'Cold Storage Facility preserving freshness.',
 ]
@@ -104,19 +103,22 @@ function useWindowWidth() {
 
 /* ══════════════════════════════════════════════════════════
    ORB
-   FIX: add willChange + translateZ(0) so the blur is promoted
-   to its own GPU compositor layer, preventing it from dirtying
-   the main layer during the scale/opacity animation.
+   FIX: Removed infinite animations. Use CSS keyframes instead
+   of JS-driven animations to reduce CPU/GPU load.
 ══════════════════════════════════════════════════════════ */
 const Orb = memo(({ className, delay = 0 }) => {
   if (shouldDisableOrbs()) return null
   const reduced = prefersReducedMotion()
+  if (reduced) return null
   return (
     <motion.div
       className={`absolute rounded-full blur-3xl pointer-events-none ${className}`}
-      animate={reduced ? {} : { scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
-      transition={reduced ? {} : { duration: 7 + delay, repeat: Infinity, ease: 'easeInOut', delay }}
-      style={{ willChange: 'transform, opacity', transform: 'translateZ(0)' }}
+      style={{ 
+        willChange: 'transform, opacity', 
+        transform: 'translateZ(0)',
+        animation: 'orb-float 12s ease-in-out infinite',
+        animationDelay: `${delay}s`
+      }}
     />
   )
 })
@@ -125,8 +127,9 @@ const Orb = memo(({ className, delay = 0 }) => {
    IMG BOX
    FIX: add loading="lazy" + decoding="async" so images decode
    off the main thread and don't block paint during scroll.
+   Memoized to prevent unnecessary re-renders.
 ══════════════════════════════════════════════════════════ */
-function ImgBox({ src, alt = '', className = '', objectFit = 'object-cover', label = 'Add Image', rounded = 'rounded-2xl', aspect }) {
+const ImgBox = memo(function ImgBox({ src, alt = '', className = '', objectFit = 'object-cover', label = 'Add Image', rounded = 'rounded-2xl', aspect }) {
   return (
     <div className={`relative overflow-hidden ${rounded} ${aspect} ${className} bg-gradient-to-br from-white to-gray-50 border-2 border-dashed border-gray-200`}>
       <ZigZagImage
@@ -148,7 +151,7 @@ function ImgBox({ src, alt = '', className = '', objectFit = 'object-cover', lab
       </div>
     </div>
   )
-}
+})
 
 /* ══════════════════════════════════════════════════════════
    ABOUT PAGE
@@ -179,12 +182,12 @@ export default function About() {
   // the element starts outside the viewport's overflow. Replace with a simple
   // fade (opacity only) which is compositor-only and causes zero layout work.
   const slideLeft  = isMobile
-    ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: { once: true }, transition: { duration: 0.6 } }
-    : { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 0.8 } }
+    ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: { once: true, margin: '50px' }, transition: { duration: 0.6 } }
+    : { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, margin: '100px' }, transition: { duration: 0.8 } }
 
   const slideRight = isMobile
-    ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: { once: true }, transition: { duration: 0.6 } }
-    : { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition: { duration: 0.8 } }
+    ? { initial: { opacity: 0 }, whileInView: { opacity: 1 }, viewport: { once: true, margin: '50px' }, transition: { duration: 0.6 } }
+    : { initial: { opacity: 0, x: 40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, margin: '100px' }, transition: { duration: 0.8 } }
 
   const seo = PAGE_SEO.about
   const schema = buildBreadcrumbSchema([
@@ -249,7 +252,7 @@ export default function About() {
                   index={0}
                   className="absolute inset-0 h-full w-full object-cover"
                   onError={e => { e.target.style.display = 'none' }}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                 />
               </div>
@@ -271,7 +274,7 @@ export default function About() {
               >
                 Richi Food Products
                 <br />
-                <span className="text-[#F97316]">CILO Juice & Richi Juice</span>
+                <span className="text-[#F97316]">CILO Juice</span>
               </h1>
               <p className="text-[#4A2800]/60 max-w-xl mx-auto leading-relaxed text-lg mb-4">
                 Born in Krishnagari District, Tamil Nadu — a modern beverage manufacturer specialising in
@@ -296,7 +299,7 @@ export default function About() {
                   index={1}
                   className="absolute inset-0 h-full w-full object-cover"
                   onError={e => { e.target.style.display = 'none' }}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                 />
               </div>
@@ -320,7 +323,7 @@ export default function About() {
             >
               Richi Food Products
               <br />
-              <span className="text-[#F97316]">CILO Juice & Richi Juice</span>
+              <span className="text-[#F97316]">CILO Juice</span>
             </h1>
             <p className="text-[#4A2800]/60 leading-relaxed text-base mb-3">
               Born in Krishnagari District, Tamil Nadu — a modern beverage manufacturer for B2B partners across South India.
@@ -356,8 +359,12 @@ export default function About() {
             0%, 100% { transform: translateY(0px);    }
             50%       { transform: translateY(-10px);  }
           }
+          @keyframes orb-float {
+            0%, 100% { transform: translateZ(0) scale(1) translateY(0);    }
+            50%       { transform: translateZ(0) scale(1.08) translateY(-8px);  }
+          }
           @media (prefers-reduced-motion: reduce) {
-            [style*="float-card"] { animation: none !important; }
+            [style*="float-card"], [style*="orb-float"] { animation: none !important; }
           }
         `}</style>
 
@@ -389,7 +396,8 @@ export default function About() {
             </p>
             <p className="text-gray-500 leading-relaxed mb-8">
               Our state-of-the-art facility equipped with RO Water systems, Blending, Filtration,
-              Pasteurisation, CO₂ Carbonation, Bottling, QC Lab, and Cold Storage ensures every
+              Pasteurisation, inspection systems, automated PET bottle filling with quality inspection systems,
+              QC Lab, and Cold Storage ensures every
               product meets the highest standards.
             </p>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -590,8 +598,8 @@ export default function About() {
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  viewport={{ once: true, margin: '50px' }}
+                  transition={{ delay: Math.min(i * 0.05, 0.12) }}
                   // FIX: disable whileHover lift on mobile — touch devices fire hover on tap,
                   // causing a brief layout shift before the next tap interaction.
                   whileHover={isMobile ? {} : { y: -12, scale: 1.02 }}
@@ -746,7 +754,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: isMobile ? i * 0.04 : i * 0.08 }}
+                transition={{ delay: Math.min(i * 0.05, 0.15) }}
                 whileHover={isMobile ? {} : { y: -8, scale: 1.02 }}
                 className={`bg-white rounded-3xl border border-[#FFF8EE] shadow-sm hover:shadow-xl
                   transition-all duration-300
@@ -798,7 +806,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
+                transition={{ delay: i * 0.1 }}
                 whileHover={isMobile ? {} : { y: -8 }}
                 className="border border-[#FFD9A8] rounded-3xl p-8 hover:shadow-xl transition-all duration-300 group"
               >
@@ -897,8 +905,8 @@ export default function About() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true, margin: '50px' }}
+                transition={{ delay: i * 0.08 }}
                 whileHover={isMobile ? {} : { y: -6 }}
                 className="bg-white rounded-3xl border-2 border-[#FFD9A8] p-8 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col items-center text-center"
               >

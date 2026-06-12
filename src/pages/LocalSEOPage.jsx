@@ -5,6 +5,7 @@ import { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
 import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import ZigZagImage from '../components/ZigZagImage'
+import { siteImages } from '../assets/siteImages.js'
 import { buildBreadcrumbSchema, buildFAQSchema, buildLocalBusinessSchema, SITE } from '../seo/seoConfig'
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -28,7 +29,7 @@ const pageData = {
     intro: `When it comes to premium, refreshing juice in Krishnagiri, nothing comes close to CILO. Manufactured right in Krishnagiri District at our state-of-the-art facility in Karagur Village, CILO is more than just a beverage — it's a taste of local pride.`,
     body: `From our farm-sourced Mango Juice to our unique Paneer Soda and Jeera Masala, every bottle is crafted with care, without artificial preservatives, and with full FSSAI certification. With 12+ flavors available in 200ml, 500ml, 1L, and 2L sizes, there's a CILO for every occasion in Krishnagiri.`,
     highlight: 'Manufactured in Krishnagiri',
-    image: '/images/products/mango.png',
+    image: siteImages.mango,
     features: [
       { icon: Leaf, label: '100% Natural Ingredients' },
       { icon: Award, label: 'FSSAI Certified Quality' },
@@ -51,7 +52,7 @@ const pageData = {
     intro: `Hosur residents know the importance of staying fresh and hydrated in the city's dynamic climate. CILO's premium range of natural fruit juices and refreshing beverages is the ideal companion for every moment of your day.`,
     body: `Just 30 minutes from our Krishnagiri manufacturing facility, CILO delivers unmatched freshness to Hosur. Our beverages are made from real fruit concentrates, with no artificial preservatives, and are FSSAI certified for your safety and confidence.`,
     highlight: '30 mins from our factory',
-    image: '/images/products/apple.png',
+    image: siteImages.apple,
     features: [
       { icon: Leaf, label: 'No Artificial Preservatives' },
       { icon: Award, label: 'FSSAI & GST Certified' },
@@ -73,7 +74,7 @@ const pageData = {
     intro: `Across the length and breadth of Tamil Nadu, health-conscious consumers are choosing CILO as their preferred juice brand. Made with natural ingredients, no artificial preservatives, and full FSSAI certification, CILO is Tamil Nadu's emerging premium beverage leader.`,
     body: `From Krishnagiri in the north to Chennai on the coast, CILO's distribution network continues to grow. Our 100 KL/day manufacturing capacity ensures that every corner of Tamil Nadu can enjoy fresh, premium quality beverages at competitive prices.`,
     highlight: 'Pan Tamil Nadu brand',
-    image: '/images/products/pineapple.png',
+    image: siteImages.pineapple,
     features: [
       { icon: Leaf, label: 'All Natural, No Preservatives' },
       { icon: Award, label: 'Government FSSAI Certified' },
@@ -95,7 +96,7 @@ const pageData = {
     intro: `Dharmapuri deserves premium quality. CILO's naturally crafted fruit juices and refreshing beverages bring the best of Tamil Nadu's produce to your table — fresh, healthy, and delicious.`,
     body: `As a neighbor to Krishnagiri, Dharmapuri enjoys close proximity to our manufacturing facility, ensuring every CILO bottle reaches you at peak freshness. With 12+ flavors, FSSAI certification, and competitive pricing, CILO is the premium choice for Dharmapuri.`,
     highlight: 'Close to Dharmapuri',
-    image: '/images/products/orange.png',
+    image: siteImages.orange,
     features: [
       { icon: Leaf, label: 'Farm-Fresh Ingredients' },
       { icon: Award, label: 'FSSAI Certified' },
@@ -116,7 +117,7 @@ const pageData = {
     intro: `Krishnagiri summers are intense — and nothing beats the heat quite like a premium CILO juice. Crafted for the Tamil Nadu climate, our range of cooling, refreshing beverages is exactly what you need to stay cool and energized.`,
     body: `From our thirst-quenching Mango Juice to our unique Jeera Masala and cooling Green Lemon, CILO has the perfect summer companion for every Krishnagiri resident. All beverages are FSSAI certified, naturally made, and available at affordable prices.`,
     highlight: 'Perfect for Krishnagiri summers',
-    image: '/images/products/mango.png',
+    image: siteImages.mango,
     features: [
       { icon: Droplets, label: 'Ultra Refreshing' },
       { icon: Leaf, label: 'Natural Cooling Ingredients' },
@@ -137,7 +138,7 @@ const pageData = {
     intro: `The premium beverage market in Krishnagiri is growing fast — and CILO is at the forefront. If you're looking to build a profitable business distributing or retailing quality juice products in Krishnagiri, CILO is the right partner.`,
     body: `With a well-established brand, 12+ flavors, FSSAI certification, and a manufacturing facility right in Krishnagiri, CILO offers one of the best dealership opportunities in the Tamil Nadu FMCG sector. Enjoy competitive margins, marketing support, and a dedicated regional team.`,
     highlight: 'Dealership opportunity',
-    image: '/images/products/flavours_1.png',
+    image: siteImages.flavours1,
     features: [
       { icon: Award, label: 'Attractive Trade Margins' },
       { icon: Leaf, label: 'Strong Brand Support' },
