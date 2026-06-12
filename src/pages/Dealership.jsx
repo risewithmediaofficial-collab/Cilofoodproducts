@@ -151,7 +151,7 @@ export default function Dealership() {
 
       {/* ══════════ 1. HERO ══════════ */}
       <section
-        className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 overflow-hidden"
+        className="relative pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 overflow-hidden"
         style={{
           background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)',
           // Isolate section repaints; prevents ancestor reflows on child updates
@@ -197,7 +197,7 @@ export default function Dealership() {
               <h1
                 className="font-black leading-tight text-[#1A0C04] mb-5 sm:mb-6"
                 style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontFamily: "'Fredoka', 'Outfit', sans-serif",
                   fontSize: 'clamp(2rem, 6vw, 4.5rem)',
                 }}
               >
@@ -439,7 +439,7 @@ export default function Dealership() {
           >
             <h2
               className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 leading-tight"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               Ready to Partner with Us?
             </h2>
@@ -462,3 +462,4 @@ export default function Dealership() {
     </PageWrapper>
   )
 }
+

@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { motion } from 'framer-motion'
+import { MultiDirectionSlideText } from './MultiDirectionSlideText'
 
 // Computed once at module level — no per-render cost
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
@@ -62,12 +63,12 @@ const SectionHeading = memo(function SectionHeading({
         </div>
       )}
 
-      <h2
+      <MultiDirectionSlideText
+        as="h2"
+        text={title}
         className={`font-display font-bold text-4xl md:text-5xl leading-tight mb-4
           ${light ? 'text-white' : 'text-gray-900'}`}
-      >
-        {title}
-      </h2>
+      />
 
       {subtitle && (
         <p

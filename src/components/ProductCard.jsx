@@ -96,7 +96,7 @@ const ProductCard = memo(
           <div className="shrink-0 bg-white px-3 py-2.5 text-center sm:px-4 sm:py-3">
             <h3
               className="text-sm font-semibold leading-snug tracking-tight text-stone-900 transition-colors duration-200 group-hover:text-[#C2410C] sm:text-base"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               {name}
             </h3>
@@ -114,3 +114,4 @@ const ProductCard = memo(
 )
 
 export default ProductCard
+

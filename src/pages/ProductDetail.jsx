@@ -296,7 +296,7 @@ const ProductDetail = () => {
                 <div className="min-w-0">
                   <h1
                     className="text-3xl sm:text-4xl font-black text-gray-900 mb-2 leading-tight"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                   >
                     {product.name}
                   </h1>
@@ -340,7 +340,7 @@ const ProductDetail = () => {
               <div className="mb-6">
                 <h3
                   className="text-lg font-black text-gray-900 mb-3"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                 >
                   Key Features
                 </h3>
@@ -358,7 +358,7 @@ const ProductDetail = () => {
               <div className="mb-6">
                 <h3
                   className="text-lg font-black text-gray-900 mb-3"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                 >
                   Select Size
                 </h3>
@@ -430,7 +430,7 @@ const ProductDetail = () => {
               <div className="bg-white rounded-xl p-4 sm:p-6 border border-gray-200">
                 <h3
                   className="text-lg font-black text-gray-900 mb-4"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                 >
                   Nutrition Facts (per serving)
                 </h3>
@@ -464,7 +464,7 @@ const ProductDetail = () => {
           <div className="mt-12 sm:mt-16">
             <h2
               className="text-2xl sm:text-3xl font-black text-gray-900 mb-6 sm:mb-8"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               You Might Also Like
             </h2>
@@ -501,7 +501,7 @@ const ProductDetail = () => {
                   </div>
                   <h3
                     className="text-lg sm:text-xl font-black text-gray-900 mb-2"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                   >
                     {related.name}
                   </h3>

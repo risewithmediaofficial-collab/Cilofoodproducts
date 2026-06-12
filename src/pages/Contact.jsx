@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Building, Globe } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { PAGE_SEO, buildBreadcrumbSchema, buildLocalBusinessSchema } from '../seo/seoConfig'
 
 /* ══════════════════════════════════════════════════════════
@@ -134,7 +135,7 @@ export default function Contact() {
 
       {/* ══════════ 1. HERO ══════════ */}
       <section
-        className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden"
+        className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden"
         style={{ background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)' }}
       >
         <div
@@ -168,13 +169,13 @@ export default function Contact() {
                 <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
                 Get in Touch
               </span>
-              <h1
+              <MultiDirectionSlideText
+                as="h1"
+                textLeft="Ready to Talk"
+                textRight="Refreshment?"
                 className="font-black leading-tight text-[#1A0C04] mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
-              >
-                Ready to Talk<br />
-                <span className="text-[#F97316]">Refreshment?</span>
-              </h1>
+                rightClassName="text-[#F97316]"
+              />
               <p className="text-[#4A2800]/60 max-w-2xl mx-auto leading-relaxed text-lg">
                 Whether you're interested in partnership, samples, or have a general inquiry, we're here to help. Reach out today!
               </p>
@@ -239,13 +240,13 @@ export default function Contact() {
 
           {/* ── Left info panel ── */}
           <motion.div {...fadeIn} className="lg:col-span-2">
-            <h2
+            <MultiDirectionSlideText
+              as="h2"
+              textLeft="Let's Build"
+              textRight="Something Great"
               className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Let's Build<br />
-              <span className="text-[#F97316]">Something Great</span>
-            </h2>
+              rightClassName="text-[#F97316]"
+            />
             <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8">
               Whether you're a distributor, retailer, or prospective partner — we want to hear from you. Our team is ready to help.
             </p>
@@ -445,3 +446,4 @@ export default function Contact() {
     </PageWrapper>
   )
 }
+

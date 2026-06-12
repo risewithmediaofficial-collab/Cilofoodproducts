@@ -91,7 +91,7 @@ export default function CSR() {
 
       {/* ══════════ 1. HERO ══════════ */}
       <section
-        className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden"
+        className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden"
         style={{ background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)' }}
       >
         <div
@@ -127,7 +127,7 @@ export default function CSR() {
               </span>
               <h1
                 className="font-black leading-tight text-[#1A0C04] mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
               >
                 Drinks Made with
                 <br />
@@ -158,7 +158,7 @@ export default function CSR() {
             >
               <div
                 className="text-3xl md:text-4xl font-black text-[#F97316] mb-3"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 {stat.number}
               </div>
@@ -228,7 +228,7 @@ export default function CSR() {
             </span>
             <h2
               className="text-4xl md:text-5xl font-black text-gray-900 mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               Sustainable Growth with<br />
               <span className="text-[#F97316]">Social Responsibility</span>
@@ -329,7 +329,7 @@ export default function CSR() {
           >
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               Join Us in Making a<br />
               <span className="text-[#FBBB74]">Lasting Difference</span>
@@ -352,3 +352,4 @@ export default function CSR() {
     </PageWrapper>
   )
 }
+

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { MapPin, ArrowRight, Droplets, Leaf, Star, Phone, Mail, CheckCircle, ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { buildBreadcrumbSchema, buildFAQSchema, SITE } from '../seo/seoConfig'
 
 /* ── Data ────────────────────────────────────────────────────────────────── */
@@ -170,7 +171,7 @@ export default function Location() {
       <PageWrapper title="Location Not Found" robots="noindex,nofollow">
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 text-[#2D1608]">Location Not Found</h1>
+            <MultiDirectionSlideText as="h1" text="Location Not Found" className="text-4xl font-bold mb-4 text-[#2D1608]" />
             <p className="text-stone-500 mb-6">We couldn't find that location.</p>
             <Link to="/" className="px-6 py-3 bg-[#F97316] text-white rounded-full font-bold hover:bg-[#E86205] transition-colors">Return Home</Link>
           </div>
@@ -222,7 +223,7 @@ export default function Location() {
       schema={schema}
     >
       {/* ── Hero ── */}
-      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='%23F97316'/%3E%3C/svg%3E")`, backgroundSize: '80px' }} />
 
@@ -233,9 +234,11 @@ export default function Location() {
                 <MapPin size={13} /> {locationInfo.highlight || `Available in ${locationInfo.city}`}
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#2D1608] mb-6 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                {locationInfo.heading}
-              </h1>
+              <MultiDirectionSlideText
+                as="h1"
+                text={locationInfo.heading}
+                className="text-4xl md:text-5xl lg:text-6xl font-black text-[#2D1608] mb-6 leading-tight"
+              />
 
               <p className="text-lg text-stone-600 mb-8 leading-relaxed">
                 {locationInfo.description} Whether you're looking for an energizing morning boost or a refreshing afternoon treat, CILO's premium lineup is crafted to satisfy.
@@ -279,9 +282,7 @@ export default function Location() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Why {locationInfo.city} Chooses CILO
-            </h2>
+            <MultiDirectionSlideText as="h2" text={`Why ${locationInfo.city} Chooses CILO`} className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" />
             <p className="text-stone-500 max-w-xl mx-auto">Premium beverages built on trust, quality, and local pride.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -304,9 +305,7 @@ export default function Location() {
         <section className="py-20 bg-[#FFF8F3]">
           <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                Available in {locationInfo.city}
-              </h2>
+              <MultiDirectionSlideText as="h2" text={`Available in ${locationInfo.city}`} className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" />
               <p className="text-stone-500">Our full range of premium beverages, ready for you.</p>
             </motion.div>
             <div className="flex flex-wrap gap-3 justify-center">
@@ -331,9 +330,7 @@ export default function Location() {
         <section className="py-20 bg-white">
           <div className="max-w-3xl mx-auto px-6 md:px-12">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                Questions About CILO in {locationInfo.city}
-              </h2>
+              <MultiDirectionSlideText as="h2" text={`Questions About CILO in ${locationInfo.city}`} className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" />
             </motion.div>
             <div className="space-y-3">
               {locationInfo.faqs.map((faq, i) => (
@@ -348,9 +345,7 @@ export default function Location() {
       <section className="py-20 bg-gradient-to-br from-[#F97316] via-[#E86205] to-[#A8430F]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Bring CILO to {locationInfo.city}
-            </h2>
+            <MultiDirectionSlideText as="h2" text={`Bring CILO to ${locationInfo.city}`} className="text-3xl md:text-5xl font-black text-white mb-4" />
             <p className="text-white/80 text-lg mb-10 max-w-xl mx-auto">
               Become a distributor or retailer in {locationInfo.city}. Attractive margins, strong brand, full support.
             </p>
@@ -372,3 +367,4 @@ export default function Location() {
     </PageWrapper>
   )
 }
+

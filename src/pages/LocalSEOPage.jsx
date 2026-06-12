@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { MapPin, ArrowRight, Star, CheckCircle, Phone, Leaf, Droplets, Award } from 'lucide-react'
 import { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { buildBreadcrumbSchema, buildFAQSchema, buildLocalBusinessSchema, SITE } from '../seo/seoConfig'
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -198,16 +199,18 @@ export default function LocalSEOPage({ pageSlug }) {
       schema={schema}
     >
       {/* Hero */}
-      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid md:grid-cols-2 gap-14 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFF8F3] text-[#F97316] rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-[#FFD9A8]">
                 <MapPin size={13} /> {data.highlight}
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#2D1608] mb-6 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-                {data.h1}
-              </h1>
+              <MultiDirectionSlideText
+                as="h1"
+                text={data.h1}
+                className="text-4xl md:text-5xl lg:text-6xl font-black text-[#2D1608] mb-6 leading-tight"
+              />
               <p className="text-lg text-stone-600 mb-4 leading-relaxed">{data.intro}</p>
               <p className="text-base text-stone-500 mb-8 leading-relaxed">{data.body}</p>
               <div className="flex flex-wrap gap-4">
@@ -274,9 +277,7 @@ export default function LocalSEOPage({ pageSlug }) {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Frequently Asked Questions
-            </h2>
+            <MultiDirectionSlideText as="h2" text="Frequently Asked Questions" className="text-3xl md:text-4xl font-black text-[#2D1608] mb-3" />
           </motion.div>
           <div className="space-y-3">
             {data.faqs.map((faq, i) => <FAQItem key={i} faq={faq} idx={i} />)}
@@ -288,9 +289,7 @@ export default function LocalSEOPage({ pageSlug }) {
       <section className="py-20 bg-gradient-to-br from-[#F97316] via-[#E86205] to-[#A8430F]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-              Taste the Difference in {data.location}
-            </h2>
+            <MultiDirectionSlideText as="h2" text={`Taste the Difference in ${data.location}`} className="text-3xl md:text-4xl font-black text-white mb-4" />
             <p className="text-white/80 mb-10 max-w-xl mx-auto">Premium. Natural. Local. That's the CILO promise for {data.location}.</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link to="/dealership" className="px-8 py-4 bg-white text-[#F97316] font-black rounded-full hover:bg-[#FFF8EE] transition-colors shadow-xl inline-flex items-center gap-2">
@@ -306,3 +305,4 @@ export default function LocalSEOPage({ pageSlug }) {
     </PageWrapper>
   )
 }
+

@@ -124,7 +124,7 @@ export default function Insights() {
 
       {/* ══════════ HERO ══════════ */}
       <section
-        className="relative pt-20 sm:pt-24 md:pt-32 pb-20 overflow-hidden"
+        className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden"
         style={{ background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)' }}
       >
         <div
@@ -160,7 +160,7 @@ export default function Insights() {
               </span>
               <h1
                 className="font-black leading-tight text-[#1A0C04] mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
               >
                 Festive<br />
                 <span className="text-[#F97316]">Celebrations 2025</span>
@@ -227,7 +227,7 @@ export default function Insights() {
                   </div>
                   <h3
                     className="text-2xl font-black text-gray-900 mb-3"
-                    style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                    style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                   >
                     {event.title}
                   </h3>
@@ -330,7 +330,7 @@ export default function Insights() {
                 </div>
                 <h2
                   className="text-3xl md:text-4xl font-black text-gray-900 mb-5 md:mb-6"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                 >
                   {selectedEvent.title}
                 </h2>
@@ -361,3 +361,4 @@ export default function Insights() {
     </PageWrapper>
   )
 }
+

@@ -202,7 +202,7 @@ export default function About() {
 
       {/* ══════════ 1. HERO ══════════ */}
       <section
-        className="relative pt-20 sm:pt-24 md:pt-32 pb-0 overflow-hidden"
+        className="relative pt-28 sm:pt-32 md:pt-36 pb-0 overflow-hidden"
         style={{ background: 'linear-gradient(155deg, white 0%, #f9fafb 30%, white 70%, #f3f4f6 100%)' }}
       >
         <div
@@ -265,7 +265,7 @@ export default function About() {
               </span>
               <h1
                 className="font-black leading-tight text-[#1A0C04] mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2rem, 5vw, 4rem)' }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2rem, 5vw, 4rem)' }}
               >
                 Richi Food Products
                 <br />
@@ -314,7 +314,7 @@ export default function About() {
             </span>
             <h1
               className="font-black leading-tight text-[#1A0C04] mb-5"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 'clamp(2rem, 7vw, 3rem)' }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2rem, 7vw, 3rem)' }}
             >
               Richi Food Products
               <br />
@@ -375,7 +375,7 @@ export default function About() {
             </span>
             <h2
               className="text-3xl md:text-4xl font-black text-gray-900 mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               Crafting Beverages That <span className="text-[#F97316]">Delight Every Sip</span>
             </h2>
@@ -414,7 +414,7 @@ export default function About() {
               <div className="text-5xl mb-4">🏭</div>
               <h3
                 className="font-black text-2xl mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Our Plant Infrastructure
               </h3>
@@ -462,7 +462,7 @@ export default function About() {
             </span>
             <h2
               className="text-4xl md:text-5xl font-black text-gray-900"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               5 Years of <span className="text-[#F97316]">Growth</span>
             </h2>
@@ -492,7 +492,7 @@ export default function About() {
                         </span>
                         <span
                           className="text-4xl font-black text-[#7A4A2A]/20"
-                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                          style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                         >
                           {item.year}
                         </span>
@@ -540,7 +540,7 @@ export default function About() {
             <div className="flex items-end justify-between gap-4">
               <h2
                 className="text-4xl md:text-5xl font-black text-gray-900"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Our Core <span className="text-[#F97316]">Values</span>
               </h2>
@@ -643,7 +643,7 @@ export default function About() {
               </span>
               <h2
                 className="text-3xl md:text-4xl font-black text-white mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Quality for Every Consumer
               </h2>
@@ -679,7 +679,7 @@ export default function About() {
               </span>
               <h2
                 className="text-3xl md:text-4xl font-black text-white mb-6"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Leading South India in Beverages
               </h2>
@@ -726,7 +726,7 @@ export default function About() {
             </span>
             <h2
               className="text-4xl md:text-5xl font-black text-gray-900"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               Our <span className="text-[#F97316]">Strengths</span>
             </h2>
@@ -776,7 +776,7 @@ export default function About() {
             </span>
             <h2
               className="text-4xl md:text-5xl font-black text-gray-900 mb-3"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               Our <span className="text-[#F97316]">Services</span>
             </h2>
@@ -822,7 +822,7 @@ export default function About() {
             </span>
             <h2
               className="text-3xl md:text-5xl font-black text-white mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
             >
               The Next Chapter
             </h2>
@@ -861,7 +861,7 @@ export default function About() {
             <div className="flex items-end justify-between gap-4">
               <h2
                 className="text-4xl md:text-5xl font-black text-gray-900"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Pillars of <span className="text-[#F97316]">Strength</span>
               </h2>
@@ -930,3 +930,4 @@ export default function About() {
     </PageWrapper>
   )
 }
+

@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ChevronRight, ArrowRight, MapPin, Phone, Mail, Star, Droplets, Leaf, Zap, Award } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { PAGE_SEO, buildOrganizationSchema, buildLocalBusinessSchema, buildFAQSchema } from '../seo/seoConfig'
 
 // ─── PERFORMANCE DETECTION HELPERS ───────────────────────────────────────────
@@ -219,10 +220,8 @@ function RotatingHeroCards({ isMobile }) {
 
   const CARD_W  = isMobile ? 110 : 170
   const CARD_H  = isMobile ? 240 : 380
-  // On low-end mobile, use smaller radii for even less overdraw
   const RX      = isMobile ? (lowEnd ? 130 : 160) : 380
   const RY      = isMobile ? (lowEnd ? 110 : 140) : 300
-  // Slightly slower on mobile to ease GPU pressure
   const SPEED   = isMobile ? (lowEnd ? 14 : 16) : 18
 
   const containerH = isMobile ? 420 : 640
@@ -252,17 +251,14 @@ function RotatingHeroCards({ isMobile }) {
         const zIndex   = Math.round(opacity * 80 + (1 - Math.abs(Math.sin(theta))) * 20)
         const tiltDeg  = Math.sin(theta) * 14
 
-        // Skip invisible cards — avoids painting offscreen elements
         if (opacity < 0.02) {
           el.style.opacity = '0'
           el.style.pointerEvents = 'none'
           continue
         }
 
-        // Write directly to style — zero React overhead
         el.style.opacity   = opacity
         el.style.zIndex    = zIndex
-        // translate3d keeps everything on the GPU compositor layer
         el.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(${scale}) rotate(${tiltDeg}deg)`
       }
 
@@ -291,8 +287,7 @@ function RotatingHeroCards({ isMobile }) {
             top: centreY,
             width: CARD_W,
             height: CARD_H,
-            // Use translate3d on the base positioning too so the GPU layer is pre-established
-            transform: `translate3d(-50%, -50%, 0)`,
+            transform: 'translate3d(-50%, -50%, 0)',
             willChange: 'transform, opacity',
             pointerEvents: 'none',
           }}
@@ -309,15 +304,12 @@ function RotatingHeroCards({ isMobile }) {
               filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.15))',
             }}
             onError={e => { e.target.style.display = 'none' }}
-            // Lazy-load all but the first few visible cards
             loading={i < 3 ? 'eager' : 'lazy'}
-            // Hint browser to decode off main thread
             decoding="async"
           />
         </div>
       ))}
 
-      {/* Bottom fade */}
       <div style={{
         position: 'absolute',
         bottom: 0,
@@ -394,7 +386,7 @@ const ProductCard = memo(function ProductCard({ product, idx, isMobile }) {
         <div className="relative z-20 shrink-0 bg-white px-3 py-2.5 sm:px-4 sm:py-3 text-center">
           <p
             className="text-[11px] font-semibold leading-snug tracking-tight text-[#292524] sm:text-sm"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
           >
             {product.name}
           </p>
@@ -459,12 +451,12 @@ function ProductCarousel({ products, isMobile }) {
         </motion.div>
       </div>
 
-      <div className="flex justify-center items-center gap-4 sm:gap-6 mt-6 sm:mt-8">
+      <div className="mt-6 flex w-full items-center gap-2 px-3 sm:mt-8 sm:justify-center sm:gap-6">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={handlePrev}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-[#F97316] text-[#F97316] flex items-center justify-center hover:bg-[#FFF8EE] transition-all duration-300 shadow-lg"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#F97316] bg-white text-[#F97316] shadow-lg transition-all duration-300 hover:bg-[#FFF8EE] sm:h-12 sm:w-12"
           aria-label="Previous products"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -473,13 +465,13 @@ function ProductCarousel({ products, isMobile }) {
         </motion.button>
 
         {/* Mobile: page-style dots. Desktop: individual dots */}
-        <div className="flex gap-2">
+        <div className="flex min-w-0 flex-1 items-center justify-center gap-1 overflow-x-auto px-1 sm:flex-none sm:gap-2 sm:overflow-visible">
           {isMobile
             ? Array.from({ length: totalPages }).map((_, idx) => (
                 <motion.button
                   key={idx}
                   onClick={() => setCurrentIndex(idx * CARDS_TO_SHOW)}
-                  className={`h-2 rounded-full transition-all duration-300 ${idx === currentPage ? 'bg-[#F97316] w-8' : 'bg-[#F97316]/30 w-2'}`}
+                  className={`h-2 shrink-0 rounded-full transition-all duration-300 ${idx === currentPage ? 'w-6 bg-[#F97316] sm:w-8' : 'w-2 bg-[#F97316]/30'}`}
                   aria-label={`Go to page ${idx + 1}`}
                 />
               ))
@@ -499,7 +491,7 @@ function ProductCarousel({ products, isMobile }) {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleNext}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-linear-to-r from-[#F97316] to-[#A8430F] text-white flex items-center justify-center hover:shadow-lg transition-all duration-300 shadow-lg"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-r from-[#F97316] to-[#A8430F] text-white shadow-lg transition-all duration-300 hover:shadow-lg sm:h-12 sm:w-12"
           aria-label="Next products"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -576,43 +568,25 @@ export default function Home() {
         <Orb className="w-75 h-75 bg-cyan-200/15   bottom-32 right-1/4" delay={1} />
 
         {/* Breadcrumb */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative z-10 flex items-center justify-center gap-2 text-[10px] sm:text-xs text-[#F97316]/60 font-semibold uppercase tracking-[0.22em] mb-6 sm:mb-8 px-4 sm:px-6"
-        >
-          <span className="text-[#7A4A2A]">Home</span>
-        </motion.div>
-
         {/* Text content — no parallax on mobile */}
         <motion.div
           style={parallaxTextStyle}
           className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 pb-0"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#FFD9A8] shadow-sm text-[#7A4A2A] text-[11px] sm:text-xs font-bold mb-6 sm:mb-7 text-center"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#D4622A] animate-pulse" />
-            Premium beverages from Krishnagiri, Tamil Nadu
-          </motion.div>
-
-          <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-black leading-[1.07] tracking-tight text-[#2D1608] mb-5"
-            style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: 'clamp(2.4rem, 6vw, 5rem)',
-            }}
+            className="mb-5 sm:mb-6"
           >
-            CILO Juice
-            <br />
-            <span className="text-[#F97316]">crafted by Richi Food Products</span>
-          </motion.h1>
+            <MultiDirectionSlideText
+              as="h1"
+              textLeft="CILO Juice"
+              textRight="crafted by Richi Food Products"
+              className="text-[2.9rem] sm:text-[4.4rem] md:text-[5.75rem] lg:text-[6.6rem] font-black leading-[0.95] tracking-[-0.04em] text-[#2D1608]"
+              rightClassName="text-[#F97316] text-[1.08em] sm:pl-4 md:pl-8"
+            />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 18 }}
@@ -649,7 +623,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Rotating hero cards — no parallax on mobile */}
+        {/* Scroll-reveal hero cards */}
         <motion.div
           style={parallaxCardsStyle}
           className="z-10 mt-2"
@@ -697,7 +671,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <h2
                 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Discover the extensive assortment
                 <br />
@@ -747,7 +721,7 @@ export default function Home() {
                   <s.icon size={24} className="text-white/90" />
                 </motion.div>
                 <div className="text-white">
-                  <motion.div className="text-3xl sm:text-5xl lg:text-6xl font-black" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                  <motion.div className="text-3xl sm:text-5xl lg:text-6xl font-black" style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}>
                     {s.value}
                   </motion.div>
                   <div className="text-white/70 text-xs font-bold tracking-widest uppercase mt-2">{s.label}</div>
@@ -773,14 +747,13 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 bg-[#FFF8EE] text-[#F97316] rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-[#FFD9A8] shadow-sm">
               Our Story
             </span>
-            <h2
+            <MultiDirectionSlideText
+              as="h2"
+              textLeft="Refreshing taste buds"
+              textRight="since 2008"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-5 sm:mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Refreshing taste buds
-              <br />
-              <span className="text-[#F97316]">since 2008</span>
-            </h2>
+              rightClassName="text-[#F97316]"
+            />
             <p className="text-gray-500 leading-relaxed text-base sm:text-lg mb-7 sm:mb-8">
               Based in Tamil Nadu, Richi Food Products crafts premium, refreshing beverages with
               absolute care and passion. Our signature CILO Juice and Richi Juice ranges are made using
@@ -820,14 +793,13 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 bg-white text-[#7A4A2A] rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-[#FFD9A8] shadow-sm">
               Brand Search
             </span>
-            <h2
+            <MultiDirectionSlideText
+              as="h2"
+              textLeft="Looking for Richi Food Products,"
+              textRight="Richi Juice, or CILO Juice?"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 sm:mb-5"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Looking for Richi Food Products,
-              <br />
-              <span className="text-[#F97316]">Richi Juice, or CILO Juice?</span>
-            </h2>
+              rightClassName="text-[#F97316]"
+            />
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
               They all lead back to the same Tamil Nadu manufacturer. CILO Juice is the flagship
               beverage line from Richi Food Products, and many customers refer to the range as
@@ -883,12 +855,11 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 bg-[#FFF8EE] text-[#F97316] rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-[#FFD9A8] shadow-sm">
               Why Richi Food Products
             </span>
-            <h2
+            <MultiDirectionSlideText
+              as="h2"
+              text="Our Commitment to You"
               className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Our Commitment to You
-            </h2>
+            />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
@@ -967,14 +938,13 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 bg-[#FFF8EE] text-[#F97316] rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-[#FFD9A8] shadow-sm">
               Corporate Social Responsibility
             </span>
-            <h2
+            <MultiDirectionSlideText
+              as="h2"
+              textLeft="We manufacture delicious drinks"
+              textRight="with conscience"
               className="text-4xl md:text-5xl font-black text-gray-900 mb-6"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              We manufacture delicious drinks
-              <br />
-              <span className="text-[#F97316]">with conscience</span>
-            </h2>
+              rightClassName="text-[#F97316]"
+            />
             <p className="text-gray-500 text-lg mb-10 leading-relaxed">
               Our sustainable practices, community investments, and environmental stewardship
               shape a brighter future for everyone in Tamil Nadu and beyond.
@@ -1017,12 +987,11 @@ export default function Home() {
               🤝
             </motion.div>
 
-            <h2
+            <MultiDirectionSlideText
+              as="h2"
+              text="Join the Richi Family Today"
               className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-5 sm:mb-6 leading-tight"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              Join the Richi Family Today
-            </h2>
+            />
 
             <p className="text-gray-300 text-base sm:text-lg mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
               Experience the extraordinary delight. Become a dealer and bring Richi
@@ -1078,3 +1047,4 @@ export default function Home() {
     </PageWrapper>
   )
 }
+

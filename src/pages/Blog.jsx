@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { ArrowRight, Calendar, Tag } from 'lucide-react'
 import { blogPosts } from '../data/blogData'
 import { PAGE_SEO, buildBreadcrumbSchema, buildOrganizationSchema } from '../seo/seoConfig'
@@ -33,15 +34,19 @@ export default function Blog() {
       schema={schema}
     >
 
-      <div className="pt-20 sm:pt-24 md:pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto min-h-screen">
+      <div className="pt-28 sm:pt-32 md:pt-36 pb-20 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-black text-[#2D1608] mb-6" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-            The <span className="text-[#F97316]">CILO</span> Journal
-          </h1>
+          <MultiDirectionSlideText
+            as="h1"
+            textLeft="The"
+            textRight="CILO Journal"
+            className="text-4xl md:text-5xl font-black text-[#2D1608] mb-6"
+            rightClassName="text-[#F97316]"
+          />
           <p className="text-[#7A4A2A]/70 max-w-2xl mx-auto text-lg">
             Insights, wellness tips, and stories behind our premium beverage collection.
           </p>
@@ -111,3 +116,4 @@ export default function Blog() {
     </PageWrapper>
   )
 }
+

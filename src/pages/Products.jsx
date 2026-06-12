@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import ProductCard from '../components/ProductCard'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
 
 // ─── Mobile / low-end detection ────────────────────────────────────────────────
@@ -126,7 +127,7 @@ export default function Products() {
       schema={schema}
     >
       {/* ── Hero ── */}
-      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-20 bg-white overflow-hidden">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 bg-white overflow-hidden">
         {/* Static background element – no animation, avoids repaint on mobile */}
         <div className="absolute inset-0 pointer-events-none bg-pattern-leaf bg-pattern-opacity-55" />
         {/*
@@ -159,12 +160,11 @@ export default function Products() {
                 <span className="h-1 w-1 rounded-full bg-[#F97316]" aria-hidden />
                 Our range
               </span>
-              <h1
+              <MultiDirectionSlideText
+                as="h1"
+                text="Our products"
                 className="font-semibold text-4xl sm:text-5xl md:text-6xl text-stone-900 mb-5 leading-[1.08] tracking-tight"
-                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-              >
-                Our products
-              </h1>
+              />
               <div className="mx-auto mb-2 h-px w-16 bg-linear-to-r from-transparent via-[#F97316]/50 to-transparent" aria-hidden />
               <p className="text-stone-500 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
                 {products.length}+ premium beverages — fruit juices and carbonated drinks crafted for retail and food service.
@@ -263,13 +263,13 @@ export default function Products() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.h2
-            {...fadeUpView}
-            className="text-4xl md:text-5xl font-black text-gray-900 text-center mb-4"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            Available Formats
-          </motion.h2>
+          <motion.div {...fadeUpView} className="text-center mb-4">
+            <MultiDirectionSlideText
+              as="h2"
+              text="Available Formats"
+              className="text-4xl md:text-5xl font-black text-gray-900"
+            />
+          </motion.div>
           <motion.p
             {...fadeUpView}
             className="text-xl text-[#7A4A2A]/70 text-center mb-12 max-w-2xl mx-auto"
@@ -300,7 +300,7 @@ export default function Products() {
                 <div className="text-3xl sm:text-4xl mb-3 sm:mb-4" aria-hidden="true">🫙</div>
                 <div
                   className="font-black text-xl sm:text-3xl text-[#F97316] mb-1"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                  style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                 >
                   {p.size}
                 </div>
@@ -330,13 +330,13 @@ export default function Products() {
         />
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.h2
-            {...fadeUpView}
-            className="text-4xl md:text-5xl font-black text-gray-900 text-center mb-12"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-          >
-            How We Make It
-          </motion.h2>
+          <motion.div {...fadeUpView} className="text-center mb-12">
+            <MultiDirectionSlideText
+              as="h2"
+              text="How We Make It"
+              className="text-4xl md:text-5xl font-black text-gray-900"
+            />
+          </motion.div>
 
           <div className="relative mt-8">
             <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 -translate-x-1/2 hidden md:block" />
@@ -360,7 +360,7 @@ export default function Products() {
                         </span>
                         <span
                           className="text-4xl font-black text-[#7A4A2A]/20"
-                          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                          style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
                         >
                           0{i + 1}
                         </span>
@@ -388,3 +388,4 @@ export default function Products() {
     </PageWrapper>
   )
 }
+

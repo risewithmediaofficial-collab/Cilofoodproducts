@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Calendar, User, Tag } from 'lucide-react'
 import PageWrapper from '../components/PageWrapper'
+import { MultiDirectionSlideText } from '../components/MultiDirectionSlideText'
 import { blogPosts } from '../data/blogData'
 import { buildArticleSchema, buildBreadcrumbSchema, SITE } from '../seo/seoConfig'
 
@@ -18,7 +19,7 @@ export default function BlogPost() {
       >
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+            <MultiDirectionSlideText as="h1" text="Post Not Found" className="text-4xl font-bold mb-4" />
             <Link to="/blog" className="text-[#F97316] hover:underline">Return to Blog</Link>
           </div>
         </div>
@@ -45,7 +46,7 @@ export default function BlogPost() {
       publishedAt={post.date}
     >
 
-      <article className="pt-20 sm:pt-24 md:pt-32 pb-20 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto min-h-screen">
+      <article className="pt-28 sm:pt-32 md:pt-36 pb-20 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto min-h-screen">
         <Link to="/blog" className="inline-flex items-center gap-2 text-[#7A4A2A]/70 hover:text-[#F97316] transition-colors mb-10 font-semibold text-sm">
           <ArrowLeft size={16} /> Back to Journal
         </Link>
@@ -56,9 +57,11 @@ export default function BlogPost() {
               {post.category}
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#2D1608] mb-6 leading-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-            {post.title}
-          </h1>
+          <MultiDirectionSlideText
+            as="h1"
+            text={post.title}
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-[#2D1608] mb-6 leading-tight"
+          />
           <div className="flex flex-wrap items-center gap-6 text-sm text-stone-500 font-medium">
             <span className="flex items-center gap-2"><User size={16} /> {post.author}</span>
             <span className="flex items-center gap-2"><Calendar size={16} /> {new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
@@ -71,7 +74,7 @@ export default function BlogPost() {
 
         <div 
           className="prose prose-lg md:prose-xl prose-stone max-w-none prose-headings:font-black prose-headings:text-[#2D1608] prose-p:text-stone-600 prose-a:text-[#F97316]"
-          style={{ '--tw-prose-headings': "'Playfair Display', Georgia, serif" }}
+          style={{ '--tw-prose-headings': "'Fredoka', 'Outfit', sans-serif" }}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
@@ -89,3 +92,4 @@ export default function BlogPost() {
     </PageWrapper>
   )
 }
+

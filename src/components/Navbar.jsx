@@ -12,72 +12,49 @@ const navLinks = [
   { name: 'Dealership', path: '/dealership' },
 ]
 
-/* ── Device detection — computed once ── */
-const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
-
-/* ── Animation presets ──────────────────────────────────────────────────────
-   Desktop: original cubic-bezier entrance.
-   Mobile:  opacity-only — no translateY/X means zero layout recalculation.
-            The navbar is fixed and above the fold, so even a tiny y-animation
-            causes a repaint of the entire viewport on first load.
-─────────────────────────────────────────────────────────────────────────── */
-const navEntrance = isMobile
-  ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.2 } }
-  : { initial: { y: -80, opacity: 0 }, animate: { y: 0, opacity: 1 }, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
-
-// Mobile panel slide: x-transform only (no scale, no blur on the panel itself)
-const panelVariants = {
-  hidden: { x: '100%' },
-  show:   { x: 0      },
-}
-const panelTransition = isMobile
-  ? { duration: 0.28, ease: [0.22, 1, 0.36, 1] }   // slightly faster on mobile
-  : { duration: 0.4,  ease: [0.22, 1, 0.36, 1] }
-
-// Mobile link stagger: opacity-only, no x-slide
-// x: 30 on 5 links = 5 simultaneous x-transforms → layout recalc on each frame
-const linkVariants = {
-  hidden: { opacity: 0, x: isMobile ? 0 : 30 },
-  show:   { opacity: 1, x: 0                  },
+const mobileMenuVariants = {
+  hidden: { opacity: 0, y: -12, height: 0 },
+  show: { opacity: 1, y: 0, height: 'auto' },
 }
 
 function Navbar() {
-  const [scrolled,   setScrolled]   = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.innerWidth < 768
+  })
   const location = useLocation()
 
-  /* ── Scroll listener — RAF-throttled, threshold-gated ──────────────────
-     Unchanged from original: only triggers setState when crossing 50px.
-     Added `passive: true` is already in original; kept here.
-     One small addition: cancel RAF on cleanup to prevent memory leak if the
-     component unmounts mid-frame (e.g. during fast navigation).
-  ─────────────────────────────────────────────────────────────────────── */
+  const navEntrance = isMobile
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { duration: 0.2 } }
+    : { initial: { y: -80, opacity: 0 }, animate: { y: 0, opacity: 1 }, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+
+  const linkVariants = {
+    hidden: { opacity: 0, y: -8 },
+    show: { opacity: 1, y: 0 },
+  }
+
   useEffect(() => {
-    let rafId = null
-    let lastScrollY = window.scrollY
+    if (typeof window === 'undefined') return undefined
 
-    const onScroll = () => {
-      if (rafId) return
-      rafId = requestAnimationFrame(() => {
-        const y = window.scrollY
-        if ((lastScrollY <= 50) !== (y <= 50)) setScrolled(y > 50)
-        lastScrollY = y
-        rafId = null
-      })
+    const mediaQuery = window.matchMedia('(max-width: 767px)')
+    const updateViewport = (event) => {
+      setIsMobile(event.matches)
+      if (!event.matches) {
+        setMobileOpen(false)
+      }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      if (rafId) cancelAnimationFrame(rafId)
+    updateViewport(mediaQuery)
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', updateViewport)
+      return () => mediaQuery.removeEventListener('change', updateViewport)
     }
+
+    mediaQuery.addListener(updateViewport)
+    return () => mediaQuery.removeListener(updateViewport)
   }, [])
-
-  // Body scroll lock
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [mobileOpen])
 
   const isActive  = useCallback((path) => location.pathname === path, [location.pathname])
   const closeMenu = useCallback(() => setMobileOpen(false), [])
@@ -88,16 +65,12 @@ function Navbar() {
       {/* ══ NAVBAR BAR ══════════════════════════════════════════════════════ */}
       <motion.nav
         {...navEntrance}
-        className={`fixed top-3 inset-x-0 z-50 px-3 sm:top-4 sm:px-4 transition-all duration-300 ${
-          scrolled
-            ? 'bg-transparent'
-            : isMobile
-              ? 'bg-transparent'
-              : 'bg-transparent'
-        }`}
+        layoutRoot
+        className="fixed top-3 inset-x-0 z-50 px-3 transition-all duration-300 sm:top-4 sm:px-4"
         style={{ willChange: 'transform' }}
       >
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 min-h-18 rounded-2xl border border-[#FFD9A8]/50 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md">
+        <div className="w-full max-w-6xl mx-auto overflow-hidden rounded-2xl border border-[#FFD9A8]/50 bg-white/95 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md">
+          <div className="flex min-h-18 items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
 
           {/* ── LOGO & BRAND ── */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -117,196 +90,149 @@ function Navbar() {
           </Link>
 
           {/* ── DESKTOP LINKS ── */}
-          <div className="hidden md:flex items-center justify-center gap-1 lg:gap-2 flex-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`relative px-3 lg:px-4 py-2 rounded-md text-[11px] lg:text-xs uppercase font-medium tracking-[0.12em] transition-colors duration-200 ${
-                  isActive(link.path)
-                    ? 'text-[#F97316] bg-[#FFF8EE]'
-                    : 'text-gray-700 hover:text-[#F97316] hover:bg-[#FFF8EE]'
-                }`}
-                style={{ fontFamily: "'Satoshi', sans-serif" }}
-              >
-                {link.name}
-                {isActive(link.path) && (
-                  <motion.span
-                    layoutId="nav-active-dot"
-                    className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#F97316]"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
+          {!isMobile && (
+            <div className="flex flex-1 items-center justify-center gap-1 lg:gap-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`relative px-3 py-2 text-[11px] font-medium uppercase tracking-[0.12em] transition-colors duration-200 lg:px-4 lg:text-xs ${
+                    isActive(link.path)
+                      ? 'rounded-md bg-[#FFF8EE] text-[#F97316]'
+                      : 'rounded-md text-gray-700 hover:bg-[#FFF8EE] hover:text-[#F97316]'
+                  }`}
+                  style={{ fontFamily: "'Outfit', sans-serif" }}
+                >
+                  {link.name}
+                  {isActive(link.path) && (
+                    <motion.span
+                      layoutId="nav-active-dot"
+                      className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[#F97316]"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* ── DESKTOP CTA ── */}
-          <div className="hidden md:flex items-center justify-end shrink-0">
-            <Link
-              to="/contact"
-              className="relative px-4 lg:px-5 py-2.5 rounded-lg text-[11px] lg:text-xs uppercase font-semibold tracking-[0.08em] overflow-hidden group transition-all duration-300 bg-[#F97316] text-white hover:bg-[#EA6C0A]"
-              style={{ fontFamily: "'Satoshi', sans-serif" }}
+          {!isMobile && (
+            <div className="flex shrink-0 items-center justify-end">
+              <Link
+                to="/contact"
+                className="group relative overflow-hidden rounded-lg bg-[#F97316] px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:bg-[#EA6C0A] lg:px-5 lg:text-xs"
+                style={{ fontFamily: "'Outfit', sans-serif" }}
+              >
+                <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700 group-hover:translate-x-full" />
+                <span className="relative">Contact Us</span>
+              </Link>
+            </div>
+          )}
+
+          {/* ── MOBILE TOGGLE ── */}
+          {isMobile && (
+            <button
+              type="button"
+              onClick={toggleMenu}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation-panel"
+              className="flex shrink-0 items-center justify-center rounded-lg border border-[#FFD9A8] bg-white p-2.5 text-[#F97316] shadow-sm transition-colors duration-200 hover:bg-[#FFF8EE] sm:p-3"
             >
-              {/* Shine sweep — transform-only, compositor-safe */}
-              <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative">Contact Us</span>
-            </Link>
+              <AnimatePresence mode="wait" initial={false}>
+                {mobileOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="open"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          )}
           </div>
 
-          {/* ── HAMBURGER ── */}
-          <button
-            onClick={toggleMenu}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-            className={`md:hidden p-2.5 sm:p-3 rounded-lg transition-colors duration-200 shrink-0 ${
-              scrolled
-                ? 'text-[#F97316] hover:bg-[#FFF8EE]'
-                : 'text-[#F97316] hover:bg-[#FFF8EE]'
-            }`}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {mobileOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0,   opacity: 1 }}
-                  exit={{ rotate: 90,    opacity: 0 }}
-                  transition={{ duration: 0.15 }}        // tighter than original 0.2
-                >
-                  <X size={24} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="open"
-                  initial={{ rotate: 90,  opacity: 0 }}
-                  animate={{ rotate: 0,   opacity: 1 }}
-                  exit={{ rotate: -90,   opacity: 0 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  <Menu size={24} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
+          <AnimatePresence initial={false}>
+            {isMobile && mobileOpen && (
+              <motion.div
+                key="mobile-navigation-panel"
+                id="mobile-navigation-panel"
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                variants={mobileMenuVariants}
+                transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden border-t border-[#FFD9A8]/60 bg-white/90"
+              >
+                <nav className="flex flex-col gap-2 px-4 pb-4 pt-3" aria-label="Mobile navigation">
+                  {navLinks.map((link, i) => (
+                    <motion.div
+                      key={link.path}
+                      variants={linkVariants}
+                      initial="hidden"
+                      animate="show"
+                      exit="hidden"
+                      transition={{
+                        delay: 0.03 + i * 0.04,
+                        duration: 0.18,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      <Link
+                        to={link.path}
+                        onClick={closeMenu}
+                        className={`flex items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.08em] transition-all duration-200 ${
+                          isActive(link.path)
+                            ? 'bg-[#FFF1E6] text-[#F97316]'
+                            : 'text-gray-700 hover:bg-[#FFF8EE] hover:text-[#F97316]'
+                        }`}
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  ))}
 
-        </div>
-      </motion.nav>
-
-      {/* ══ MOBILE MENU ═════════════════════════════════════════════════════ */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            {/* Backdrop
-                backdrop-blur-sm removed — same reasoning as navbar:
-                it composites the entire page on every frame.
-                A semi-opaque black overlay achieves the same visual effect
-                with a single cheap paint operation.
-            */}
-            <motion.div
-              key="backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={closeMenu}
-              className="fixed inset-0 z-40 bg-black/50"
-            />
-
-            {/* Slide panel
-                - will-change: transform pins it to compositor before animation
-                - No blur on the panel itself
-                - contain: layout style → scopes layout recalc to panel only
-            */}
-            <motion.div
-              key="panel"
-              variants={panelVariants}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              transition={panelTransition}
-              className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] sm:w-[75vw] max-w-sm flex flex-col bg-white"
-              style={{
-                willChange: 'transform',
-                contain: 'layout style',
-              }}
-            >
-              {/* Panel header */}
-              <div className="flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
-                <Link to="/" onClick={closeMenu} className="flex items-center gap-2">
-                  <div className="relative h-11 sm:h-12 aspect-square flex items-center justify-center shrink-0">
-                    <img
-                      src="/images/logo.png"
-                      alt="CILO"
-                      className="h-full w-auto object-contain"
-                      width={48}
-                      height={48}
-                      decoding="async"
-                      onError={(e) => { e.target.style.display = 'none' }}
-                    />
-                  </div>
-                </Link>
-                <button
-                  onClick={closeMenu}
-                  aria-label="Close menu"
-                  className="p-2 rounded-lg text-gray-600 hover:text-[#F97316] hover:bg-orange-50 transition-colors duration-150 shrink-0 flex items-center justify-center"
-                >
-                  <X size={20} strokeWidth={2.5} />
-                </button>
-              </div>
-
-              {/* Nav links */}
-              <nav className="flex-1 flex flex-col justify-start pt-3 sm:pt-4 px-2 sm:px-3 gap-1" aria-label="Mobile navigation">
-                {navLinks.map((link, i) => (
                   <motion.div
-                    key={link.path}
                     variants={linkVariants}
                     initial="hidden"
                     animate="show"
-                    transition={{
-                      delay: 0.04 + i * 0.05,
-                      duration: isMobile ? 0.18 : 0.25,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
+                    exit="hidden"
+                    transition={{ delay: 0.2, duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Link
-                      to={link.path}
-                      className={`flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                        isActive(link.path)
-                          ? 'bg-orange-50 text-[#F97316] border-l-4 border-[#F97316] pl-3'
-                          : 'text-gray-700 hover:bg-gray-50 hover:text-[#F97316]'
-                      }`}
-                      style={{ fontFamily: "'Satoshi', sans-serif" }}
+                      to="/contact"
+                      onClick={closeMenu}
+                      className="mt-1 flex items-center justify-center rounded-xl bg-linear-to-r from-[#F97316] to-[#EA6C0A] px-4 py-3 text-sm font-bold uppercase tracking-[0.08em] text-white shadow-lg shadow-[#F97316]/20 transition-all duration-200 hover:shadow-[#F97316]/30"
+                      style={{ fontFamily: "'Outfit', sans-serif" }}
                     >
-                      <span>{link.name}</span>
-                      {isActive(link.path) && (
-                        <motion.div
-                          layoutId="mobile-active"
-                          className="w-1.5 h-1.5 rounded-full bg-[#F97316]"
-                        />
-                      )}
+                      Contact Us
                     </Link>
                   </motion.div>
-                ))}
-              </nav>
-
-              {/* Footer CTA */}
-              <div className="px-5 sm:px-6 pb-6 sm:pb-8 pt-4 sm:pt-5 border-t border-gray-100 space-y-3 sm:space-y-4">
-                <Link
-                  to="/contact"
-                  onClick={closeMenu}
-                  className="flex items-center justify-center w-full py-3 sm:py-3.5 bg-linear-to-r from-[#F97316] to-[#EA6C0A] text-white font-bold text-sm uppercase tracking-widest rounded-lg hover:shadow-lg hover:shadow-[#F97316]/30 transition-all duration-200"
-                  style={{ fontFamily: "'Satoshi', sans-serif" }}
-                >
-                  Contact Us
-                </Link>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.nav>
     </>
   )
 }
 
 export default memo(Navbar)
+
