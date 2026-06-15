@@ -228,7 +228,7 @@ export default function About() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative overflow-hidden rounded-[2rem] border border-[#FFD9A8]/70 shadow-[0_30px_80px_rgba(45,22,8,0.12)] mb-10"
+            className="relative overflow-hidden rounded-[2rem] border border-[#FFD9A8]/70 shadow-[0_30px_80px_rgba(45,22,8,0.12)] mb-10 min-h-[72vh] md:min-h-[78vh]"
           >
             <div className="absolute inset-0">
               <ZigZagImage
@@ -240,31 +240,32 @@ export default function About() {
                 loading="eager"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-white/78 md:bg-white/72" />
-              <div className="absolute inset-0 bg-linear-to-r from-white/70 via-transparent to-white/70 md:from-white/55 md:via-transparent md:to-white/55" />
+              <div className="absolute inset-0 bg-linear-to-b from-white/10 via-transparent to-[#fff7ef]/12" />
             </div>
 
-            <div className="relative z-10 text-center px-6 py-12 sm:px-10 sm:py-16 md:px-16 md:py-20 lg:px-24 lg:py-24">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#FFD9A8] text-[#7A4A2A] text-xs font-bold mb-6 shadow-sm">
+            <div className="relative z-10 flex min-h-[72vh] md:min-h-[78vh] items-start md:items-center justify-center md:justify-end px-6 py-10 sm:px-10 md:px-14 lg:px-20">
+              <div className="w-full max-w-2xl text-center md:text-left md:pr-4 lg:pr-10 pt-8 md:pt-0">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#FFD9A8] text-[#7A4A2A] text-xs font-bold mb-6 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
                 Since 2020
               </span>
               <h1
-                className="font-black leading-tight text-[#1A0C04] mb-6"
-                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2rem, 5vw, 4rem)' }}
+                className="font-black leading-[0.98] text-[#1A0C04] mb-6"
+                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2.4rem, 6vw, 5.6rem)' }}
               >
                 Richi Food Products
                 <br />
                 <span className="text-[#F97316]">CILO Juice</span>
               </h1>
-              <p className="text-[#4A2800]/60 max-w-xl mx-auto leading-relaxed text-lg mb-4">
+              <p className="text-[#4A2800]/90 max-w-xl md:max-w-2xl mx-auto md:mx-0 leading-relaxed text-lg md:text-xl mb-4">
                 Born in Krishnagari District, Tamil Nadu — a modern beverage manufacturer specialising in
                 high-quality fruit juices and carbonated drinks for B2B partners across South India.
               </p>
-              <p className="text-[#4A2800]/50 max-w-xl mx-auto leading-relaxed">
+              <p className="text-[#4A2800]/80 max-w-xl md:max-w-2xl mx-auto md:mx-0 leading-relaxed text-base md:text-lg">
                 From contract manufacturing to white-label solutions — driven by quality, innovation,
                 and sustainability.
               </p>
+              </div>
             </div>
           </motion.div>
 
