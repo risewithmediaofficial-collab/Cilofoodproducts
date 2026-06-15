@@ -1,6 +1,7 @@
 export const siteImages = {
   logo: new URL('./LOGO.png', import.meta.url).href,
   apple: new URL('./products/apple-drink.png', import.meta.url).href,
+  bannerImage: new URL('./products/CILO - Website Banner Image.png', import.meta.url).href,
   checking: new URL('./products/checking.png', import.meta.url).href,
   clubSoda: new URL('./products/club soda.png', import.meta.url).href,
   clearLemon: new URL('./products/clear-lemon.png', import.meta.url).href,

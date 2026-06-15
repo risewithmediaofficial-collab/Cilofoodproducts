@@ -15,12 +15,6 @@ import { PAGE_SEO, buildBreadcrumbSchema } from '../seo/seoConfig'
    DATA
 ══════════════════════════════════════════════════════════ */
 
-// Hero flavour images — real product lineup shots
-const heroFlavours = [
-  { img: siteImages.flavours1, alt: 'Cilo carbonated and soda lineup' },
-  { img: siteImages.flavours2, alt: 'Cilo juice and beverage lineup'  },
-]
-
 const timeline = [
   { year: '2020', title: 'Founded',                desc: 'Richi Food Products founded in Krishnagiri District, Tamil Nadu.',                img: '/images/about/timeline/2020.jpg', tag: 'Founded',    color: 'bg-[#C2641F]'  },
   { year: '2021', title: 'FSSAI License',           desc: 'FSSAI license obtained, first product lines launched.',                            img: '/images/about/timeline/2021.jpg', tag: 'Compliance', color: 'bg-sky-500'    },
@@ -157,8 +151,6 @@ const ImgBox = memo(function ImgBox({ src, alt = '', className = '', objectFit =
    ABOUT PAGE
 ══════════════════════════════════════════════════════════ */
 export default function About() {
-  const [heroFlavour1, heroFlavour2] = heroFlavours
-
   const windowWidth = useWindowWidth()
   const isMobile    = windowWidth < 768
   const reduced     = prefersReducedMotion()
@@ -231,39 +223,28 @@ export default function About() {
             <span className="text-[#7A4A2A]">About</span>
           </motion.div>
 
-          {/* Desktop 3-col */}
-          <div className="hidden md:grid grid-cols-[220px_1fr_220px] gap-4 items-end">
+          {/* Hero banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="relative overflow-hidden rounded-[2rem] border border-[#FFD9A8]/70 shadow-[0_30px_80px_rgba(45,22,8,0.12)] mb-10"
+          >
+            <div className="absolute inset-0">
+              <ZigZagImage
+                src={siteImages.bannerImage}
+                alt="CILO product banner"
+                index={0}
+                className="h-full w-full object-cover object-center"
+                onError={e => { e.target.style.display = 'none' }}
+                loading="eager"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-white/78 md:bg-white/72" />
+              <div className="absolute inset-0 bg-linear-to-r from-white/70 via-transparent to-white/70 md:from-white/55 md:via-transparent md:to-white/55" />
+            </div>
 
-            {/* FIX: floating product cards
-                Original: `y: [0, -10, 0]` with repeat: Infinity ran a JS-driven animation
-                on every frame even when off-screen. Replace with a CSS animation so the
-                compositor handles it with zero JS involvement per frame. */}
-            <motion.div
-              initial={{ opacity: 0, x: -40, rotate: -12 }}
-              animate={{ opacity: 1, x: 0, rotate: -8 }}
-              transition={{ opacity: { duration: 0.9, delay: 0.4 }, x: { duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }, rotate: { duration: 1, delay: 0.4 } }}
-              className="self-end mb-8"
-              // Pure CSS float — compositor thread, no JS per frame
-            >
-              <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl bg-stone-200">
-                <ZigZagImage
-                  src={heroFlavour1.img}
-                  alt={heroFlavour1.alt}
-                  index={0}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  onError={e => { e.target.style.display = 'none' }}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-center pb-16"
-            >
+            <div className="relative z-10 text-center px-6 py-12 sm:px-10 sm:py-16 md:px-16 md:py-20 lg:px-24 lg:py-24">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#FFD9A8] text-[#7A4A2A] text-xs font-bold mb-6 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
                 Since 2020
@@ -284,73 +265,9 @@ export default function About() {
                 From contract manufacturing to white-label solutions — driven by quality, innovation,
                 and sustainability.
               </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40, rotate: 12 }}
-              animate={{ opacity: 1, x: 0, rotate: 8 }}
-              transition={{ opacity: { duration: 0.9, delay: 0.4 }, x: { duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }, rotate: { duration: 1, delay: 0.4 } }}
-              className="self-end mb-8"
-            >
-              <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl bg-stone-200">
-                <ZigZagImage
-                  src={heroFlavour2.img}
-                  alt={heroFlavour2.alt}
-                  index={1}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  onError={e => { e.target.style.display = 'none' }}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Mobile hero — simplified, no floating cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="md:hidden text-center pb-12 px-2"
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-[#FFD9A8] text-[#7A4A2A] text-xs font-bold mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
-              Since 2020
-            </span>
-            <h1
-              className="font-black leading-tight text-[#1A0C04] mb-5"
-              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2rem, 7vw, 3rem)' }}
-            >
-              Richi Food Products
-              <br />
-              <span className="text-[#F97316]">CILO Juice</span>
-            </h1>
-            <p className="text-[#4A2800]/60 leading-relaxed text-base mb-3">
-              Born in Krishnagari District, Tamil Nadu — a modern beverage manufacturer for B2B partners across South India.
-            </p>
-            <p className="text-[#4A2800]/50 leading-relaxed text-sm mb-8">
-              Quality, innovation, and sustainability at our core.
-            </p>
-            {/* Two flavour thumbnails side-by-side on mobile */}
-            <div className="flex justify-center gap-4 max-w-sm mx-auto">
-              {heroFlavours.map((f) => (
-                <div
-                  key={f.alt}
-                  className="relative flex-1 max-w-[140px] aspect-square rounded-2xl overflow-hidden shadow-lg bg-stone-200"
-                >
-                  <ZigZagImage
-                    src={f.img}
-                    alt={f.alt}
-                    index={heroFlavours.findIndex((item) => item.alt === f.alt)}
-                    className="absolute inset-0 h-full w-full object-cover"
-                    onError={e => { e.target.style.display = 'none' }}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              ))}
             </div>
           </motion.div>
+
         </div>
 
         {/* CSS keyframe injected once — float + reduced-motion guard */}

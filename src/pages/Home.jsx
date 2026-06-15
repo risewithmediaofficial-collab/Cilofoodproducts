@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo, memo, useCallback } from 'react'
+import { useState, useRef, useEffect, useMemo, memo,} from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ChevronRight, ArrowRight, MapPin, Phone, Mail, Star, Droplets, Leaf, Zap, Award } from 'lucide-react'
@@ -336,7 +336,7 @@ function ProductPopup({ image, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-8"
+          className="fixed inset-0 'z-[999]' flex items-center justify-center p-4 sm:p-8"
           onClick={onClose}
         >
           {/* Blurred backdrop */}
@@ -352,7 +352,7 @@ function ProductPopup({ image, onClose }) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Image area — pure white, no colour tint */}
-            <div className="flex-1 min-h-[280px] sm:min-h-0 bg-white flex items-center justify-center p-8 sm:p-12">
+            <div className="flex-1 min-h-[280px]' sm:min-h-0 bg-white flex items-center justify-center p-8 sm:p-12">
               <motion.img
                 src={image.src}
                 alt={image.name}
@@ -441,7 +441,7 @@ function HoverExpand_001({ images, className, isMobile = false }) {
             return (
               <motion.div
                 key={index}
-                className="relative flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl flex flex-col border border-gray-100"
+                className="relative flex-shrink-0' cursor-pointer overflow-hidden rounded-2xl flex flex-col border border-gray-100"
                 animate={{
                   width:  isActive ? ACTIVE_W : INACTIVE_W,
                   height: ROW_H,
