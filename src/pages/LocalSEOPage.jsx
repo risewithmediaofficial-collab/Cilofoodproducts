@@ -27,7 +27,7 @@ const pageData = {
     keywords: 'best juice Krishnagiri, best fruit juice Krishnagiri, top juice brand Krishnagiri, premium drink Krishnagiri, fresh juice near me Krishnagiri, mango juice Krishnagiri',
     location: 'Krishnagiri',
     intro: `When it comes to premium, refreshing juice in Krishnagiri, nothing comes close to CILO. Manufactured right in Krishnagiri District at our state-of-the-art facility in Karagur Village, CILO is more than just a beverage — it's a taste of local pride.`,
-    body: `From our farm-sourced Mango Juice to our unique Paneer Soda and Jeera Masala, every bottle is crafted with care, without artificial preservatives, and with full FSSAI certification. With 12+ flavors available in 200ml, 500ml, 1L, and 2L sizes, there's a CILO for every occasion in Krishnagiri.`,
+    body: `From our farm-sourced Mango Juice to our unique Paneer Soda, Club Soda, Energy Drink, Red Energy, and Jeera Masala, every bottle is crafted with care, without artificial preservatives, and with full FSSAI certification. With 12+ flavors available in 200ml and 300ml sizes, there's a CILO for every occasion in Krishnagiri.`,
     highlight: 'Manufactured in Krishnagiri',
     image: siteImages.mango,
     features: [
@@ -201,7 +201,7 @@ export default function LocalSEOPage({ pageSlug }) {
       schema={schema}
     >
       {/* Hero */}
-      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden bg-linear-to-br from-white via-[#FFF8F3] to-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid md:grid-cols-2 gap-14 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
@@ -226,8 +226,8 @@ export default function LocalSEOPage({ pageSlug }) {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#F97316]/20 to-[#FFD9A8]/30 rounded-full blur-3xl -z-10" />
-              <ZigZagImage src={data.image} alt={data.h1} index={0} className="w-full h-auto max-h-[480px] object-contain p-6 drop-shadow-[0_20px_50px_rgba(249,115,22,0.25)]" loading="eager" />
+              <div className="absolute inset-0 bg-linear-to-tr from-[#F97316]/20 to-[#FFD9A8]/30 rounded-full blur-3xl -z-10" />
+              <ZigZagImage src={data.image} alt={data.h1} index={0} className="w-full h-auto max-h-120 object-contain p-6 drop-shadow-[0_20px_50px_rgba(249,115,22,0.25)]" loading="eager" />
             </motion.div>
           </div>
         </div>
@@ -288,7 +288,7 @@ export default function LocalSEOPage({ pageSlug }) {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-[#F97316] via-[#E86205] to-[#A8430F]">
+      <section className="py-20 bg-linear-to-br from-[#F97316] via-[#E86205] to-[#A8430F]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <MultiDirectionSlideText as="h2" text={`Taste the Difference in ${data.location}`} className="text-3xl md:text-4xl font-black text-white mb-4" />
@@ -307,4 +307,5 @@ export default function LocalSEOPage({ pageSlug }) {
     </PageWrapper>
   )
 }
+
 

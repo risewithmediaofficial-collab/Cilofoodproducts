@@ -56,7 +56,7 @@ export const PAGE_SEO = {
   products: {
     title: 'Products | Premium Juice & Carbonated Drinks - CILO Juice',
     description:
-      "Explore CILO's full range of premium beverages: Mango, Apple, Orange, Grape, Pineapple, Cola, Paneer Soda, Jeera Masala, and more. Available in 200ml, 500ml, 1L, 2L.",
+      "Explore CILO's full range of premium beverages: Mango, Apple, Orange, Grape, Pineapple, Cola, Paneer Soda, Jeera Masala, Energy Drink, Red Energy, Club Soda, and more. Available in 200ml and 300ml.",
     keywords:
       'CILO juice products, mango juice, orange juice, apple juice, pineapple juice, carbonated drinks, paneer soda, jeera masala drink, cola, buy juice online',
     url: '/products',

@@ -25,7 +25,7 @@ const locationsData = {
     faqs: [
       { question: 'Where can I buy CILO juice in Krishnagiri?', answer: 'CILO juice is available across grocery stores, supermarkets, and local shops in Krishnagiri district. You can also contact us directly at +91 94435 18521 for bulk orders and distribution inquiries.' },
       { question: 'Is CILO juice manufactured in Krishnagiri?', answer: 'Yes! CILO by Richi Food Products is manufactured right in Krishnagiri District at our state-of-the-art facility in Karagur Village, Paiyur. We are a proud local brand with FSSAI certification and 100 KL/day production capacity.' },
-      { question: 'What flavors are available in Krishnagiri?', answer: 'Our full range is available in Krishnagiri — Mango, Apple, Orange, Grape, Pineapple, Paneer Soda, Jeera Masala, Salt Lemon, Cola, and more — in 200ml, 500ml, 1L, and 2L sizes.' },
+      { question: 'What flavors are available in Krishnagiri?', answer: 'Our full range is available in Krishnagiri — Mango, Apple, Orange, Grape, Pineapple, Paneer Soda, Jeera Masala, Salt Lemon, Cola, Club Soda, Energy Drink, Red Energy, and more — in 200ml and 300ml sizes.' },
       { question: 'Can I become a CILO juice distributor in Krishnagiri?', answer: 'Yes! We welcome dealership applications from Krishnagiri and surrounding areas. Call +91 94435 18521 or visit our Dealership page to apply. Enjoy attractive margins and strong brand support.' },
     ],
   },
@@ -225,7 +225,7 @@ export default function Location() {
       schema={schema}
     >
       {/* ── Hero ── */}
-      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden bg-gradient-to-br from-white via-[#FFF8F3] to-white">
+      <section className="relative pt-28 sm:pt-32 md:pt-36 pb-20 overflow-hidden bg-linear-to-br from-white via-[#FFF8F3] to-white">
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='20' fill='%23F97316'/%3E%3C/svg%3E")`, backgroundSize: '80px' }} />
 
@@ -257,12 +257,12 @@ export default function Location() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#F97316]/20 to-[#FFD9A8]/30 rounded-full blur-3xl -z-10" />
+              <div className="absolute inset-0 bg-linear-to-tr from-[#F97316]/20 to-[#FFD9A8]/30 rounded-full blur-3xl -z-10" />
               <ZigZagImage
                 src={locationInfo.image}
                 alt={`Premium CILO juice in ${locationInfo.city}, Tamil Nadu`}
                 index={0}
-                className="w-full h-auto max-h-[480px] object-contain p-6 drop-shadow-[0_20px_50px_rgba(249,115,22,0.25)]"
+                className="w-full h-auto max-h-120 object-contain p-6 drop-shadow-[0_20px_50px_rgba(249,115,22,0.25)]"
               />
             </motion.div>
           </div>
@@ -345,7 +345,7 @@ export default function Location() {
       )}
 
       {/* ── CTA ── */}
-      <section className="py-20 bg-gradient-to-br from-[#F97316] via-[#E86205] to-[#A8430F]">
+      <section className="py-20 bg-linear-to-br from-[#F97316] via-[#E86205] to-[#A8430F]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <MultiDirectionSlideText as="h2" text={`Bring CILO to ${locationInfo.city}`} className="text-3xl md:text-5xl font-black text-white mb-4" />
@@ -370,4 +370,5 @@ export default function Location() {
     </PageWrapper>
   )
 }
+
 

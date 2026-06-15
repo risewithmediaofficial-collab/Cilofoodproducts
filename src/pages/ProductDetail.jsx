@@ -106,7 +106,7 @@ const LazyImg = ({ src, alt, className, width, height }) => {
 const ProductDetail = () => {
   const { id } = useParams()
   const [quantity, setQuantity] = useState(1)
-  const [selectedSize, setSelectedSize] = useState('500ml')
+  const [selectedSize, setSelectedSize] = useState('300ml')
 
   // Respect user's OS-level "reduce motion" preference
   const prefersReducedMotion = useReducedMotion()
@@ -120,9 +120,8 @@ const ProductDetail = () => {
       'Experience the rich, sweet flavor of perfectly ripened grapes in every sip. Our grape juice is made from select grapes, carefully processed to preserve natural vitamins and antioxidants.',
     price: 3.99,
     sizes: [
-      { size: '250ml', price: 2.49 },
-      { size: '500ml', price: 3.99 },
-      { size: '1L', price: 6.99 },
+      { size: '200ml', price: 2.49 },
+      { size: '300ml', price: 3.99 },
     ],
     features: [
       '100% Natural Grape Juice',
@@ -161,7 +160,7 @@ const ProductDetail = () => {
     },
     {
       question: `What sizes is ${product.name} available in?`,
-      answer: 'CILO juices are available in 200ml, 500ml, 1L, and 2L sizes to suit every occasion.',
+      answer: 'CILO juices are available in 200ml and 300ml sizes to suit every occasion.',
     },
   ])
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -267,7 +266,7 @@ const ProductDetail = () => {
 
               {/* Thumbnails */}
               <div className="flex gap-3 sm:gap-4">
-                {['250ml', '500ml', '1L'].map((size) => (
+                {['200ml', '300ml'].map((size) => (
                   <motion.div
                     key={size}
                     {...thumbHover}

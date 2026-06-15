@@ -45,7 +45,10 @@ const products = [
   { name: 'Grapes',      category: 'Juice',      img: siteImages.grape,      gradient: '#a855f7, #9333ea, #7e22ce', color: '#7c3aed' },
   { name: 'White Lemon', category: 'Juice',      img: siteImages.whiteLemon, gradient: '#fcd34d, #fbbf24, #f59e0b', color: '#84cc16' },
   { name: 'Orange',      category: 'Juice',      img: siteImages.orange,     gradient: '#fb7185, #f97316, #ea580c', color: '#F97316' },
+  { name: 'Energy Drink',category: 'Energy',     img: siteImages.ciloEnergyDrink, gradient: '#22d3ee, #06b6d4, #0891b2', color: '#0891B2' },
+  { name: 'Red Energy',  category: 'Energy',     img: siteImages.redEnergyDrink,  gradient: '#fb7185, #ef4444, #b91c1c', color: '#DC2626' },
   { name: 'Green Lemon', category: 'Carbonated', img: siteImages.greenLemon, gradient: '#34d399, #10b981, #059669', color: '#84cc16' },
+  { name: 'Club Soda',   category: 'Carbonated', img: siteImages.clubSoda,   gradient: '#94a3b8, #475569, #0f172a', color: '#334155' },
   { name: 'Paneer Soda', category: 'Carbonated', img: siteImages.paneerSoda, gradient: '#c084fc, #a855f7, #9333ea', color: '#8b5cf6' },
   { name: 'Salt Lemon',  category: 'Carbonated', img: siteImages.saltLemon,  gradient: '#94a3b8, #64748b, #475569', color: '#64748b' },
   { name: 'Cola',        category: 'Carbonated', img: siteImages.cola,       gradient: '#1e293b, #0f172a, #020617', color: '#475569' },
@@ -54,13 +57,11 @@ const products = [
   { name: 'Pineapple',   category: 'Juice',      img: siteImages.pineapple,  gradient: '#fcd34d, #fbbf24, #fb923c', color: '#fbbf24' },
 ]
 
-const filters = ['All', 'Juice', 'Carbonated']
+const filters = ['All', 'Juice', 'Carbonated', 'Energy']
 
 const packaging = [
   { size: '200ml',  type: 'PET Bottle',  best: 'Restaurants & Cafes'  },
-  { size: '500ml',  type: 'PET Bottle',  best: 'Retail & On-the-go'   },
-  { size: '1L',     type: 'PET Bottle',  best: 'Family & Bulk'         },
-  { size: 'Custom', type: 'White-label', best: 'Brand Partners'        },
+  { size: '300ml',  type: 'PET Bottle',  best: 'Retail & On-the-go'    },
 ]
 
 const processSteps = [
