@@ -235,36 +235,36 @@ export default function About() {
                 src={siteImages.bannerImage}
                 alt="CILO product banner"
                 index={0}
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-center blur-[2px] scale-102"
                 onError={e => { e.target.style.display = 'none' }}
                 loading="eager"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-linear-to-b from-white/10 via-transparent to-[#fff7ef]/12" />
+              <div className="absolute inset-0 bg-linear-to-b from-white/20 via-transparent to-[#fff7ef]/20" />
             </div>
 
-            <div className="relative z-10 flex min-h-[72vh] md:min-h-[78vh] items-start md:items-center justify-center md:justify-end px-6 py-10 sm:px-10 md:px-14 lg:px-20">
-              <div className="w-full max-w-2xl text-center md:text-left md:pr-4 lg:pr-10 pt-8 md:pt-0">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#FFD9A8] text-[#7A4A2A] text-xs font-bold mb-6 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
-                Since 2020
-              </span>
-              <h1
-                className="font-black leading-[0.98] text-[#1A0C04] mb-6"
-                style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2.4rem, 6vw, 5.6rem)' }}
-              >
-                Richi Food Products
-                <br />
-                <span className="text-[#F97316]">CILO Juice</span>
-              </h1>
-              <p className="text-[#4A2800]/90 max-w-xl md:max-w-2xl mx-auto md:mx-0 leading-relaxed text-lg md:text-xl mb-4">
-                Born in Krishnagari District, Tamil Nadu — a modern beverage manufacturer specialising in
-                high-quality fruit juices and carbonated drinks for B2B partners across South India.
-              </p>
-              <p className="text-[#4A2800]/80 max-w-xl md:max-w-2xl mx-auto md:mx-0 leading-relaxed text-base md:text-lg">
-                From contract manufacturing to white-label solutions — driven by quality, innovation,
-                and sustainability.
-              </p>
+            <div className="relative z-10 flex min-h-[72vh] md:min-h-[78vh] items-center justify-center md:justify-end px-6 py-10 sm:px-10 md:px-14 lg:px-20">
+              <div className="w-full max-w-xl bg-white/75 backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-[2rem] border border-white/50 shadow-xl text-left">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#FFD9A8] text-[#7A4A2A] text-xs font-bold mb-6 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-[#FB923C] animate-pulse" />
+                  Since 2020
+                </span>
+                <h1
+                  className="font-black leading-[1.1] text-[#1A0C04] mb-6"
+                  style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif", fontSize: 'clamp(2rem, 4.5vw, 3.8rem)' }}
+                >
+                  Richi Food Products
+                  <br />
+                  <span className="text-[#F97316]">CILO Juice</span>
+                </h1>
+                <p className="text-[#4A2800]/95 leading-relaxed text-base md:text-lg mb-4">
+                  Born in Krishnagari District, Tamil Nadu — a modern beverage manufacturer specialising in
+                  high-quality fruit juices and carbonated drinks for B2B partners across South India.
+                </p>
+                <p className="text-[#4A2800]/80 leading-relaxed text-sm md:text-base">
+                  From contract manufacturing to white-label solutions — driven by quality, innovation,
+                  and sustainability.
+                </p>
               </div>
             </div>
           </motion.div>
@@ -541,42 +541,29 @@ export default function About() {
       </section>
 
       {/* ══════════ 5. MISSION & VISION ══════════ */}
-      <section className="py-0">
-        {/* Mission */}
-        <div className="grid md:grid-cols-2 min-h-[300px] sm:min-h-[400px]">
-          <div className="relative overflow-hidden">
-            <ZigZagImage
-              src="/images/about/mission.jpg"
-              alt="Our Mission"
-              index={0}
-              className="w-full h-full object-cover"
-              onError={e => { e.target.style.display = 'none' }}
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="absolute inset-0 bg-[#1A0C04]/60 flex flex-col items-center justify-center gap-3">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                <Target size={28} className="text-white/60" />
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-[#2D1608] relative overflow-hidden">
+        <Orb className="w-96 h-96 bg-white/5 top-0 left-0" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 sm:gap-16">
+            {/* Mission Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-white/10"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#FBBB74]/10 flex items-center justify-center mb-6">
+                <Target size={28} className="text-[#FBBB74]" />
               </div>
-              <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Mission Image</span>
-            </div>
-          </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="bg-[#2D1608] flex items-center px-6 sm:px-12 py-16 sm:py-20"
-          >
-            <div>
-              <span className="inline-block px-4 py-1.5 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+              <span className="inline-block px-4 py-1.5 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
                 Our Mission
               </span>
-              <h2
-                className="text-3xl md:text-4xl font-black text-white mb-6"
+              <h3
+                className="text-2xl sm:text-3xl font-black text-white mb-6"
                 style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Quality for Every Consumer
-              </h2>
+              </h3>
               <ul className="space-y-4">
                 {[
                   'Deliver hygienic, affordable, and tasty drinks.',
@@ -591,51 +578,34 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
 
-        {/* Vision */}
-        <div className="grid md:grid-cols-2 min-h-[300px] sm:min-h-[400px]">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="bg-gray-900 flex items-center px-6 sm:px-12 py-16 sm:py-20"
-          >
-            <div>
-              <span className="inline-block px-4 py-1.5 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+            {/* Vision Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 sm:p-10 border border-white/10"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#FBBB74]/10 flex items-center justify-center mb-6">
+                <Eye size={28} className="text-[#FBBB74]" />
+              </div>
+              <span className="inline-block px-4 py-1.5 bg-white/10 text-white/80 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
                 Our Vision
               </span>
-              <h2
-                className="text-3xl md:text-4xl font-black text-white mb-6"
+              <h3
+                className="text-2xl sm:text-3xl font-black text-white mb-6"
                 style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
               >
                 Leading South India in Beverages
-              </h2>
+              </h3>
               <p className="text-white/70 leading-relaxed text-base">
                 To be a leading manufacturer of high-quality fruit juices and carbonated beverages,
                 recognised across South India for unmatched taste and standards — with business growth
                 seamlessly intertwined with environmental stewardship.
               </p>
-            </div>
-          </motion.div>
-          <div className="relative overflow-hidden">
-            <ZigZagImage
-              src="/images/about/vision.jpg"
-              alt="Our Vision"
-              index={1}
-              className="w-full h-full object-cover"
-              onError={e => { e.target.style.display = 'none' }}
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="absolute inset-0 bg-gray-900/60 flex flex-col items-center justify-center gap-3">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                <Eye size={28} className="text-white/60" />
-              </div>
-              <span className="text-white/40 text-xs font-bold uppercase tracking-widest">Vision Image</span>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -853,6 +823,67 @@ export default function About() {
                 >
                   <Phone size={14} /> +91 {p.phone}
                 </a>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════ 10. OUR TEAM GALLERY ══════════ */}
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-gray-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block px-4 py-1.5 bg-[#FFF8EE] text-[#7A4A2A] rounded-full text-xs font-bold uppercase tracking-widest mb-4 border border-[#FFD9A8] shadow-sm">
+              Our Team
+            </span>
+            <h2
+              className="text-4xl md:text-5xl font-black text-gray-900"
+              style={{ fontFamily: "'Fredoka', 'Outfit', sans-serif" }}
+            >
+              Dedicated Team Behind <span className="text-[#F97316]">Our Quality</span>
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto mt-3">
+              Meet the hard-working community and production experts at our Tamil Nadu facility ensuring every sip of CILO Juice is styled to perfection.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { src: '/images/team/team_1.jpg', label: 'Production Crew' },
+              { src: '/images/team/team_2.jpg', label: 'CILO Team' },
+              { src: '/images/team/team_3.jpg', label: 'Factory Team' },
+              { src: '/images/team/team_4.jpg', label: 'Operations & Staff' },
+            ].map((member, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 group transition-all duration-300"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden relative">
+                  <div
+                    className="absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+                    style={{
+                      backgroundImage: `url(${member.src})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center top',
+                      backgroundRepeat: 'no-repeat',
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-bold text-gray-900 text-lg group-hover:text-[#F97316] transition-colors duration-300">{member.label}</h3>
+                  <p className="text-gray-500 text-sm mt-1">Richi Food Products Family</p>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -85,8 +85,8 @@ const pillars = [
 const storyGrid = [
   { src: siteImages.companyOverview,    label: 'Our Factory',  bg: 'from-white to-white',    border: 'border-gray-200', imageClassName: 'object-cover object-center' },
   { src: siteImages.ourProducts,        label: 'Our Products', bg: 'from-white to-white',    border: 'border-gray-200', imageClassName: 'object-cover object-center' },
-  { src: '/images/story/team.jpg',      label: 'Our Team',     bg: 'from-sky-50 to-cyan-50', border: 'border-sky-100',  imageClassName: 'object-cover object-center' },
-  { src: '/images/story/community.jpg', label: 'Community',    bg: 'from-rose-50 to-pink-50', border: 'border-rose-100', imageClassName: 'object-cover object-center' },
+  { src: '/images/team/team_2.jpg',      label: 'Our Team',     bg: 'from-sky-50 to-cyan-50', border: 'border-sky-100',  imageClassName: 'object-cover object-center' },
+  { src: '/images/team/team_3.jpg', label: 'Community',    bg: 'from-rose-50 to-pink-50', border: 'border-rose-100', imageClassName: 'object-cover object-center' },
 ]
 
 const ticker = ['Salt Lemon','Apple','Grapes','White Lemon','Green Lemon','Mango','Orange','Energy Drink','Red Energy','Club Soda','Paneer Soda','Cola','Jeera Masala','Mango 2','Pineapple']
@@ -150,15 +150,25 @@ const StoryGridCard = memo(function StoryGridCard({ item, index, isMobile }) {
     >
       <div className="absolute inset-0 bg-linear-to-br from-white/0 via-[#F97316]/0 to-[#F97316]/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
       {!imageFailed && (
-        <ZigZagImage
-          src={item.src}
-          alt={item.label}
-          index={index}
-          className={`w-full h-full ${item.imageClassName ?? 'object-cover object-center'}`}
-          onError={() => setImageFailed(true)}
-          loading="lazy"
-          decoding="async"
-        />
+        <>
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${item.src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center top',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+          {/* Hidden img for error detection only */}
+          <img
+            src={item.src}
+            alt=""
+            aria-hidden="true"
+            className="hidden"
+            onError={() => setImageFailed(true)}
+          />
+        </>
       )}
       {imageFailed && <ImgPlaceholder label={item.label} />}
       <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-black/60 via-black/30 to-transparent flex items-end pb-3 px-4 z-30">
@@ -336,7 +346,8 @@ function ProductPopup({ image, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 'z-[999]' flex items-center justify-center p-4 sm:p-8"
+          className="fixed inset-0 flex items-center justify-center p-4 sm:p-8"
+          style={{ zIndex: 9999 }}
           onClick={onClose}
         >
           {/* Blurred backdrop */}
@@ -751,11 +762,20 @@ export default function Home() {
       <Ticker />
 
       {/* ══════════ PRODUCTS — HOVER EXPAND ══════════ */}
-      <section className="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 bg-white relative overflow-hidden">
+      <section
+        className="py-16 sm:py-20 lg:py-28 px-4 sm:px-6 md:px-10 lg:px-16 relative overflow-hidden"
+        style={{
+          backgroundImage: `url(${siteImages.bannerImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-white/85 backdrop-blur-xs pointer-events-none" />
         {!isMobile && (
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gray-100 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gray-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
         )}
-        <div className="max-w-7xl mx-auto relative">
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,35 +1,65 @@
+import logo from './LOGO.png'
+import apple from './products/apple-drink.webp'
+import bannerImage from './products/CILO - Website Banner Image.webp'
+import checking from './products/checking.webp'
+import clubSoda from './products/club soda.webp'
+import clearLemon from './products/clear-lemon.webp'
+import ciloEnergyDrink from './products/cilo energy drink.webp'
+import cola from './products/cola.webp'
+import companyOverview from './products/company-overview.webp'
+import dispatch from './products/dispatch.webp'
+import filling from './products/filling.webp'
+import flavours1 from './products/flavours-1.webp'
+import flavours2 from './products/flavours-2.webp'
+import grape from './products/grape-drink.webp'
+import greenLemon from './products/lemon.webp'
+import jeera from './products/jeera.webp'
+import labelling from './products/labelling.webp'
+import lemon from './products/lemon.webp'
+import mango from './products/mango.webp'
+import mangoDrink from './products/mango-drink.webp'
+import orange from './products/orange.webp'
+import ourProducts from './products/our-products.webp'
+import packing from './products/packing.webp'
+import paneerSoda from './products/paneer-soda.webp'
+import pineapple from './products/pineapple.webp'
+import preparation from './products/preparation.webp'
+import redEnergyDrink from './products/red energy drink.webp'
+import saltLemon from './products/salt-lemon.webp'
+import storageArea from './products/storage-area.webp'
+
 export const siteImages = {
-  logo: new URL('./LOGO.png', import.meta.url).href,
-  apple: new URL('./products/apple-drink.png', import.meta.url).href,
-  bannerImage: new URL('./products/CILO - Website Banner Image.png', import.meta.url).href,
-  checking: new URL('./products/checking.png', import.meta.url).href,
-  clubSoda: new URL('./products/club soda.png', import.meta.url).href,
-  clearLemon: new URL('./products/clear-lemon.png', import.meta.url).href,
-  ciloEnergyDrink: new URL('./products/cilo energy drink.png', import.meta.url).href,
-  cola: new URL('./products/cola.png', import.meta.url).href,
-  companyOverview: new URL('./products/company-overview.png', import.meta.url).href,
-  dispatch: new URL('./products/dispatch.png', import.meta.url).href,
-  filling: new URL('./products/filling.png', import.meta.url).href,
-  flavours1: new URL('./products/flavours-1.png', import.meta.url).href,
-  flavours2: new URL('./products/flavours-2.png', import.meta.url).href,
-  grape: new URL('./products/grape-drink.png', import.meta.url).href,
-  greenLemon: new URL('./products/lemon.png', import.meta.url).href,
-  jeera: new URL('./products/jeera.png', import.meta.url).href,
-  labelling: new URL('./products/labelling.png', import.meta.url).href,
-  lemon: new URL('./products/lemon.png', import.meta.url).href,
-  mango: new URL('./products/mango.png', import.meta.url).href,
-  mangoDrink: new URL('./products/mango-drink.png', import.meta.url).href,
-  mango2: new URL('./products/mango-drink.png', import.meta.url).href,
-  orange: new URL('./products/orange.png', import.meta.url).href,
-  ourProducts: new URL('./products/our-products.png', import.meta.url).href,
-  packing: new URL('./products/packing.png', import.meta.url).href,
-  paneerSoda: new URL('./products/paneer-soda.png', import.meta.url).href,
-  pineapple: new URL('./products/pineapple.png', import.meta.url).href,
-  preparation: new URL('./products/preparation.png', import.meta.url).href,
-  redEnergyDrink: new URL('./products/red energy drink.png', import.meta.url).href,
-  saltLemon: new URL('./products/salt-lemon.png', import.meta.url).href,
-  storageArea: new URL('./products/storage-area.png', import.meta.url).href,
-  whiteLemon: new URL('./products/clear-lemon.png', import.meta.url).href,
+  logo,
+  apple,
+  bannerImage,
+  checking,
+  clubSoda,
+  clearLemon,
+  ciloEnergyDrink,
+  cola,
+  companyOverview,
+  dispatch,
+  filling,
+  flavours1,
+  flavours2,
+  grape,
+  greenLemon,
+  jeera,
+  labelling,
+  lemon,
+  mango,
+  mangoDrink,
+  mango2: mangoDrink,
+  orange,
+  ourProducts,
+  packing,
+  paneerSoda,
+  pineapple,
+  preparation,
+  redEnergyDrink,
+  saltLemon,
+  storageArea,
+  whiteLemon: clearLemon,
 }
 
 export default siteImages
