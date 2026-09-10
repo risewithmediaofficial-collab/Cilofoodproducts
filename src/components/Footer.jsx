@@ -152,7 +152,7 @@ const Footer = memo(function Footer() {
               <li className="flex items-start gap-3">
                 <Phone size={16} className="text-[#F97316] mt-0.5 shrink-0" aria-hidden="true" />
                 <span className="text-sm text-white/70">
-                  Customer Care: Bharath - +91 XXXXX XXXXX
+                  Customer Care: Barathraj - +91 9944366592
                 </span>
               </li>
               <li className="flex items-start gap-3">

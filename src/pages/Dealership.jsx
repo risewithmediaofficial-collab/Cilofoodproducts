@@ -64,7 +64,7 @@ const regions = [
     name: 'South India',
     contacts: [
       { name: 'Mr. Senguvattan', title: 'Regional General Manager South India (TN, KA, KL)', phone: '+91 944579977' },
-      { name: 'Mr. Bharath', title: 'Customer Care', phone: '+91 XXXXX XXXXX' },
+      { name: 'Mr. Barathraj', title: 'Customer Care', phone: '+91 9944366592' },
     ],
   },
   {
@@ -82,7 +82,7 @@ const regions = [
   {
     name: 'Kerala',
     contacts: [
-      { name: 'Kerala', title: 'Heads', phone: '+91 XXXXX XXXXX' },
+      { name: 'Kerala', title: 'Heads', phone: '+91 9944366592' },
     ],
   },
 ]
@@ -118,17 +118,17 @@ export default function Dealership() {
     try {
       await fetch("https://formsubmit.co/ajax/richifoodproduct@gmail.com", {
         method: "POST",
-        headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            location: formData.location,
-            message: formData.message,
-            _subject: "New Dealership Inquiry from " + formData.name
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          location: formData.location,
+          message: formData.message,
+          _subject: "New Dealership Inquiry from " + formData.name
         })
       })
       setSubmitted(true)

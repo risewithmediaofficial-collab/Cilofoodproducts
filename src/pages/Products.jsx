@@ -60,8 +60,11 @@ const products = [
 const filters = ['All', 'Juice', 'Carbonated', 'Energy']
 
 const packaging = [
-  { size: '200ml',  type: 'PET Bottle',  best: 'Restaurants & Cafes'  },
-  { size: '300ml',  type: 'PET Bottle',  best: 'Retail & On-the-go'    },
+  { size: '160ml',  type: 'Carbonate',   best: 'Quick Refresh'          },
+  { size: '200ml',  type: 'Carbonate',   best: 'Cafes & Canteens'       },
+  { size: '250ml',  type: 'Mango',       best: 'Retail & Gifting'       },
+  { size: '300ml',  type: 'CSD',         best: 'On-the-go & Stores'     },
+  { size: '600ml',  type: 'Mango',       best: 'Family & Events'        },
 ]
 
 const processSteps = [

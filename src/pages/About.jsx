@@ -59,7 +59,7 @@ const labPoints = [
 
 const pillars = [
   { name: 'Mr. Velmurukan', role: 'Founder & Director',    phone: '9443518521', img: '/images/about/team/velmurukan.jpg' },
-  { name: 'Mr. Bharath',    role: 'Operations & Marketing', phone: '9944366592', img: '/images/about/team/bharath.jpg'    },
+  { name: 'Mr. Barathraj',  role: 'Operations & Marketing', phone: '9944366592', img: '/images/about/team/bharath.jpg'    },
 ]
 
 /* ══════════════════════════════════════════════════════════
