@@ -70,19 +70,22 @@ const regions = [
   {
     name: 'Tamil Nadu',
     contacts: [
-      { name: 'Tamil Nadu', title: 'Heads', phone: '+91 94435 18521' },
+      { phone: '+91 94435 18521' },
+      { phone: '+91 9944366592' },
     ],
   },
   {
     name: 'Karnataka',
     contacts: [
-      { name: 'Karnataka', title: 'Heads', phone: '+91 80731 52468' },
+      { phone: '+91 94435 18521' },
+      { phone: '+91 9944366592' },
     ],
   },
   {
     name: 'Kerala',
     contacts: [
-      { name: 'Kerala', title: 'Heads', phone: '+91 9944366592' },
+      { phone: '+91 94435 18521' },
+      { phone: '+91 9944366592' },
     ],
   },
 ]
@@ -325,8 +328,12 @@ export default function Dealership() {
                       className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-[#FFF8EE] to-white
                                  border-2 border-[#FFD9A8] hover:border-[#F97316] transition-colors duration-200"
                     >
-                      <div className="font-bold text-gray-900 text-sm sm:text-base mb-0.5">{contact.name}</div>
-                      <div className="text-xs sm:text-sm text-[#7A4A2A] font-semibold mb-2">{contact.title}</div>
+                      {contact.name && (
+                        <div className="font-bold text-gray-900 text-sm sm:text-base mb-0.5">{contact.name}</div>
+                      )}
+                      {contact.title && (
+                        <div className="text-xs sm:text-sm text-[#7A4A2A] font-semibold mb-2">{contact.title}</div>
+                      )}
                       {/*
                         href="tel:..." — tappable on mobile natively, no JS needed.
                         touchAction: manipulation removes 300ms tap delay.
