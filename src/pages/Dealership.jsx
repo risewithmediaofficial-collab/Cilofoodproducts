@@ -70,22 +70,22 @@ const regions = [
   {
     name: 'Tamil Nadu',
     contacts: [
-      { phone: '+91 94435 18521' },
-      { phone: '+91 9944366592' },
+      { name: 'Mr. M.K. Velan', phone: '+91 94435 18521' },
+      { name: 'Mr. Barathraj', phone: '+91 9944366592' },
     ],
   },
   {
     name: 'Karnataka',
     contacts: [
-      { phone: '+91 94435 18521' },
-      { phone: '+91 9944366592' },
+      { name: 'Mr. M.K. Velan', phone: '+91 94435 18521' },
+      { name: 'Mr. Barathraj', phone: '+91 9944366592' },
     ],
   },
   {
     name: 'Kerala',
     contacts: [
-      { phone: '+91 94435 18521' },
-      { phone: '+91 9944366592' },
+      { name: 'Mr. M.K. Velan', phone: '+91 94435 18521' },
+      { name: 'Mr. Barathraj', phone: '+91 9944366592' },
     ],
   },
 ]
