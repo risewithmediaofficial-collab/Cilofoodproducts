@@ -62,7 +62,7 @@ const pageData = {
     faqs: [
       { question: 'Where can I get fresh juice in Hosur?', answer: 'CILO juice is available through retailers across Hosur. Being manufactured just 30 minutes away in Krishnagiri, our juice reaches Hosur at peak freshness. Call +91 94435 18521 for the nearest outlet.' },
       { question: 'Is CILO a local brand near Hosur?', answer: 'Yes! CILO is manufactured in Krishnagiri, just 30km from Hosur. You\'re supporting a truly local Tamil Nadu brand when you choose CILO.' },
-      { question: 'What are the best healthy drinks available in Hosur?', answer: 'For healthy refreshment in Hosur, CILO offers Mango Juice, Apple Drink, Orange Juice, Green Lemon, Pineapple Juice, and Jeera Masala — all crafted with natural ingredients.' },
+      { question: 'What are the best healthy drinks available in Hosur?', answer: 'For healthy refreshment in Hosur, CILO offers Mango Juice, Apple Drink, Orange Juice, Just Lemon, Pineapple Juice, and Jeera Masala — all crafted with natural ingredients.' },
     ],
   },
   'healthy-juice-tamil-nadu': {
@@ -84,7 +84,7 @@ const pageData = {
     faqs: [
       { question: 'What is the best healthy juice brand in Tamil Nadu?', answer: 'CILO by Richi Food Products is a leading healthy beverage brand in Tamil Nadu, manufactured in Krishnagiri with FSSAI certification, natural ingredients, and 12+ flavors.' },
       { question: 'Is CILO available across all of Tamil Nadu?', answer: 'CILO is currently distributed across Krishnagiri, Hosur, Dharmapuri, Salem, and surrounding districts, with rapid expansion across Tamil Nadu underway.' },
-      { question: 'What healthy drinks does CILO offer?', answer: 'CILO offers Mango Juice, Apple Drink, Orange Juice, Pineapple Juice, Grape Drink, Jeera Masala, Green Lemon, Salt Lemon, and more — all crafted for health and taste.' },
+      { question: 'What healthy drinks does CILO offer?', answer: 'CILO offers Mango Juice, Apple Drink, Orange Juice, Pineapple Juice, Grape Drink, Jeera Masala, Just Lemon, Salt Lemon, and more — all crafted for health and taste.' },
     ],
   },
   'premium-juice-dharmapuri': {
@@ -115,7 +115,7 @@ const pageData = {
     keywords: 'summer drinks Krishnagiri, cool drinks Krishnagiri, refreshing juice Krishnagiri, mango juice summer, lemon juice Krishnagiri, best cold drink Krishnagiri',
     location: 'Krishnagiri',
     intro: `Krishnagiri summers are intense — and nothing beats the heat quite like a premium CILO juice. Crafted for the Tamil Nadu climate, our range of cooling, refreshing beverages is exactly what you need to stay cool and energized.`,
-    body: `From our thirst-quenching Mango Juice to our unique Jeera Masala and cooling Green Lemon, CILO has the perfect summer companion for every Krishnagiri resident. All beverages are FSSAI certified, naturally made, and available at affordable prices.`,
+    body: `From our thirst-quenching Mango Juice to our unique Jeera Masala and cooling Just Lemon, CILO has the perfect summer companion for every Krishnagiri resident. All beverages are FSSAI certified, naturally made, and available at affordable prices.`,
     highlight: 'Perfect for Krishnagiri summers',
     image: siteImages.mango,
     features: [
@@ -125,7 +125,7 @@ const pageData = {
       { icon: MapPin, label: 'Made in Krishnagiri' },
     ],
     faqs: [
-      { question: 'What are the best summer drinks in Krishnagiri?', answer: 'CILO\'s top summer picks for Krishnagiri are: Mango Juice, Green Lemon, Salt Lemon, Pineapple Juice, Jeera Masala, and Paneer Soda — all naturally made and FSSAI certified.' },
+      { question: 'What are the best summer drinks in Krishnagiri?', answer: 'CILO\'s top summer picks for Krishnagiri are: Mango Juice, Just Lemon, Salt Lemon, Pineapple Juice, Jeera Masala, and Paneer Soda — all naturally made and FSSAI certified.' },
       { question: 'Where can I buy cold drinks in Krishnagiri?', answer: 'CILO beverages are available at grocery stores and local shops across Krishnagiri. Contact us at +91 94435 18521 for bulk summer orders.' },
     ],
   },

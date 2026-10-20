@@ -83,17 +83,17 @@ export const blogPosts = [
   },
   {
     slug: 'zesty-white-lemon',
-    title: 'Zesty White Lemon: A Unique Twist on Traditional Lemonade',
-    excerpt: 'Looking for something different? Our White Lemon beverage offers a smooth, crisp, and perfectly balanced citrus experience.',
+    title: 'Zesty Clear Lemon: A Unique Twist on Traditional Lemonade',
+    excerpt: 'Looking for something different? Our Clear Lemon beverage offers a smooth, crisp, and perfectly balanced citrus experience.',
     content: `
       <h2>A Smoother Citrus</h2>
-      <p>Our White Lemon beverage is a refined take on classic lemonade. It offers a smoother, less sharp citrus profile that is incredibly crisp and easy to drink.</p>
+      <p>Our Clear Lemon beverage is a refined take on classic lemonade. It offers a smoother, less sharp citrus profile that is incredibly crisp and easy to drink.</p>
       
       <h2>Perfectly Balanced</h2>
       <p>We've achieved the ideal balance between sweet and sour. It's refreshing without being overly tart, making it a fantastic thirst quencher on hot summer days.</p>
       
       <h2>The Ideal Mixer</h2>
-      <p>Beyond being a great standalone drink, the clean taste of our White Lemon makes it an excellent base for mocktails and creative summer beverages.</p>
+      <p>Beyond being a great standalone drink, the clean taste of our Clear Lemon makes it an excellent base for mocktails and creative summer beverages.</p>
     `,
     image: siteImages.whiteLemon,
     date: '2026-05-04',
@@ -103,11 +103,11 @@ export const blogPosts = [
   },
   {
     slug: 'green-lemon-carbonated-refreshment',
-    title: 'Green Lemon: The Ultimate Carbonated Refreshment',
-    excerpt: 'Experience the fizzy, tangy punch of our Green Lemon carbonated drink. Perfect for cooling down and waking up your taste buds.',
+    title: 'Just Lemon: The Ultimate Carbonated Refreshment',
+    excerpt: 'Experience the fizzy, tangy punch of our Just Lemon carbonated drink. Perfect for cooling down and waking up your taste buds.',
     content: `
       <h2>Fizzy and Tangy</h2>
-      <p>When you need something with a bit of a kick, our Green Lemon carbonated beverage is the answer. The combination of bright lime flavor and crisp carbonation creates an explosive, refreshing experience.</p>
+      <p>When you need something with a bit of a kick, our Just Lemon carbonated beverage is the answer. The combination of bright lime flavor and crisp carbonation creates an explosive, refreshing experience.</p>
       
       <h2>Wake Up Your Senses</h2>
       <p>The effervescence cuts right through the heat, making it the perfect drink to cool down quickly. It’s sharp, zesty, and incredibly invigorating.</p>
@@ -119,7 +119,7 @@ export const blogPosts = [
     date: '2026-05-03',
     author: 'CILO Tastemakers',
     category: 'Carbonated Drinks',
-    tags: ['Green Lemon', 'Carbonated', 'Fizzy']
+    tags: ['Just Lemon', 'Carbonated', 'Fizzy']
   },
   {
     slug: 'paneer-soda-nostalgia-in-a-bottle',
@@ -240,7 +240,7 @@ export const blogPosts = [
       <p>Manufactured just 30 minutes from Hosur in our Krishnagiri facility, CILO juice arrives at peak freshness. You're getting locally made, naturally crafted beverages without the long supply chains that compromise quality.</p>
 
       <h2>Top CILO Picks for Hosur Residents</h2>
-      <p>For the health-conscious Hosur resident, we recommend: Apple Drink for morning energy, Mango Juice for afternoon refreshment, Green Lemon for a cooling midday drink, and Jeera Masala for digestive support after meals.</p>
+      <p>For the health-conscious Hosur resident, we recommend: Apple Drink for morning energy, Mango Juice for afternoon refreshment, Just Lemon for a cooling midday drink, and Jeera Masala for digestive support after meals.</p>
 
       <h2>Healthy Juice Near Me — Available in Hosur</h2>
       <p>CILO is expanding its distribution across Hosur rapidly. Contact us to find your nearest retailer or to enquire about stocking CILO at your store. Bulk orders and B2B supply available.</p>
@@ -261,7 +261,7 @@ export const blogPosts = [
 
       <h2>Top 5 CILO Summer Picks for Krishnagiri</h2>
       <p><strong>1. Mango Juice</strong> — The king of summer fruits in a bottle. Rich, sweet, and deeply refreshing.</p>
-      <p><strong>2. Green Lemon</strong> — A cooling citrus blast that instantly cools you down on a hot afternoon.</p>
+      <p><strong>2. Just Lemon</strong> — A cooling citrus blast that instantly cools you down on a hot afternoon.</p>
       <p><strong>3. Salt Lemon</strong> — The ultimate hydrator, replenishing electrolytes naturally.</p>
       <p><strong>4. Pineapple Juice</strong> — Tangy, tropical, and incredibly refreshing.</p>
       <p><strong>5. Jeera Masala</strong> — India's favorite digestive summer drink, crafted to CILO's premium standard.</p>

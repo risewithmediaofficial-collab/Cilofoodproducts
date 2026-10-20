@@ -45,8 +45,8 @@ const heroCards = [
   { name: 'Jeera Masala', img: siteImages.jeera,       bg: '#16A34A' },
   { name: 'Mango 2',      img: siteImages.mango2,      bg: '#F97316' },
   { name: 'Apple',        img: siteImages.apple,       bg: '#22C55E' },
-  { name: 'White Lemon',  img: siteImages.whiteLemon,  bg: '#EAB308' },
-  { name: 'Green Lemon',  img: siteImages.greenLemon,  bg: '#0EA5E9' },
+  { name: 'Clear Lemon',  img: siteImages.whiteLemon,  bg: '#EAB308' },
+  { name: 'Just Lemon',   img: siteImages.greenLemon,  bg: '#0EA5E9' },
   { name: 'Salt Lemon',   img: siteImages.saltLemon,   bg: '#64748B' },
   { name: 'Pineapple',    img: siteImages.pineapple,   bg: '#FBBF24' },
 ]
@@ -56,10 +56,10 @@ const products = [
   { name: 'Apple',        tag: 'Juice',      img: siteImages.apple,       accent: 'bg-red-600' },
   { name: 'Grapes',       tag: 'Juice',      img: siteImages.grape,       accent: 'bg-violet-600' },
   { name: 'Orange',       tag: 'Juice',      img: siteImages.orange,      accent: 'bg-[#F97316]' },
-  { name: 'White Lemon',  tag: 'Juice',      img: siteImages.whiteLemon,  accent: 'bg-lime-600' },
+  { name: 'Clear Lemon',  tag: 'Juice',      img: siteImages.whiteLemon,  accent: 'bg-lime-600' },
   { name: 'Energy Drink', tag: 'Energy',     img: siteImages.ciloEnergyDrink, accent: 'bg-cyan-600' },
   { name: 'Red Energy',   tag: 'Energy',     img: siteImages.redEnergyDrink,  accent: 'bg-rose-600' },
-  { name: 'Green Lemon',  tag: 'Carbonated', img: siteImages.greenLemon,  accent: 'bg-green-600' },
+  { name: 'Just Lemon',   tag: 'Carbonated', img: siteImages.greenLemon,  accent: 'bg-green-600' },
   { name: 'Club Soda',    tag: 'Carbonated', img: siteImages.clubSoda,    accent: 'bg-slate-800' },
   { name: 'Paneer Soda',  tag: 'Carbonated', img: siteImages.paneerSoda,  accent: 'bg-fuchsia-600' },
   { name: 'Cola',         tag: 'Carbonated', img: siteImages.cola,        accent: 'bg-stone-700' },
@@ -89,7 +89,7 @@ const storyGrid = [
   { src: '/images/team/team_3.jpg', label: 'Community',    bg: 'from-rose-50 to-pink-50', border: 'border-rose-100', imageClassName: 'object-cover object-center' },
 ]
 
-const ticker = ['Salt Lemon','Apple','Grapes','White Lemon','Green Lemon','Mango','Orange','Energy Drink','Red Energy','Club Soda','Paneer Soda','Cola','Jeera Masala','Mango 2','Pineapple']
+const ticker = ['Salt Lemon','Apple','Grapes','Clear Lemon','Just Lemon','Mango','Orange','Energy Drink','Red Energy','Club Soda','Paneer Soda','Cola','Jeera Masala','Mango 2','Pineapple']
 
 const brandSearchFaqs = [
   {

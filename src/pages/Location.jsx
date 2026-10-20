@@ -40,7 +40,7 @@ const locationsData = {
     geo: { '@type': 'GeoCoordinates', latitude: 12.7409, longitude: 77.8253 },
     highlight: '30 mins from our factory',
     mapsQuery: 'CILO+Juice+Hosur+Tamil+Nadu',
-    products: ['Apple Drink', 'Mango Juice', 'Cola', 'Green Lemon', 'Pineapple Juice', 'Salt Lemon'],
+    products: ['Apple Drink', 'Mango Juice', 'Cola', 'Just Lemon', 'Pineapple Juice', 'Salt Lemon'],
     faqs: [
       { question: 'Is CILO juice available in Hosur?', answer: 'Yes, CILO juice is available in Hosur through our growing distribution network. Contact us at +91 94435 18521 for retailer locations near you.' },
       { question: 'What makes CILO juice different from other brands in Hosur?', answer: 'CILO is locally manufactured in Krishnagiri, just 30 minutes from Hosur, ensuring unmatched freshness. We use natural ingredients, have FSSAI certification, and offer 12+ premium flavors at competitive prices.' },
